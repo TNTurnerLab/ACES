@@ -1,8 +1,8 @@
 {
-    "genomesdb": "/storage1/fs1/tychele/Active/projects/VGPGenomes/BLAST_TESTING/genomedbhold.txt",
-    "query": "/storage1/fs1/tychele/Active/projects/VGPGenomes/BLAST_TESTING/hs737.fasta",
-    "dbs": "/storage1/fs1/tychele/Active/projects/VGPGenomes/BLAST_TESTING/",
-    "tH":"/storage1/fs1/tychele/Active/projects/VGPGenomes/BLAST_TESTING/threshold.txt",
-    "par":"/storage1/fs1/tychele/Active/projects/VGPGenomes/BLAST_TESTING/Parsed_Final.fa",
-    "trash":"/storage1/fs1/tychele/Active/projects/VGPGenomes/ARCHIVE_FILES_TRASH "
+    "genomesdb": "/storage1/fs1/tychele/Active/projects/VGPGenomes/gg.txt",
+    "query": "/storage1/fs1/tychele/Active/projects/VGPGenomes/SHH_ZPA.fa",
+    "dbs": "/storage1/fs1/tychele/Active/projects/VGPGenomes",
+    "final": "/storage1/fs1/tychele/Active/projects/VGPGenomes/FINAL_RESULTS",
+    "tH":"/storage1/fs1/tychele/Active/projects/VGPGenomes/threshold.txt",
+    "trash":"/storage1/fs1/tychele/Active/projects/VGPGenomes/ARCHIVE_FILES_TRASH"
 }
