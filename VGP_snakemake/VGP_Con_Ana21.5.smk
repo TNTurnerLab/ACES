@@ -1,0 +1,560 @@
+#!/bin/bash
+import sys
+import os
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+#Configfile named
+if config == {}:
+     configfile: "config.json"
+
+#Varibles in config file
+query = config['query']
+dbs = config['dbs']
+thresh = config['tH']
+parsedfile = config['par']
+trash = config['trash']
+fold = config['final']
+ 
+
+queryName = config['query']
+queryName = str(queryName)
+queryN = os.path.basename(queryName)
+queryN= str(queryN)
+query1=[]
+query1= [queryN]
+#print (query1)
+queryNa = os.path.splitext(queryN)[0]
+#queryNa=str(queryNa)
+#qr=[]
+#qr=[queryName]
+
+files = ["Parsed_Final.fa", "NameKey.txt","Files_Generated_Report.txt" , "Multi_Seq_Align.aln", "Phy_Align.phy","RAXML_output.phy", "MSA2GFA.gfa"]
+expand("{param}/{end}", end=files, param=dbs)
+
+#Getting each genome file GENOMESDB_FILE = config["genomesdb"]
+GENOMESDB_FILE = config["genomesdb"]
+GENOMESDB = []
+with open(GENOMESDB_FILE) as f:
+    for line in f:
+        GENOMESDB.append(line.strip().split('\t')[0])
+
+genomesdb=GENOMESDB
+#queryN=
+end= fold + queryNa
+#~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+rule all:
+    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, expand("{genomesdb}_blast_results.txt",genomesdb=GENOMESDB),  expand("{genomesdb}_results_test_2.txt",genomesdb=GENOMESDB),expand("{genomesdb}_parsed_Final.fa",genomesdb=GENOMESDB ),   "%s_Parsed_Final.fa" %end ,  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy", "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end  #, expand("{param}/{end}", end=files, param=dbs)#, expand("{genomesdb}_blast.txt", genomesdb=GENOMESDB)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
+rule BLAST: #Creates a blastn output
+    input: "{genomesdb}" ,{query} 
+    params: prefix="{genomesdb}"
+    output:temp("{genomesdb}_blast_results.txt")
+    
+    shell: """ /opt/conda/bin/blastn -query {input[1]} -subject {input[0]} > {output} """
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
+rule findThresh: #Finds files that meets threshold requiement 
+    input:"{genomesdb}_parsed.fa", thresh
+    output: temp("{genomesdb}_results_test_2.txt")
+    run:
+        def main():
+            #Files and Variables
+            file = input[0]
+            thresh = input[1]
+            outputFile = output[0]
+            Identities='Identities'
+            Evalue = 'Expect'
+            id = ''
+            nameF = ''
+            exp = 0
+            Threshkey = []
+            keys = [0]
+
+            #Opens Tresh.txt file to view user input 
+            with open(thresh,'r') as tH:
+
+                #Converts Threshold value and adds it to a directory
+                for ln in tH:
+
+                    #Converts any value to Scientific "e" Notation - regardless of how value is presented
+                    ln = float(ln)
+                    ln = ('% e' % ln)
+                 
+                    keys = ln
+                    Threshkey=[keys] 
+                        
+                    #Opens input file for check
+                    with open(file, 'r') as fp:
+                        with open(outputFile, 'w') as f:
+
+                            for line in fp:
+                                ln = line
+                                line = line
+
+                                #Converting evalues of file to check if its a hit file or not 
+                                if 'Expect' in ln:
+                                
+                                    line = line
+                                    print (ln)
+                                    expect = ln.split('~')[0]
+                                
+                                    data=ln.split('~')[1]
+                                    valueOnly = expect.split('=')[1]
+                                    valOne = float(valueOnly)
+                                    evalue = ('%e' % valOne) 
+                                    
+                                    #Converting line to float value for comparison check 
+                                    if valueOnly in expect:
+                                        valOne = float(valueOnly)    
+                                        evalue = ('% e' % valOne)
+
+                                        #Comparing values to see if hit or not
+
+                                        for var in  Threshkey:
+
+                                            #if values are a hit, returning true    
+                                            if evalue <= var:
+
+                                                f.write(data)                             
+
+                                            #if values are not a hit return false
+                                            elif evalue > var:
+                                                
+                                                pass                                            
+                                       
+        main()        
+       
+#~~~~~~~~~~~~~~~~~~~~~~~~~~PARSE OUT FILE ~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+rule parse: #Parses out wanted information to a temp file for later use
+    input: "{genomesdb}_blast_results.txt"
+    output: temp("{genomesdb}_parsed.fa")
+    run:
+        def main():
+            #Files and Varibles
+            filename = input[0]
+            outputName = output[0]
+            Identities ='Identities'
+            Evalue = 'Expect'
+            id = ''
+            nameF = ''
+            eval = ''
+            comF = ''
+            num = 1
+
+            #Comands to parse out wanted information     
+            with open(outputName,'w') as f:
+            
+                with open (filename,'r') as fp:
+                    
+                    for line in fp:
+
+                        #Sets evalue for line to help with idenification if threshold is met
+                        if Evalue in line:
+                            ln = line
+                            expect = ln.split(',')[1]
+                            eval = expect.strip()
+
+                        #Parse out name of sequence
+                        elif line.startswith('>'):
+                            line = line.split('> ')
+                            name = str(line[1].replace(' ','_'))
+                            name= name
+                            name = name.strip()
+                           
+                            nameF = name
+
+                            
+                        #Parse out ID %
+                        elif  Identities in line:
+                            rand=str(num)
+                            spNID = ''
+                            spID = ''                          
+
+                            id = line.split(',')[0]
+                            id = str(id.replace(' ','_'))
+                            id = id.strip()
+                            id.replace(' ','_')
+                            comment = '_;' + '_' + id
+                        
+                            comF = comment
+                            print (comment)
+
+                            #If file is from VGP naming
+                            if '-GCA' in f.name:
+                                species = f.name
+                                spName = species.split('-GCA')[0]
+                                spNID = spName [:1]
+                                spID = species.split('-GCA')[1]
+                                spID = spID.split('-')[0]
+                                spID = spID[5:]
+                                spID = spID 
+
+                            #If file is from ensemble naming
+                            else:
+                                species = f.name
+                                spName = species.split('.dna.')[0]
+                                spName = spName.split('_v1')[0]
+                                spName = spName 
+                                spNID= spName [:1]
+                                spI=spName.split('.',1)[1]
+                                spID=str(spI)
+                                spID2=spID[-7:]
+                                spID= str( spID2)
+
+                            #Prints lines
+                            f.write( eval + '~' + '>' +spNID + spID +  '.' + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                            
+                            num += 1
+
+                        #Parse out sequence
+                        elif line.startswith('Sbjct'):
+                            lnsplit=line.split()[0:3]
+                            seq=lnsplit[2]
+                            seq=seq.replace('-','')
+                            seq=seq.strip('\n')
+                            f.write(eval + '~' + seq + '\n')                              
+                                    
+        main()
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~GENERATEREPORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~                       
+rule generateReport: #Generates a Report of all files seen, which files did or did not meet threshold requirement, and their counts
+    input: thresh, expand(["{genomesdb}_blast_results.txt"], genomesdb=GENOMESDB)
+    output: temp("Files_Generated_Report.txt")
+    run:
+        def main():
+            #Files and Varibles
+            a = 1 
+            thresh = input[0]
+            reportOut = output[0]
+            ThreshHitCount = 0
+            threshNOHitCnt = 0
+            totalFileCount = 0
+            Threshkey = {}
+            NoHitThresh = []
+            HitThresh = []
+            
+            #Opens Tresh.txt file to view user input        
+            with open(thresh,'r') as tH:
+                #Converts Threshold value and adds it to a directory
+                for ln in tH:
+                    #Converts any value to Scientific "e" Notation - regardless of how value is presented
+                    ln = float(ln)
+                    ln = ('% e' % ln)
+
+                    keys = ln
+                    Threshkey=[keys] 
+
+                #Open writable file (Report.txt)
+                with open(reportOut, 'w') as rp:
+
+                    #Create varibles and print headder for file
+                    ln=''
+                    space = '                                                  '
+
+                    NohitFile = 'No Hit Files' + space
+                    NohitFile=str(NohitFile)
+                    NohitFile= NohitFile[:50]
+                    
+                    hitFile = 'Hit Files' + space
+                    hitFile=str(hitFile)
+                    hitFile= hitFile[:50]
+                    
+                    tv = 'Threshold Value' 
+                    nhf= '# of No Hit Files'
+                    hf = 'Hit File'
+                    ts = 'Total Number Of Files Seen'+ '\t'
+                   
+                    header = (NohitFile + '\t' +  hitFile  + nhf + '/' + hf + '\t' + tv + '\t' +  ts + '\n')
+                    rp.write(header)
+                    
+                    #Loop through files in input 
+                    while a < len(input): 
+                        file = input[a]
+                        a+=1
+                        
+                        #Open our file
+                        with open(file, 'r') as fp:
+                            
+                            for line in fp:
+
+                                #Converting evalues of file to check if its a hit file or not                             
+                                if 'Expect' in line:
+                                    expect = line.split(',')[1]
+                                    valueOnly = expect.split('=')[1]
+                                    valOne = float(valueOnly)
+                                    evalue = ('%e' % valOne)
+                                  
+                                    #Converting line to float value for comparison check 
+                                    if valueOnly in line:
+                                        
+                                        valOne = float(valueOnly)
+                                        evalue = ('% e' % valOne)
+                                        
+                                        #Comparing values to see if hit or not
+                                        for var in  Threshkey:
+
+                                            #If the file does not meet threshold requirmen, strip name and add name to NO HITS list, + add 1 to counters
+                                            if evalue > var:
+
+                                                fname = ''
+                                                #If files are from VGP print file:
+                                                if '-unmasked' in fp.name:
+                            
+                                                    fname = (str(fp.name).rsplit('-unmasked')[0])
+
+                                                #If files are from ensemble print files with #:  
+                                                else:
+
+                                                    fnam = (str(fp.name).rsplit('.dna.')[0])
+                                                    fname ='#'+fnam
+
+                                                #Increases count and stores filenames
+                                                NoHitThresh.append(fname)
+                                                threshNOHitCnt +=1
+                                                totalFileCount +=1
+
+                                            #If the file meets threshold requirment, strip name and add name to HITS list, + add 1 to counters                                                                                                   
+                                            else:
+
+                                                fname = ''
+
+                                                #If files are from VGP print file:
+                                                if '-unmasked' in fp.name:
+
+                                                    fname = (str(fp.name).rsplit('-unmasked')[0])
+
+                                                #If files are from ensemble print files with #: 
+                                                else:
+
+                                                    fnam = (str(fp.name).rsplit('.dna.')[0])
+                                                    fname='#'+fnam
+                                                
+                                                #Increases count and stores filenames
+                                                HitThresh.append(fname)
+                                                ThreshHitCount +=1
+                                                totalFileCount  +=1
+
+                                #If files have 0 possible hits, or 'No Hits', strip name, add '**' in front of filename, and add name to NO HITS list, + add 1 to counters 
+                                elif 'No hits' in line:
+
+                                    #If files are from VGP print file:
+                                    if '-unmasked' in fp.name:
+
+                                        fname = (str(fp.name).rsplit('-unmasked')[0])
+                                        
+                                    #If files are from ensemble print files with #:     
+                                    else:
+
+                                        fnam = (str(fp.name).rsplit('.dna.')[0])
+                                        fname ='#'+fnam
+
+                                    #Adds ** to no hit files and increases count and stores filenames
+                                    fname = '**' + fname
+                                    NoHitThresh.append(fname)
+                                    threshNOHitCnt +=1
+                                    totalFileCount +=1
+                                                
+                    #Renaming varibles for printing
+                    tnhc= str(threshNOHitCnt) 
+                    thc = str(ThreshHitCount)
+                    tc = str(totalFileCount)
+                   
+                    #Naming and aligning files for printing            
+                    ln = ''
+                    space = '                                                  '
+                    Nohit = str(NoHitThresh[0]) + space
+                    Nohit = Nohit[:50]
+                    Hit = str(HitThresh[0]) + space
+                    Hit = Hit[:50]
+                    ln =  Nohit+ '\t' + Hit + '\t' +  tnhc + '/' + thc+ '\t' + '\t' + str(Threshkey) + '\t' + tc +'\n'
+                    rp.write(ln)
+
+                    #New line For Hit Thresh    
+                    if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 1 :
+                        x = 1
+                        while x < len(HitThresh):
+                            
+                            #Formatting lines 
+                            if x >= len(NoHitThresh):
+
+                                #space = 'Odocoileus_virginianus_texanus-GCA_002102435.1' added to 50 charaters
+                                ln = '' 
+                                space = '                                                  '
+                                Hit = str(HitThresh[x]) + space
+                                Hit = Hit[:50]
+                                #Final line for printing
+                                ln = (space + '\t' + Hit + '\n')
+                            
+                            else:
+
+                                ln = ''
+                                space = '                                                  '
+                                Nohit = str(NoHitThresh[x]) + space
+                                Nohit = Nohit[:50]
+                                Hit = str(HitThresh[x]) + space
+                                Hit = Hit[:50]
+                                #Final line for printing
+                                ln =  (Nohit + '\t' + Hit + '\n')
+
+                            #Illeterates and writes lines
+                            x += 1 
+                            rp.write(ln)
+                             
+                  
+                    #New line For No Hit Thresh                
+                    if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 1 :
+                        x = 1
+
+                        while x < len(NoHitThresh):
+                            
+                            #Formating lines
+                            if x >= len(HitThresh):
+
+                                ln = ' ' 
+                                space = '                                                  '
+                                Nohit = str(NoHitThresh[x]) + space
+                                Nohit = Nohit[:50]
+                                #Final line for printing
+                                ln = (Nohit + '\t' )
+                                 
+                            else:
+                               
+                                ln=''
+                                space = '                                                  '
+                                Nohit = str(NoHitThresh[x]) + space
+                                Nohit = Nohit[:50]
+                                Hit = str(HitThresh[x]) + space
+                                Hit = Hit[:50]
+                                #Final line for printing
+                                ln =  (Nohit+ '\t' + Hit + '\n')
+
+                            #Illeterates and writes lines
+                            x += 1 
+                            rp.write(ln)   
+         
+                    #Close the files
+                    fp.close()
+                        
+        main()
+#~~~~~~~~~~~~~~~~~~~~~~~~~~Name Key Document~~~~~~~~~~~~~~~~~~~~~~~~~
+rule KeyDoc: #Opens all files and creates a name key for user
+    input: expand(["{genomesdb}_parsed.fa"], genomesdb=GENOMESDB)
+    output: temp("NameKey.txt")
+    run: 
+        def main():
+            #Files and Varibles
+            a = 1 
+            outputName = output[0]
+            idv = ''
+            fname = ''
+            idname = ''
+
+            #Opens all files 
+            with open(outputName,'w') as f:
+                #Writes header for file
+                f.write('ID' + '\t'+ '\t' + 'FileName')
+                f.write('\n')
+
+                #Illeterates through files
+                while a < len(input): 
+                    file = input[a]
+                    a+=1
+                    
+                    #Open the files
+                    with open(file, 'r') as fp:
+                        
+                        for line in fp:
+
+                            #Fines Header in file and extracts generated name key
+                            if '>' in line:
+                                id = line.split('>')[1]
+                                id = str(id.split(':', 1)[0])
+
+                                #Strips id from header of VGP files
+                                if '-unmasked' in fp.name:
+                                    fname = str(fp.name)          
+                                    f.write(id + '\t' + fname +'\n') 
+
+                                #Adds # in front of all files from ensemble and strips ID                  
+                                else:
+                                    fnam = str(fp.name)
+                                    fname ='#'+fnam                  
+                                    f.write(id + '\t' + fname +'\n')
+
+        main()     
+rule qInput:
+    input: "Files_Generated_Report.txt"
+    output:  temp("Parsed_Final.fa" )
+    shell: """ touch {output[0]} """                 
+                                        
+#~~~~~~~~~~~~~~~~~~~~~~~~~~Combined Parses~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rule ParsedOut: # Moves all files generated by rule 'parse' to user generated file. Removes any remaining temp files that have been genrated by snakemake
+    input: "{genomesdb}_results_test_2.txt", "Parsed_Final.fa"
+    output: temp("{genomesdb}_parsed_Final.fa")
+    params: prefix = "{genomesdb}"
+    shell: """ touch {input[1]} && cat {input[0]} >> {output[0]} && cat {output[0]} >> {input[1]} """ 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~MULTI SEQ ALIGN~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rule muscle: # Runs a simple multi-sequence alignment on all parsed out files
+    input: "Parsed_Final.fa", expand(["{genomesdb}_parsed_Final.fa"], genomesdb=GENOMESDB)
+    output: temp("Multi_Seq_Align.aln")
+    shell: """ /opt/conda/bin/muscle -in {input[0]} -fastaout {output[0]}  """
+rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
+    input: "Multi_Seq_Align.aln"
+    output: temp("Phy_Align.phy")
+    shell: """ /opt/conda/bin/muscle -in {input[0]} -phyiout {output[0]} """
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic tree
+    input: "Phy_Align.phy"
+    output: "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
+    params: prefix= "RAXML_output.phy"
+    shell: """ /opt/conda/bin/raxmlHPC -s {input[0]} -m PROTGAMMAWAG -n {params.prefix} """
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~MSA2GFA~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
+    input: "Multi_Seq_Align.aln"
+    output: temp("MSA2GFA.gfa")
+    shell:""" export PATH=/opt/conda/bin:/storage1/fs1/tychele/Active/projects/VGPGenomes/msa_to_gfa/:$PATH 
+    /storage1/fs1/tychele/Active/projects/VGPGenomes/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log test.log"""
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
+#-------------------------------------------------------------------#
+# ###########################DIRECTORY CLEAN UP########################
+# rule clean1: # Moves blast outputs to a directory ment to act as an archive, and removes remaining temp files that have been generated by snakemake
+#     input: "{genomesdb}_blast_results.txt", {trash}, "Files_Generated_Report.txt","{genomesdb}_parsed_Final.fa"
+#     output: temp("{genomesdb}_blast.txt")
+#     params: prefix = "{genomesdb}"
+#     shell: """ cat {input[0]} >> {output[0]} && cp {output[0]}  {input[1]} && rm {input[0]} && rm {output[0]} && rm {output[3]}""" 
+
+rule clean1:
+    input:  "Parsed_Final.fa", "MSA2GFA.gfa"
+    output:  "%s_Parsed_Final.fa" %end
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
+rule clean2:
+    input:  "Multi_Seq_Align.aln", "MSA2GFA.gfa"
+    output:  "%s_Multi_Seq_Align.aln" %end 
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
+rule clean3:
+    input:  "Phy_Align.phy", "MSA2GFA.gfa"
+    output:  "%s_Phy_Align.phy" %end
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
+rule clean4:
+    input:  "MSA2GFA.gfa"
+    output:  "%s_MSA2GFA.gfa" %end
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
+rule clean5:
+    input:  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
+    output:  "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end
+
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} && touch {output[1]} && cat {input[1]} >> {output[1]} && touch {output[2]} && cat {input[2]} >> {output[2]} && touch {output[3]} && cat {input[3]} >> {output[3]} """
+
+rule clean6:
+    input:  "Files_Generated_Report.txt", "MSA2GFA.gfa"
+    output:  "%s_Files_Generated_Report.txt" %end
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
+rule clean7:
+    input:  "NameKey.txt", "MSA2GFA.gfa"
+    output:  "%s_NameKey.txt" %end
+    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}"""
