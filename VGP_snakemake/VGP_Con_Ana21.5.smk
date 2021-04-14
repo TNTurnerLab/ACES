@@ -516,8 +516,8 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "Multi_Seq_Align.aln"
     output: temp("MSA2GFA.gfa")
-    shell:""" export PATH=/opt/conda/bin:/storage1/fs1/tychele/Active/projects/VGPGenomes/msa_to_gfa/:$PATH 
-    /storage1/fs1/tychele/Active/projects/VGPGenomes/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log test.log"""
+    shell:""" export PATH=/opt/conda/bin:/data/msa_to_gfa/:$PATH 
+    /data/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log test.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
 #-------------------------------------------------------------------#
