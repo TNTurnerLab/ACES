@@ -1,41 +1,20 @@
-<!-- Output copied to clipboard! -->
-
-<!-----
-NEW: Check the "Suppress top comment" option to remove this info from the output.
-
-Conversion time: 1.154 seconds.
-
-
-Using this Markdown file:
-
-1. Paste this output into your source file.
-2. See the notes and action items below regarding this conversion run.
-3. Check the rendered output (headings, lists, code blocks, tables) for proper
-   formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-* Docs to Markdown version 1.0β29
-* Thu Feb 25 2021 01:41:53 GMT-0800 (PST)
-* Source doc: readme file
------>
-
-
 **<span style="text-decoration:underline;">VGP Conservation Analysis Pipeline:</span>**
 
 Maintainer: Elvisa Mehinovic
 
-The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project, and an input FASTA  file to create outputs: Blast, Parse, and a final MUSCLE alignment. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. 
+The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project, and an input FASTA  file to create outputs: Blast, Parse, and a final MUSCLE alignment. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl form their pub/release-103. The pipeline is currently set up to run all 510 files together, however user can edit the ghold.txt file to include and of their choosing.
 
-**<span style="text-decoration:underline;">User Required Files For Pipeline Execution:</span>**
+When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the users threshold requirment.‘*_Files_Generated_Report.fa’ will generate a report on how many files contained hits, no hits, or did not meet the treshold requirement. This file will also tell you exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is similar to the ‘*_MSA2GFA.fa’, execpt it is a multiple sequence file in Phylip format. This file format is required for running the RAXML analysis. When viewing the Phylip file or any RAXML file, please refer to the ‘*_NameKey.txt’. This Doccument will hold qunique names to identify files and sequences in the named files. Changing this file will not change the names of files or identy names with in files. RAXML will generate 4 files: ‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ ‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipline under the users descression. For more information regarding RAXML please refer to the manual linked in the "More Infomation" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogentic viewer.
 
-All required files will be available on github to be pulled on a desktop by using:
+**<span style="text-decoration:underline;">User Required Script Files For Pipeline Execution:</span>**
+
+All required script files will be available on github to be pulled on a desktop by using:
 
 	- $ wget ADD GITHUB LINK WHEN PUSHED
 
-Or can be pulled on RIS with command:
+Or can be pulled on LSF with command:
 
-- $ git clone ADD GITHUB LINK WHEN PUSHED
+	- $ git clone ADD GITHUB LINK WHEN PUSHED
 
 _<span style="text-decoration:underline;">FILES REQUIRED:</span>_
 
@@ -49,15 +28,14 @@ _<span style="text-decoration:underline;">FILES REQUIRED:</span>_
 
 
 
-1. genomeshold.txt
+1. 
 2. threshold.txt
-3. Parsed_Final.fa
 
 <span style="text-decoration:underline;">USER MUST SUPPLY:</span>
 
 
 
-1. {subject}: All VGP ‘*-unmasked.fa’ species files  
+1. {subject}: All VGP ‘*-unmasked.fa’ species files or ensembl ‘*-.dna.toplevel.fa’ species files.
 2. {query}: Any reference genome file that is a FASTA format.
 
 **<span style="text-decoration:underline;">GETTING VGP SPECIES FILES:</span>**
@@ -118,8 +96,12 @@ The snakefile consists of a few rules:
     *   After a file has met the requirement given by rule’ findThresh’, the file generated by rule ‘Blast’ will undergo a parsing of its sequence, header, and species name. This rule will later be used in a combined file to undergo a MUSCLE alignment.
 *   Rule generateReport:
     *   The rule generates a report for the user to allow a visual of what files have met the threshold requirement, or returned a hit, and those who have not. If file contains ** before its name, this indicates that there was no hit in the given species file. There is also a running count of how many files are seen in total, number of hit files, and number of no hit files. This report will also display the threshold value used.
+*   Rule KeyDoc:
+    *   KeyDoc will generate a file that holds the unique filenames used throught the pipeline. The RAXML funtion requires a unique naming schema with no more than ten charaters being used. The logic of the naming patterns follows one of two naming techniques. Those files produced by the VGP will have the first letter of the species, followed by the last five values of their id number, file number, and sequence place within the file. File who have been pulled from the Ensembl database willappear to have a '#' inside the produced document. These files have a naming pattern similar to those of the VGP files. The first letter indicates the letter the species name starts with. After the first letter, the last 7 unique consecutive charaters of thespecies name,followed by the equence splace within the file. This file will generate with the word "*NameKey.txt".
+*   Rule qInput:
+    *   qInput will geneate an empty file with the suffix as "Parsed_Final.fa". This file will be used in the rule ParsedOut to hold all sequences that meet the threshold requirement. 		
 *   Rule ParsedOut:
-    *   This rule combines all files created by rule ‘parse’ into a premade file. The file can be named however the user choses, just make sure to put the path of the file in config file, under “par”, and create this file in the working directory. This allows for the user to customize files. ** files must end with ‘.fa’ file extension **
+    *   This rule combines all files created by rule ‘parse’ into the "Parsed_Final.fa" file created by the rule qInput. 
 *   Rule muscle:
     *   MUSCLE is a multiple sequence alignment tool that takes in the user generated parsed file, and runs this command. 
 
@@ -253,3 +235,10 @@ View FILES GUIDE: for more information.
     4. Should contain all parsed files that were generated by rule ‘parsed’ and moved into this file by rule ‘ParsedOut’ because the files meet the threshold requirement from rule ‘findThresh’.
 5. Done.log.out and Done2.log.out
     5. Flags used to indicate job progress
+
+
+**<span style="text-decoration:underline;"> More Information </span>**
+
+https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
+
+**<span style="text-decoration:underline;"> Citations </span>**
