@@ -25,7 +25,9 @@ Conversion notes:
 
 Maintainer: Elvisa Mehinovic
 
-The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project, and an input FASTA  file to create outputs: Blast, Parse, and a final MUSCLE alignment. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl form their pub/release-103. The pipeline is currently set up to run all 510 files together, however user can edit the ghold.txt file to include and vaof their choosing.
+The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project, and an input FASTA  file to create outputs: Blast, Parse, and a final MUSCLE alignment. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl form their pub/release-103. The pipeline is currently set up to run all 510 files together, however user can edit the ghold.txt file to include and of their choosing.
+
+When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all 
 
 **<span style="text-decoration:underline;">User Required Files For Pipeline Execution:</span>**
 
@@ -51,13 +53,12 @@ _<span style="text-decoration:underline;">FILES REQUIRED:</span>_
 
 1. genomeshold.txt
 2. threshold.txt
-3. Parsed_Final.fa
 
 <span style="text-decoration:underline;">USER MUST SUPPLY:</span>
 
 
 
-1. {subject}: All VGP ‘*-unmasked.fa’ species files  
+1. {subject}: All VGP ‘*-unmasked.fa’ species files or ensembl ‘*-.dna.toplevel.fa’ species files.
 2. {query}: Any reference genome file that is a FASTA format.
 
 **<span style="text-decoration:underline;">GETTING VGP SPECIES FILES:</span>**
