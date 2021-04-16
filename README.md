@@ -278,13 +278,21 @@ View FILES GUIDE: for more information.
 7. '*_*.RAXML_output.phy"
     
    	7. The rule RAXML will generate 4 files total:
+   	
        		7a."*_RAxML_info.RAXML_output.phy"
+		
 			a. Information about RAXML and user genrated tree.
+			
 		7b."*_RAxML_parsimonyTree.RAXML_output.phy"
+		
 			b. A file that can be viewed with a parsimony tree viewer. This file contained grouped taxas together based on their minimal evolutionary change.
+			
 		7c."*_RAxML_log.RAXML_output.phy"
+		
 			c. Logs of program running.
+			
 		7d."*_RAxML_bestTree.RAXML_output.phy" *REFER TO DOC '*_NameKey.txt' FOR NAMING OF SPECIES IN FILES*
+		
 			d. Will be generated last and takes the longest to geteate. This file can be viewed with a phylogenic tree veiwer. It contains a computer generated tree that is presumed to best fit species sequences into their respecive branch.
 
 8. Done.log.out and Done2.log.out
