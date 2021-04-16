@@ -39,6 +39,8 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 	- These files can be downloaded through provided script.
 2. {query}: Any reference genome file that is a FASTA format.
 
+
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">GETTING VGP SPECIES FILES:</span>**
 
 Explanation of wgetfile.sh. Could run manually or execute files. Please see FILES GIVEN: _wgetfile.sh_ for more information.
