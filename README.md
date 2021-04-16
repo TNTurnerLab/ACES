@@ -279,7 +279,7 @@ View FILES GUIDE: for more information.
     
    	7. The rule RAXML will generate 4 files total:
    	
-       		7a."*_RAxML_info.RAXML_output.phy"
+   		7a."*_RAxML_info.RAXML_output.phy"
 		
 			a. Information about RAXML and user genrated tree.
 			
