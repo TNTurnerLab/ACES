@@ -275,7 +275,7 @@ View FILES GUIDE: for more information.
 
 	6. Multi sequence file given from rule muscle, and converted into a phylips file format.
 
-7. '*_*.RAXML_output.phy"
+7. '*_.RAXML_output.phy"
     
    	7. The rule RAXML will generate 4 files total:
    	
