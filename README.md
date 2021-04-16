@@ -135,12 +135,12 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 **<span style="text-decoration:underline;">RETREIVING VGP AND ENSEMBL FILES</span>**
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory. 
 
-								***WARNING:***
-				When conductinng the retreival of files, please insure that the user has enough storage space. 
-				The total storage needed for downloading all VGP files is estimated to be 337.89GB.
-				The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-				Please insure there is enough storage for all files with at least an extra 2GB for 
-				those files created in the pipeline.
+							***WARNING:***
+			When conductinng the retreival of files, please insure that the user has enough storage space. 
+			The total storage needed for downloading all VGP files is estimated to be 337.89GB.
+			The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
+			Please insure there is enough storage for all files with at least an extra 2GB for 
+			those files created in the pipeline.
 
 **<span style="text-decoration:underline;">wgetfile_VGP.sh</span>**
 
