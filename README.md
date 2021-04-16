@@ -197,50 +197,78 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
+    
     1. See file **_wgetfile_*.sh_** for command line codes that will help achieve this.
+
 2. Use or generate empty files corresponding to files named in SUB-FILES GUIDE
+    
     2. *** Files can be modified or changed based on user requirements***
+
 3. Configure all file pathways in file**_ config.json_**
+    
     3. Reference FILES GUIDE: _config.json_
-        1. Generate new directory for “trash” in _config.json_
+        
+	1. Generate new directory for “trash” in _config.json_
+
 4. Open file corresponding to that of “**tH**” in **_config.json_**
+    
     4. Within this file, enter a single value ***can be in scientific notation but not required***
-        2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+        
+	2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+
 5. Open file corresponding to that of “**genomes**” in **_config.json_**
+    
     5. Default file is set to run all 198 specific files given from the VGP database.
-        3. Modify or close this file when content.
+        
+	3. Modify or close this file when content.
+
 6. Users must upload or have handy their {query} file for Blast. 
+    
     6. Open  **_config.json _**to configure pathway to user file**_:_**
-        4. “query” 
+        
+	4. “query” 
+
 7. Open Snakefile.smk
+
     7. Rule: muscle:
-        5. Check if input file for this rule matches filename as in the file path “par” in **_config.json_**
+    	
+	5. Check if input file for this rule matches filename as in the file path “par” in **_config.json_**
+        
 8. (See FILES GUIDE: Docker for generating docker file)
+
 
 _<span style="text-decoration:underline;">To Run on Local Machine:</span>_
 
 
-
 9. Run Dockerfile command: 
+
     8. $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  
+    
 10. Run Snakemake.smk:
+
     9. $ /opt/conda/bin/snakemake -s Snakefil2.smk -k
 
-_<span style="text-decoration:underline;">To Run On Ris: </span>_
+_<span style="text-decoration:underline;">To Run On LSF: </span>_
 
 
 
 11. Tell Docker where data and code are:
+
     10. Execute LSF code:
         6. Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
         7. Run Docker interactively to see if successful:
             1. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
+
     11. bgadd -L 2000  /username/&lt;ANY NAME YOU WOULD LIKE TO CALL JOB>
+    
 13. Run following script:
+
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
+    
         8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
     13. Example:
+    
         9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(emehinovic72/home:bwp)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
 
 --------------------------------------------------------------------------------------------------------------------------------
