@@ -11,7 +11,6 @@ if config == {}:
 query = config['query']
 dbs = config['dbs']
 thresh = config['tH']
-parsedfile = config['par']
 trash = config['trash']
 fold = config['final']
  
