@@ -120,7 +120,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
     *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
         *   threshold.txt 
             *   Blank, pre-generated file that can be used instead of user generated file.
-*   [trash](#trash)
+*   "trash"
     *   Pathway for a directory in which all Blast outputs can be moved to. This allows for the decluttering of working directory and lets the user choose if they would rather keep blast outputs, or remove.
         *   To generate a directory use command:
             *   $ mkdir Your_Directory
@@ -225,11 +225,11 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
     
     2. *** Files can be modified or changed based on user requirements***
 
-3. Configure all file pathways in file**_ config.json_**
+3. Configure all file pathways in file**_[config](#config).json_**
     
     3. Reference FILES GUIDE: [config](#config).json
         
-	1. Generate new directory for [trash](#trash) in _config.json_
+	1. Generate new directory for "trash" in _config.json_
 
 4. Open file corresponding to that of “**tH**” in **_config.json_**
     
