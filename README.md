@@ -12,6 +12,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 
 * [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
+
 	* [SCRIPT FILES REQUIRED](#Script_req)
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETREIVE or PROVIDE](#USER)
@@ -34,6 +35,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [Rule MSA2GFA](#RMG) 
 		*  [Rule RAXML](#RR)
 		*  [Rule clean#](#RC) 
+		
 	*  [config.json](#config_file)
 		*  [genomesdb](#genomesdb)
 		*  [query](#query)
@@ -41,7 +43,9 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [final](#final)
 		*  [tH](#tH)
 		*  [trash](#trash)
+		
 * [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES)
+
 	*[wgetfile_VGP.sh](#VGP)
 	*[wgetfile_ensembl.sh](#ENS)
 		
