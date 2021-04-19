@@ -130,7 +130,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
             *   $ Example: rm This_file.txt
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;"><h3>RETREIVING VGP AND ENSEMBL FILES </h3></span>**
+**<span style="text-decoration:underline;"><h3>[RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES)</h3></span>**
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory. 
 
 						***WARNING:***
