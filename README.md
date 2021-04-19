@@ -21,9 +21,9 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
   
   
 		
-2.[FILES GUIDE](#FILES_GUIDE) 
+2. [FILES GUIDE](#FILES_GUIDE) 
 	
-   a. [Dockerfile](#Dock)
+   a.<sub><sup> [Dockerfile](#Dock) </sup></sub>
    
 	
    b. [Snakefile.smk](#SNAKE)
