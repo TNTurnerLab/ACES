@@ -12,11 +12,11 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 All required script files will be available on github to be pulled on a desktop by using:
 
-	- $ wget ADD GITHUB LINK WHEN PUSHED
+	- $ wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
 Or can be pulled on LSF with command:
 
-	- $ git clone ADD GITHUB LINK WHEN PUSHED
+	- $ git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
 _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 
@@ -178,7 +178,10 @@ Tor run on an LSF example:
 	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_VGP.sh
 	
 
-        **** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
+
+
+
+					**** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
 
 --------------------------------------------------------------------------------------------------------------------------------
 **_<span style="text-decoration:underline;">SUBFILES GUIDE:</span>_**
