@@ -47,7 +47,7 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;"><h3>[FILES GUIDE:](#FILES_GUIDE:)</h3></span>**
+**<span style="text-decoration:underline;"><h3>[FILES GUIDE](#FILES_GUIDE):</h3></span>**
 
 Short guide that explains files in the repository. Users can find examples, commands, and explanations on each file. This also includes a mini summary of internal components of files.
 
@@ -227,7 +227,7 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 
 3. Configure all file pathways in file**_ config.json_**
     
-    3. Reference [FILES GUIDE:](#FILES_GUIDE:) _config.json_
+    3. Reference [FILES GUIDE:config.json](#config.json)
         
 	1. Generate new directory for “trash” in _config.json_
 
