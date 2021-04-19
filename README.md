@@ -43,20 +43,7 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;">DOWNLOADING VGP AND ENSEMBL SPECIES FILES:</span>**
 
-Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
-
-To run locally to get Ensembl files:
-	- $ nohup bash wgetfile_ensembl.sh &
-Tor run on an LSF example:
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_ensembl.sh
-To run locally to get VGP files:
-	- $ nohup bash wgetfile_VGP.sh &
-Tor run on an LSF example:
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_VGP.sh
-
-        **** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
 
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -167,9 +154,31 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 
 
 
-
 ***After execution, there should be 312 species files in the given directory.***
 
+**<span style="text-decoration:underline;">DOWNLOADING VGP AND ENSEMBL SPECIES FILES:</span>**
+
+Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
+
+
+To run locally to get Ensembl files:
+
+	- $ nohup bash wgetfile_ensembl.sh &
+	
+Tor run on an LSF example:
+
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_ensembl.sh
+	
+To run locally to get VGP files:
+
+	- $ nohup bash wgetfile_VGP.sh &
+	
+Tor run on an LSF example:
+
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_VGP.sh
+	
+
+        **** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
 
 --------------------------------------------------------------------------------------------------------------------------------
 **_<span style="text-decoration:underline;">SUBFILES GUIDE:</span>_**
