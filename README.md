@@ -8,7 +8,7 @@ When executing the pipeline, there are a total of 10 files will be generated if 
 
 The purpose of this pipeline is to create a full scale analysis of vertebrate species either or both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced may also be looked at in external viewers for deeper, more complexed analysis. 
 
-**<span style="text-decoration:underline;">User Required Script Files For Pipeline Execution:</span>**
+**<span style="text-decoration:underline;"><a name="USER_REQUIRED"><h1>User Required Script Files For Pipeline Execution:</h1></span>**
 
 All required script files will be available on github to be pulled on a desktop by using:
 
@@ -215,7 +215,7 @@ Empty file that user may or may not use when inputting threshold value. Users ma
 
 Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
 
-
+PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
     
