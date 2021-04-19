@@ -119,9 +119,9 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast
         *   Must be a FASTA file
 *   “dbs”
-    *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located.
+    *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
 *   “final”
-    * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to.
+    * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
 *   “tH”
     *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
         *   threshold.txt 
