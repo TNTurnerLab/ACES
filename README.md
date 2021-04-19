@@ -11,19 +11,19 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 
-<h3>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)</h3>
+1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
 	
-  <h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
+  a. [SCRIPT FILES REQUIRED](#Script_req)
 	
-  <h4>[SUB-FILES GIVEN](#Given)</h4>
+  b. [SUB-FILES GIVEN](#Given)
 	
-  <h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
+  c. [USER MUST RETREIVE or PROVIDE](#USER)
 		
-<h3> 2. [FILES GUIDE](#FILES_GUIDE) </h3>
+2.[FILES GUIDE](#FILES_GUIDE) 
 	
-  <h4>[Dockerfile](#Dock)</h4>
+  a. [Dockerfile](#Dock)
 	
-  <h4>[Snakefile.smk](#SNAKE)</h4>
+  b. [Snakefile.smk](#SNAKE)
 	
    i.[Rule Blast](#RB)
 		
@@ -35,7 +35,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		
    v.[Rule KeyDoc](#RKD)
 		
-  vi.[Rule qInput](#RQI
+  vi.[Rule qInput](#RQI)
 		
    vii.[Rule ParsedOut](#RPO)
 		
