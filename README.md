@@ -41,6 +41,9 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [final](#final)
 		*  [tH](#tH)
 		*  [trash](#trash)
+* [RETREIVING VGP AND ENSEMBL FILES] (#RETREIVING-VGP-AND-ENSEMBL-FILES)
+	*[wgetfile_VGP.sh](#VGP)
+	*[wgetfile_ensembl.sh](#ENS)
 		
 
 
@@ -161,7 +164,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 *   <a name="query"><h5>"query"</h5></a>
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast
         *   Must be a FASTA file
-*   <a name="dbs"><h5>"db"s</h5></a>
+*   <a name="dbs"><h5>"dbs"</h5></a>
     *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
 *   <a name="final"><h5>"final"</h5></a>
     * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
@@ -189,7 +192,7 @@ The files named below will be used to download all files needed for this pipelin
 		Please insure there is enough storage for all files with at least an extra 2GB for 
 		those files created in the pipeline.
 
-**<span style="text-decoration:underline;">wgetfile_VGP.sh</span>**
+**<span style="text-decoration:underline;"><a name="VGP"><h3>wgetfile_VGP.sh</h3></a></span>**
 
 This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz’ files from the VGP rapid release archive. This shell file also contains the command used to extract the ‘*-unmasked.fa.gz’ files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip *-unmasked.fa.gz. Modification to these commands are a must, and should occur before running. The command used could be written into a snake, written directly onto the command line , or by running a file on the command line with code given in DOWNLOADING VGP AND ENSEMBL SPECIES FILES.Shell command is found in the Genomes folder.
 
@@ -197,7 +200,7 @@ This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz�
 
 ***After execution, there should be 198 species files in the given directory.***
 
-**<span style="text-decoration:underline;">wgetfile_ensembl.sh</span>**
+**<span style="text-decoration:underline;"><a name="ENS"><h3>wgetfile_ensembl.sh</h3></a></span>**
 
 This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '*.dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
 
