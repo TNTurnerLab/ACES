@@ -158,6 +158,8 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 
 **<span style="text-decoration:underline;">DOWNLOADING VGP AND ENSEMBL SPECIES FILES:</span>**
 
+				**** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
+
 Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
 
 
@@ -179,9 +181,6 @@ Tor run on an LSF example:
 	
 
 
-
-
-					**** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
 
 --------------------------------------------------------------------------------------------------------------------------------
 **_<span style="text-decoration:underline;">SUBFILES GUIDE:</span>_**
