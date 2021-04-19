@@ -105,18 +105,18 @@ The snakefile consists of a few rules:
 
 This will hold all pathways to files. Snakefile uses these pathways to generate files, input rules and more. All rule inputs must include a file path to directory. Example: /My/Path/To/This/File.txt
 
-*   “genomesdb”
+*   <a name="genomesdb"><h5>genomesdb</h5></a>
     *   This will be the pathway to the one file in which holds the names all genomes that the user will use in the pipeline.
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
             *   Pre-generated filse with specie named found within the the github. Variations of these files may be used, or one of the pregenerated files could be used as well. 
-*   “query”
+*   <a name="query"><h5>query</h5></a>
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast
         *   Must be a FASTA file
-*   “dbs”
+*   <a name="dbs"><h5>dbs</h5></a>
     *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
-*   “final”
+*   <a name="final"><h5>final</h5></a>
     * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
-*   “tH”
+*   <a name="tH"><h5>tH</h5></a>
     *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
         *   threshold.txt 
             *   Blank, pre-generated file that can be used instead of user generated file.
@@ -230,14 +230,15 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
     3. Reference FILES GUIDE: [config](#config_file).json
         
 	1. Generate new directory for "[trash](#trash)" in _config.json_
+	2. Generate new directory for "[final](#final)" in _config.json_
 
-4. Open file corresponding to that of “**tH**” in **_config.json_**
+4. Open file corresponding to that of [tH](#tH) in **_config.json_**
     
     4. Within this file, enter a single value ***can be in scientific notation but not required***
         
 	2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
 
-5. Open file corresponding to that of “**genomes**” in **_config.json_**
+5. Open file corresponding to that of [genomesdb](#genomesdb) in **_config.json_**
     
     5. Default file is set to run all 198 specific files given from the VGP database.
         
@@ -245,15 +246,12 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 
 6. Users must upload or have handy their {query} file for Blast. 
     
-    6. Open  **_config.json _**to configure pathway to user file**_:_**
+    6. Open  **_config.json _** to configure pathway to user file**_:_**
         
-	4. “query” 
+	4. [query](#query)
 
 7. Open Snakefile.smk
 
-    7. Rule: muscle:
-    	
-	5. Check if input file for this rule matches filename as in the file path “par” in **_config.json_**
         
 8. (See FILES GUIDE: Docker for generating docker file)
 
