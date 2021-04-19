@@ -2,9 +2,11 @@
 
 Maintainer: Elvisa Mehinovic
 
-The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, and a final MUSCLE alignment. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl from their pub/release-103. Specifically those files with '*.dna.toplevel.fa' suffix. These files are the equivilent to unmasked files in the VGP database. The pipeline is currently set up to run all 510 files together, however user can edit the ghold.txt file to include and of their choosing.
+The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, phylips reformatting, conversion to a GFA file, and finaly a RAXML best tree output. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl from their pub/release-103. Specifically those files with '*.dna.toplevel.fa' suffix. These files are the equivilent to unmasked files in the VGP database. The pipeline is currently set up to run all 510 files together, however user can edit the ghold.txt file to include and of their choosing.
 
 When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the users threshold requirment.‘*_Files_Generated_Report.fa’ will generate a report on how many files contained hits, no hits, or did not meet the treshold requirement. This file will also tell you exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is similar to the ‘*_MSA2GFA.fa’, execpt it is a multiple sequence file in Phylip format. This file format is required for running the RAXML analysis. When viewing the Phylip file or any RAXML file, please refer to the ‘*_NameKey.txt’. This Doccument will hold qunique names to identify files and sequences in the named files. Changing this file will not change the names of files or identy names with in files. RAXML will generate 4 files: ‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ ‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipline under the users descression. For more information regarding RAXML please refer to the manual linked in the "More Infomation" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogentic viewer.
+
+The purpose of this pipeline is to create a full scale analysis of vertebrate species either or both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced may also be looked at in external viewers for deeper, more complexed analysis. 
 
 **<span style="text-decoration:underline;">User Required Script Files For Pipeline Execution:</span>**
 
@@ -39,6 +41,8 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 	- These files can be downloaded through provided script.
 2. {query}: Any reference genome file that is a FASTA format.
 
+
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">GETTING VGP SPECIES FILES:</span>**
 
 Explanation of wgetfile.sh. Could run manually or execute files. Please see FILES GIVEN: _wgetfile.sh_ for more information.
@@ -48,6 +52,7 @@ Explanation of wgetfile.sh. Could run manually or execute files. Please see FILE
         **** FILES UNZIPPED ARE ABOUT 300 GBS ***
 
 
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">FILES GUIDE:</span>**
 
 Short guide that explains files in the repository. Users can find examples, commands, and explanations on each file. This also includes a mini summary of internal components of files.
@@ -116,9 +121,9 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast
         *   Must be a FASTA file
 *   “dbs”
-    *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located.
+    *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
 *   “final”
-    * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to.
+    * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
 *   “tH”
     *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
         *   threshold.txt 
@@ -132,9 +137,16 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
         *   To remove certain files use rm and the given filename:
             *   $ Example: rm This_file.txt
 
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">RETREIVING VGP AND ENSEMBL FILES</span>**
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory. 
 
+							***WARNING:***
+			When conductinng the retreival of files, please insure that the user has enough storage space. 
+			The total storage needed for downloading all VGP files is estimated to be 337.89GB.
+			The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
+			Please insure there is enough storage for all files with at least an extra 2GB for 
+			those files created in the pipeline.
 
 **<span style="text-decoration:underline;">wgetfile_VGP.sh</span>**
 
@@ -157,6 +169,7 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 ***After execution, there should be 312 species files in the given directory.***
 
 
+--------------------------------------------------------------------------------------------------------------------------------
 **_<span style="text-decoration:underline;">SUBFILES GUIDE:</span>_**
 
 Guide that explained files generated by the maintainer and their purpose. These files could be used as a reference if the user wishes to  create their own. 
@@ -178,6 +191,7 @@ Pregenerated file created by maintainer that has a list of every species corresp
 
 Empty file that user may or may not use when inputting threshold value. Users may generate their own file, but must change the path file in config to adapt to change.
 
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">HOW TO RUN</span>**
 
 Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
@@ -185,72 +199,137 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
+    
     1. See file **_wgetfile_*.sh_** for command line codes that will help achieve this.
+
 2. Use or generate empty files corresponding to files named in SUB-FILES GUIDE
+    
     2. *** Files can be modified or changed based on user requirements***
+
 3. Configure all file pathways in file**_ config.json_**
+    
     3. Reference FILES GUIDE: _config.json_
-        1. Generate new directory for “trash” in _config.json_
+        
+	1. Generate new directory for “trash” in _config.json_
+
 4. Open file corresponding to that of “**tH**” in **_config.json_**
+    
     4. Within this file, enter a single value ***can be in scientific notation but not required***
-        2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+        
+	2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+
 5. Open file corresponding to that of “**genomes**” in **_config.json_**
+    
     5. Default file is set to run all 198 specific files given from the VGP database.
-        3. Modify or close this file when content.
+        
+	3. Modify or close this file when content.
+
 6. Users must upload or have handy their {query} file for Blast. 
+    
     6. Open  **_config.json _**to configure pathway to user file**_:_**
-        4. “query” 
+        
+	4. “query” 
+
 7. Open Snakefile.smk
+
     7. Rule: muscle:
-        5. Check if input file for this rule matches filename as in the file path “par” in **_config.json_**
+    	
+	5. Check if input file for this rule matches filename as in the file path “par” in **_config.json_**
+        
 8. (See FILES GUIDE: Docker for generating docker file)
+
 
 _<span style="text-decoration:underline;">To Run on Local Machine:</span>_
 
 
-
 9. Run Dockerfile command: 
+
     8. $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  
+    
 10. Run Snakemake.smk:
+
     9. $ /opt/conda/bin/snakemake -s Snakefil2.smk -k
 
-_<span style="text-decoration:underline;">To Run On Ris: </span>_
+_<span style="text-decoration:underline;">To Run On LSF: </span>_
 
 
 
 11. Tell Docker where data and code are:
+
     10. Execute LSF code:
         6. Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
         7. Run Docker interactively to see if successful:
             1. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
+
     11. bgadd -L 2000  /username/&lt;ANY NAME YOU WOULD LIKE TO CALL JOB>
+    
 13. Run following script:
+
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
+    
         8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
     13. Example:
+    
         9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(emehinovic72/home:bwp)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
 
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;">Output Files Generated:</span>**
 
 When ran successfully these output files should be generated or filled with information:
 
 View FILES GUIDE: for more information.
 
+1. '*_Multi_Seq_Align.fa'
+    
+	1. Generated results to rule ‘muscle’.
 
+2. '*SPECIESNAME*_blast_results.txt'
+    
+	2. Should be generated and moved to archived directory
 
-1. Multi_Seq_Align.fa
-    1. Generated results to rule ‘muscle’.
-2. SPECIESNAME_blast_results.txt
-    2. Should be generated and moved to archived directory
-3. Files_Generated_Report.txt
-    3. Report of all files created from rule ‘BLAST’ and if their hits were significant or not.
-4. Parsed_Final.fa or User Equivalent Name:
-    4. Should contain all parsed files that were generated by rule ‘parsed’ and moved into this file by rule ‘ParsedOut’ because the files meet the threshold requirement from rule ‘findThresh’.
-5. Done.log.out and Done2.log.out
-    5. Flags used to indicate job progress
+3. '*_Files_Generated_Report.txt'
+    
+	3. Report of all files created from rule ‘BLAST’ and if their hits were significant or not.
 
+4. '*_Parsed_Final.fa':
+    
+	4. Should contain all parsed files that were generated by rule ‘parsed’ and moved into this file by rule ‘ParsedOut’ because the files meet the threshold                
+       requirement from rule ‘findThresh’.
 
+5. '*_NameKey.txt'
+
+	5. This file will contain all generated files and their respective unqiue names generated from the VGPA pipeline. Those files seen with a '#' are Ensembl files. 
+
+6. '*_Phy_Align.py'
+
+	6. Multi sequence file given from rule muscle, and converted into a phylips file format.
+
+7. '*_.RAXML_output.phy"
+    
+   	7. The rule RAXML will generate 4 files total:
+   	
+   		7a."*_RAxML_info.RAXML_output.phy"
+		
+			a. Information about RAXML and user genrated tree.
+			
+		7b."*_RAxML_parsimonyTree.RAXML_output.phy"
+		
+			b. A file that can be viewed with a parsimony tree viewer. This file contained grouped taxas together based on their minimal evolutionary change.
+			
+		7c."*_RAxML_log.RAXML_output.phy"
+		
+			c. Logs of program running.
+			
+		7d."*_RAxML_bestTree.RAXML_output.phy" *REFER TO DOC '*_NameKey.txt' FOR NAMING OF SPECIES IN FILES*
+		
+			d. Will be generated last and takes the longest to geteate. This file can be viewed with a phylogenic tree veiwer. It contains a computer generated tree that is presumed to best fit species sequences into their respecive branch.
+
+8. Done.log.out and Done2.log.out
+    
+	8. Flags used to indicate job progress
+
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;"> More Information </span>**
 
 https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
