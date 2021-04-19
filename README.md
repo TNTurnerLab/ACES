@@ -11,7 +11,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 
-<h2>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
+<h3>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
 	
 	<h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
 	
@@ -19,7 +19,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	
 	<h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
 		
-<h2>2. [FILES GUIDE](#FILES_GUIDE)
+<h3>2. [FILES GUIDE](#FILES_GUIDE)
 	
 	<h4>[Dockerfile}(#Dock)</h4>
 	
