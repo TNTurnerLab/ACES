@@ -8,7 +8,7 @@ When executing the pipeline, there are a total of 10 files will be generated if 
 
 The purpose of this pipeline is to create a full scale analysis of vertebrate species either or both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced may also be looked at in external viewers for deeper, more complexed analysis. 
 
-**<span style="text-decoration:underline;"><a name="USER_REQUIRED"><h1>User Required Script Files For Pipeline Execution:</h1></span>**
+**<span style="text-decoration:underline;"><a name="USER_REQUIRED"><h1>User Required Script Files For Pipeline Execution:</h1></a></span>**
 
 All required script files will be available on github to be pulled on a desktop by using:
 
@@ -47,7 +47,7 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;"><h3>[FILES GUIDE](#FILES_GUIDE):</h3></span>**
+**<span style="text-decoration:underline;"><a name="FILES_GUIDE"><h3>FILES GUIDE:</h3></a></span>**
 
 Short guide that explains files in the repository. Users can find examples, commands, and explanations on each file. This also includes a mini summary of internal components of files.
 
@@ -120,7 +120,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
     *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
         *   threshold.txt 
             *   Blank, pre-generated file that can be used instead of user generated file.
-*   "trash"
+*   <a name="trash"><h5>trash</h5></a>
     *   Pathway for a directory in which all Blast outputs can be moved to. This allows for the decluttering of working directory and lets the user choose if they would rather keep blast outputs, or remove.
         *   To generate a directory use command:
             *   $ mkdir Your_Directory
@@ -130,7 +130,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
             *   $ Example: rm This_file.txt
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;"><h3>[RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES)</h3></span>**
+**<span style="text-decoration:underline;"><a name="RETREIVING-VGP-AND-ENSEMBL-FILES"><h3>RETREIVING VGP AND ENSEMBL FILES</h3></a></span>**
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory. 
 
 						***WARNING:***
@@ -227,9 +227,9 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 
 3. Configure all file pathways in file [config](#config_file).json
     
-    3. Reference FILES GUIDE: config.json
+    3. Reference FILES GUIDE: [config](#config_file).json
         
-	1. Generate new directory for "trash" in _config.json_
+	1. Generate new directory for "[trash](#trash)" in _config.json_
 
 4. Open file corresponding to that of “**tH**” in **_config.json_**
     
