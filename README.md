@@ -22,29 +22,18 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [Dockerfile](#Dock)
    	* [Snakefile.smk](#SNAKE) 
  
-		* <sub><sup> [Rule Blast](#RB) </sup></sub>
-		
-   ii. <sub><sup> [Rule findThresh](#RFT) </sup></sub>
-		
-   iii. <sub><sup> [Rule Parse](#RP) </sup></sub>
-		
-   iv. <sub><sup> [Rule generateReport](#RGR) </sup></sub>
-		
-   v. <sub><sup> [Rule KeyDoc](#RKD) </sup></sub>
-		
-   vi. <sub><sup> [Rule qInput](#RQI) </sup></sub>
-		
-   vii. <sub><sup> [Rule ParsedOut](#RPO) </sup></sub>
-		
-   viii. <sub><sup> [Rule muscle](#RM) </sup></sub>
-		
-   ix. <sub><sup> [Rule muscle2](#RM2) </sup></sub>
-		
-   x. <sub><sup> [Rule MSA2GFA](#RMG) </sup></sub>
-		
-   xi. <sub><sup> [Rule RAXML](#RR) </sup></sub>
-		
-   xii. <sub><sup> [Rule clean#](#RC) </sup></sub>
+		*  [Rule Blast](#RB) 
+		*  [Rule findThresh](#RFT) 
+		*  [Rule Parse](#RP) 
+		*  [Rule generateReport](#RGR)
+		*  [Rule KeyDoc](#RKD) 
+		*  [Rule qInput](#RQI) 
+		*  [Rule ParsedOut](#RPO)
+		*  [Rule muscle](#RM) 
+		*  [Rule muscle2](#RM2) 
+		*  [Rule MSA2GFA](#RMG) 
+		*  [Rule RAXML](#RR)
+		*  [Rule clean#](#RC) 
 		
 
 
