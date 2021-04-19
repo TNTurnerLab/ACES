@@ -101,7 +101,7 @@ The snakefile consists of a few rules:
 *   Rule clean#:
     * All clean rules files will tag all generated files with the users query file name, and move the file to a user provided destination.
 
-**<span style="text-decoration:underline;"><a =name= "config_file"><h3> config.json </h3></a></span>**
+**<span style="text-decoration:underline;"><a name="config_file"><h3>config.json </h3></a></span>**
 
 This will hold all pathways to files. Snakefile uses these pathways to generate files, input rules and more. All rule inputs must include a file path to directory. Example: /My/Path/To/This/File.txt
 
