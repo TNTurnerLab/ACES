@@ -34,6 +34,13 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [Rule MSA2GFA](#RMG) 
 		*  [Rule RAXML](#RR)
 		*  [Rule clean#](#RC) 
+	*  [config.json](#config_file)
+		*  [genomesdb](#genomesdb)
+		*  [query](#query)
+		*  [dbs](#dbs)
+		*  [final](#final)
+		*  [tH](#tH)
+		*  [trash](#trash)
 		
 
 
