@@ -41,7 +41,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [final](#final)
 		*  [tH](#tH)
 		*  [trash](#trash)
-* [RETREIVING VGP AND ENSEMBL FILES] (#RETREIVING-VGP-AND-ENSEMBL-FILES)
+* [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES)
 	*[wgetfile_VGP.sh](#VGP)
 	*[wgetfile_ensembl.sh](#ENS)
 		
