@@ -58,7 +58,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 * [Citations](#cite)
 		
 
-<sub><sup>** DISCLAIMER: I am not the orginal creater of the msa_to_gfa program. I have a slightly modified version of an existing workflow from the github: https://github.com/fawaz-dabbaghieh/msa_to_gfa. </sup></sub>
+<sub><sup>** DISCLAIMER: I am not the orginal creater of the msa_to_gfa program found in this repository. I have a slightly modified version of an existing workflow from the github: https://github.com/fawaz-dabbaghieh/msa_to_gfa. </sup></sub>
 
 
 
