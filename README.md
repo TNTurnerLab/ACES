@@ -43,13 +43,20 @@ _<span style="text-decoration:underline;">SCRIPT FILES REQUIRED:</span>_
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;">GETTING VGP SPECIES FILES:</span>**
+**<span style="text-decoration:underline;">DOWNLOADING VGP AND ENSEMBL SPECIES FILES:</span>**
 
-Explanation of wgetfile.sh. Could run manually or execute files. Please see FILES GIVEN: _wgetfile.sh_ for more information.
+Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
 
-#### ADD WRAPPER SCRIPT HERE TO DOWNLOAD ALL FILES####
+To run locally to get Ensembl files:
+	- $ nohup bash wgetfile_ensembl.sh &
+Tor run on an LSF example:
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_ensembl.sh
+To run locally to get VGP files:
+	- $ nohup bash wgetfile_VGP.sh &
+Tor run on an LSF example:
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_VGP.sh
 
-        **** FILES UNZIPPED ARE ABOUT 300 GBS ***
+        **** FILES UNZIPPED ARE ABOUT 455.73 GBS ***
 
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -81,8 +88,6 @@ For those not familiar with docker reference this link: [https://docs.docker.com
 **<span style="text-decoration:underline;">Snakefile.smk</span>**
 
 The snakefile consists of a few rules:
-
-
 
 *   Rule BLAST:
     *   Takes an input from genomes.txt as the subject and the given FASTA file as query and Blastn the files to create a blast output file
@@ -141,27 +146,24 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 **<span style="text-decoration:underline;">RETREIVING VGP AND ENSEMBL FILES</span>**
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory. 
 
-							***WARNING:***
-			When conductinng the retreival of files, please insure that the user has enough storage space. 
-			The total storage needed for downloading all VGP files is estimated to be 337.89GB.
-			The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-			Please insure there is enough storage for all files with at least an extra 2GB for 
-			those files created in the pipeline.
+						***WARNING:***
+		When conductinng the retreival of files, please insure that the user has enough storage space. 
+		The total storage needed for downloading all VGP files is estimated to be 337.89GB.
+		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
+		Please insure there is enough storage for all files with at least an extra 2GB for 
+		those files created in the pipeline.
 
 **<span style="text-decoration:underline;">wgetfile_VGP.sh</span>**
 
-This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz’ files from the VGP rapid release archive. This shell file also contains the command used to extract the ‘*-unmasked.fa.gz’ files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip *-unmasked.fa.gz. Modification to these commands are a must, and should occur before running. The command used could be written into a snake, written directly onto the command line , or by running a file on the command line with the codes below.
+This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz’ files from the VGP rapid release archive. This shell file also contains the command used to extract the ‘*-unmasked.fa.gz’ files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip *-unmasked.fa.gz. Modification to these commands are a must, and should occur before running. The command used could be written into a snake, written directly onto the command line , or by running a file on the command line with code given in DOWNLOADING VGP AND ENSEMBL SPECIES FILES.Shell command is found in the Genomes folder.
 
 
-
-*   $ Chmod +x wget.sh 
-*   $ ./wget.sh
 
 ***After execution, there should be 198 species files in the given directory.***
 
 **<span style="text-decoration:underline;">wgetfile_ensembl.sh</span>**
 
-This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '*.dna.toplevel.fa' for every species. 
+This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '*.dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
 
 
 
