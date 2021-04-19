@@ -13,43 +13,43 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 * 1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
 	
-  ** a. [SCRIPT FILES REQUIRED](#Script_req)
+  a. [SCRIPT FILES REQUIRED](#Script_req)
 	
-  ** b. [SUB-FILES GIVEN](#Given)
+  b. [SUB-FILES GIVEN](#Given)
 	
-  ** c. [USER MUST RETREIVE or PROVIDE](#USER)
+  c. [USER MUST RETREIVE or PROVIDE](#USER)
   
   
 		
 * 2. [FILES GUIDE](#FILES_GUIDE) 
 	
-   ** a. [Dockerfile](#Dock)
+   a. <sub><sup> [Dockerfile](#Dock) </sup></sub>
    	
-   ** b. [Snakefile.smk](#SNAKE)
+   b. <sub><sup> [Snakefile.smk](#SNAKE) </sup></sub>
 	
-   i.[Rule Blast](#RB)
+   i. <sub><sup> [Rule Blast](#RB) </sup></sub>
 		
-   ii.[Rule findThresh](#RFT)
+   ii. <sub><sup> [Rule findThresh](#RFT) </sup></sub>
 		
-   iii.[Rule Parse](#RP)
+   iii. <sub><sup> [Rule Parse](#RP) </sup></sub>
 		
-   iv.[Rule generateReport](#RGR)
+   iv. <sub><sup> [Rule generateReport](#RGR) </sup></sub>
 		
-   v.[Rule KeyDoc](#RKD)
+   v. <sub><sup> [Rule KeyDoc](#RKD) </sup></sub>
 		
-   vi.[Rule qInput](#RQI)
+   vi. <sub><sup> [Rule qInput](#RQI) </sup></sub>
 		
-   vii.[Rule ParsedOut](#RPO)
+   vii. <sub><sup> [Rule ParsedOut](#RPO) </sup></sub>
 		
-   viii.[Rule muscle](#RM)
+   viii. <sub><sup> [Rule muscle](#RM) </sup></sub>
 		
-   ix.[Rule muscle2](#RM2)
+   ix. <sub><sup> [Rule muscle2](#RM2) </sup></sub>
 		
-   x.[Rule MSA2GFA](#RMG)
+   x. <sub><sup> [Rule MSA2GFA](#RMG) </sup></sub>
 		
-   xi.[Rule RAXML](#RR)
+   xi. <sub><sup> [Rule RAXML](#RR) </sup></sub>
 		
-   xii.[Rule clean#](#RC)
+   xii. <sub><sup> [Rule clean#](#RC) </sup></sub>
 		
 
 
