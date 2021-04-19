@@ -333,10 +333,10 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
         
 	4. "[query](#query)"
 
-7. Open Snakefile.smk
+7. Open [Snakefile.smk](#SNAKE) 
 
         
-8. (See FILES GUIDE: Docker for generating docker file)
+8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
 
 
 _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
@@ -368,10 +368,10 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
-        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
+        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
     13. Example:
     
-        9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=5GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=50GB]' -M 50GB -a 'docker(emehinovic72/home:bwp)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
+        9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
 
 
 
@@ -384,7 +384,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 When ran successfully these output files should be generated or filled with information:
 
-View FILES GUIDE: for more information.
+View [FILES GUIDE](#FILES_GUIDE): for more information.
 
 1. <h4> '*_Multi_Seq_Align.fa' </h4>
     
