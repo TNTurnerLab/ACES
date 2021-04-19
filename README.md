@@ -58,7 +58,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 * [Citations](#cite)
 		
 
-
+<sub><sup>** DISCLAIMER: I am not the orginal creater of the msa_to_gfa program. I have a slightly modified version of an existing workflow from the github: https://github.com/fawaz-dabbaghieh/msa_to_gfa. </sup></sub>
 
 
 
@@ -445,6 +445,8 @@ View [FILES GUIDE](#FILES_GUIDE): for more information.
 https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
 
 [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
+
+https://github.com/fawaz-dabbaghieh/msa_to_gfa.
 
 --------------------------------------------------------------------------------------------------------------------------------
 
