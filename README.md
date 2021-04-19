@@ -225,9 +225,9 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
     
     2. *** Files can be modified or changed based on user requirements***
 
-3. Configure all file pathways in file**_[config](#config).json_**
+3. Configure all file pathways in file [config](#config).json
     
-    3. Reference FILES GUIDE: [config](#config).json
+    3. Reference FILES GUIDE: config.json
         
 	1. Generate new directory for "trash" in _config.json_
 
