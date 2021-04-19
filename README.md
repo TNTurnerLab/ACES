@@ -13,41 +13,41 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 <h3>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
 	
-	<h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
+a.<h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
 	
-	<h4>[SUB-FILES GIVEN](#Given)</h4>
+b.<h4>[SUB-FILES GIVEN](#Given)</h4>
 	
-	<h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
+c.<h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
 		
 <h3>2. [FILES GUIDE](#FILES_GUIDE)
 	
-	<h4>[Dockerfile}(#Dock)</h4>
+a.<h4>[Dockerfile}(#Dock)</h4>
 	
-	<h4>[Snakefile.smk](#SNAKE)</h4>
+b.<h4>[Snakefile.smk](#SNAKE)</h4>
 	
-		[Rule Blast](#RB)
+i.[Rule Blast](#RB)
 		
-		[Rule findThresh](#RFT)
+ii.[Rule findThresh](#RFT)
 		
-		[Rule Parse](#RP)
+iii.[Rule Parse](#RP)
 		
-		[Rule generateReport](#RGR)
+iv.[Rule generateReport](#RGR)
 		
-		[Rule KeyDoc](#RKD)
+v.[Rule KeyDoc](#RKD)
 		
-		[Rule qInput](#RQI
+vi.[Rule qInput](#RQI
 		
-		[Rule ParsedOut](#RPO)
+vii.[Rule ParsedOut](#RPO)
 		
-		[Rule muscle](#RM)
+viii.[Rule muscle](#RM)
 		
-		[Rule muscle2](#RM2)
+ix.[Rule muscle2](#RM2)
 		
-		[Rule MSA2GFA](#RMG)
+x.[Rule MSA2GFA](#RMG)
 		
-		[Rule RAXML](#RR)
+xi.[Rule RAXML](#RR)
 		
-		[Rule clean#](#RC)
+xii.[Rule clean#](#RC)
 		
 	<h4></h4>
 
