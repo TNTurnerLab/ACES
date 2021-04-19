@@ -22,7 +22,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [Dockerfile](#Dock)
    	* [Snakefile.smk](#SNAKE) 
  
-	* <sub><sup> [Rule Blast](#RB) </sup></sub>
+		* <sub><sup> [Rule Blast](#RB) </sup></sub>
 		
    ii. <sub><sup> [Rule findThresh](#RFT) </sup></sub>
 		
