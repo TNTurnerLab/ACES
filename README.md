@@ -11,43 +11,43 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 
-<h3>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
+<h3>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)</h3>
 	
-a.<h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
+  <h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
 	
-b.<h4>[SUB-FILES GIVEN](#Given)</h4>
+  <h4>[SUB-FILES GIVEN](#Given)</h4>
 	
-c.<h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
+  <h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
 		
-<h3>2. [FILES GUIDE](#FILES_GUIDE)
+<h3> 2. [FILES GUIDE](#FILES_GUIDE) </h3>
 	
-a.<h4>[Dockerfile}(#Dock)</h4>
+  <h4>[Dockerfile](#Dock)</h4>
 	
-b.<h4>[Snakefile.smk](#SNAKE)</h4>
+  <h4>[Snakefile.smk](#SNAKE)</h4>
 	
-i.[Rule Blast](#RB)
+   i.[Rule Blast](#RB)
 		
-ii.[Rule findThresh](#RFT)
+   ii.[Rule findThresh](#RFT)
 		
-iii.[Rule Parse](#RP)
+   iii.[Rule Parse](#RP)
 		
-iv.[Rule generateReport](#RGR)
+   iv.[Rule generateReport](#RGR)
 		
-v.[Rule KeyDoc](#RKD)
+   v.[Rule KeyDoc](#RKD)
 		
-vi.[Rule qInput](#RQI
+  vi.[Rule qInput](#RQI
 		
-vii.[Rule ParsedOut](#RPO)
+   vii.[Rule ParsedOut](#RPO)
 		
-viii.[Rule muscle](#RM)
+   viii.[Rule muscle](#RM)
 		
-ix.[Rule muscle2](#RM2)
+   ix.[Rule muscle2](#RM2)
 		
-x.[Rule MSA2GFA](#RMG)
+   x.[Rule MSA2GFA](#RMG)
 		
-xi.[Rule RAXML](#RR)
+   xi.[Rule RAXML](#RR)
 		
-xii.[Rule clean#](#RC)
+   xii.[Rule clean#](#RC)
 		
 	<h4></h4>
 
