@@ -1,1 +1,0 @@
-wget --recursive --no-parent -A '*.dna.toplevel.fa.gz'  ftp://ftp.ensembl.org/pub/release-103/fasta/ && find /storage1/fs1/tychele/Active/projects/VGPGenomes/NovelGenomes -iname '*.dna.toplevel.fa.gz' -exec mv '{}' /storage1/fs1/tychele/Active/projects/VGPGenomes/NovelGenomes  \; && gunzip *.dna.toplevel.fa.gz
