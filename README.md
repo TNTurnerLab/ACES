@@ -219,7 +219,7 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
     
-    1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING VGP AND ENSEMBL FILES) for command line codes that will help achieve this.
+    1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for command line codes that will help achieve this.
 
 2. Use or generate empty files corresponding to files named in SUB-FILES GUIDE
     
