@@ -101,7 +101,7 @@ The snakefile consists of a few rules:
 *   Rule clean#:
     * All clean rules files will tag all generated files with the users query file name, and move the file to a user provided destination.
 
-**<span style="text-decoration:underline;"><h3>[config.json](#config)</h3></span>**
+**<span style="text-decoration:underline;"><h3>[config](#config)</h3></span>**
 
 This will hold all pathways to files. Snakefile uses these pathways to generate files, input rules and more. All rule inputs must include a file path to directory. Example: /My/Path/To/This/File.txt
 
@@ -227,7 +227,7 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 
 3. Configure all file pathways in file**_ config.json_**
     
-    3. Reference FILES GUIDE: [config.json](#config)
+    3. Reference FILES GUIDE: [config](#config)
         
 	1. Generate new directory for “trash” in _config.json_
 
