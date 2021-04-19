@@ -12,22 +12,17 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 
 * [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
-
 	* [SCRIPT FILES REQUIRED](#Script_req)
-	
 	* [SUB-FILES GIVEN](#Given)
-	
 	* [USER MUST RETREIVE or PROVIDE](#USER)
   
   
 		
 * [FILES GUIDE](#FILES_GUIDE) 
-	
-   ** [Dockerfile](#Dock)
-   	
-   ** [Snakefile.smk](#SNAKE) 
-	
-   i. <sub><sup> [Rule Blast](#RB) </sup></sub>
+	* [Dockerfile](#Dock)
+   	* [Snakefile.smk](#SNAKE) 
+ 
+	* <sub><sup> [Rule Blast](#RB) </sup></sub>
 		
    ii. <sub><sup> [Rule findThresh](#RFT) </sup></sub>
 		
