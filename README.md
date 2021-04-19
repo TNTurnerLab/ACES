@@ -10,25 +10,45 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
+
 <h2>1. [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
+	
 	<h4> [SCRIPT FILES REQUIRED](#Script_req)</h4>
+	
 	<h4>[SUB-FILES GIVEN](#Given)</h4>
+	
 	<h4>[USER MUST RETREIVE or PROVIDE](#USER)</h4
+		
 <h2>2. [FILES GUIDE](#FILES_GUIDE)
+		
 	<h4>[Dockerfile}(#Dock)</h4>
+	
 	<h4>[Snakefile.smk](#SNAKE)</h4>
+	
 		<h5>[Rule Blast](#RB)</h5>
-		<h5>[Rule findThresh}(#RFT)
+		
+		<h5>[Rule findThresh](#RFT)</h5>
+		
 		<h5>[Rule Parse](#RP)</h5>
+		
 		<h5>[Rule generateReport](#RGR)</h5>
+		
 		<h5>[Rule KeyDoc](#RKD)</h5>
+		
 		<h5>[Rule qInput](#RQI)</h5>
+		
 		<h5>[Rule ParsedOut](#RPO)</h5>
+		
 		<h5>[Rule muscle](#RM)</h5>
+		
 		<h5>[Rule muscle2](#RM2)</h5>
+		
 		<h5>[Rule MSA2GFA](#RMG)</h5>
+		
 		<h5>[Rule RAXML](#RR)</h5>
+		
 		<h5>[Rule clean#](#RC)</h5>
+		
 	<h4></h4>
 
 
