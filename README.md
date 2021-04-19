@@ -134,6 +134,8 @@ For those not familiar with docker reference this link: [https://docs.docker.com
     *   ***If executed on Ris server one must execute export LSF. ***
         *   $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
+--------------------------------------------------------------------------------------------------------------------------------
+
 **<span style="text-decoration:underline;"><a name="SNAKE"><h4>Snakefile.smk</h4></a></span>**
 
 The snakefile consists of a few rules:
@@ -162,6 +164,9 @@ The snakefile consists of a few rules:
     * This rule contains code that is not original to the current mantainer but has been slightly modified for use in the pipeline. Please see Citation for credit, and link to creators github repository. This rule will take the generated multi sequence alignment file and convert it to a Graphical Fragment Assembly file. To view the file, the user must use an external GFA viewer for futher analysis. 
 *   <a name= "RC"><h5> Rule clean#:</h5></a>
     * All clean rules files will tag all generated files with the users query file name, and move the file to a user provided destination.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="config_file"><h3>config.json </h3></a></span>**
 
@@ -207,6 +212,8 @@ The files named below will be used to download all files needed for this pipelin
 		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
 		Please insure there is enough storage for all files with at least an extra 2GB for 
 		those files created in the pipeline.
+		
+--------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="VGP"><h3>wgetfile_VGP.sh</h3></a></span>**
 
@@ -216,6 +223,8 @@ This file contains the shell file that was used to pull all â€˜*-unmasked.fa.gzâ
 
 ***After execution, there should be 198 species files in the given directory.***
 
+--------------------------------------------------------------------------------------------------------------------------------
+
 **<span style="text-decoration:underline;"><a name="ENS"><h3>wgetfile_ensembl.sh</h3></a></span>**
 
 This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '*.dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
@@ -223,6 +232,8 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 
 
 ***After execution, there should be 312 species files in the given directory.***
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="DOWNF"><h3>DOWNLOADING VGP AND ENSEMBL SPECIES FILES </h3></a>:</span>**
 	
