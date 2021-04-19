@@ -18,12 +18,15 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
   b. [SUB-FILES GIVEN](#Given)
 	
   c. [USER MUST RETREIVE or PROVIDE](#USER)
+  
+  
 		
 2.[FILES GUIDE](#FILES_GUIDE) 
 	
-  a. [Dockerfile](#Dock)
+   a. [Dockerfile](#Dock)
+   
 	
-  b. [Snakefile.smk](#SNAKE)
+   b. [Snakefile.smk](#SNAKE)
 	
    i.[Rule Blast](#RB)
 		
@@ -49,7 +52,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		
    xii.[Rule clean#](#RC)
 		
-	<h4></h4>
+
 
 
 
