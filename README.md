@@ -380,7 +380,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 --------------------------------------------------------------------------------------------------------------------------------
 
 
-**<span style="text-decoration:underline;">< a name="Outfile"><h3>Output Files Generated:</h3></a></span>**
+**<span style="text-decoration:underline;">< a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
 When ran successfully these output files should be generated or filled with information:
 
