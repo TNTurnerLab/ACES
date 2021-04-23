@@ -1,8 +1,0 @@
-{
-    "genomesdb": "/storage1/fs1/tychele/Active/projects/VGPGenomes/gg.txt",
-    "query": "/storage1/fs1/tychele/Active/projects/VGPGenomes/SHH_ZPA.fa",
-    "dbs": "/storage1/fs1/tychele/Active/projects/VGPGenomes",
-    "final": "/storage1/fs1/tychele/Active/projects/VGPGenomes/FINAL_RESULTS",
-    "tH":"/storage1/fs1/tychele/Active/projects/VGPGenomes/threshold.txt",
-    "trash":"/storage1/fs1/tychele/Active/projects/VGPGenomes/ARCHIVE_FILES_TRASH"
-}
