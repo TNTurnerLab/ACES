@@ -50,7 +50,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [wgetfile_ensembl.sh](#ENS)
 	* [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF)
 	
-* [SUB FILES GUIDE](#SUB_FILES_GUIDE)
+* [SUB FILES GUIDE](#SUB_FILES_GUIDE) (genomesdb input document)
 
 * [HOW TO RUN](#HOWRUN)
 * [Output Files Generated](#Outfile)
@@ -86,12 +86,11 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 2. Dockerfile
 3. Config.json
 
-<span style="text-decoration:underline;"><a name="Given"><h4>SUB-FILES GIVEN: </h4></a></span>
+<span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN / genomesdb_input_document: </h4></a></span>
 
 1. VGP_ONLY_FILE.TXT
 2. ENSEMBLE_AND_VGP_TOGETHER_FILE.TXT
 3. ENSEMBLE_ONLY_FILE.TXT
-4. threshold.txt
 
 <sub><sup>** DISCLAIMER: Files listed are mainainer generated files, user is allowed to input any customization of each file as long as the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files foun in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. File 4 can be edited or created to fir the piprlinr requirments.</sup></sub>
 	
@@ -173,7 +172,7 @@ The snakefile consists of a few rules:
 This will hold all pathways to files. Snakefile uses these pathways to generate files, input rules and more. All rule inputs must include a file path to directory. Example: /My/Path/To/This/File.txt
 
 *   <a name="genomesdb"><h5>"genomesdb"</h5></a>
-    *   This will be the pathway to the one file in which holds the names all genomes that the user will use in the pipeline.
+    *   This will be the pathway to the one txt document that holds the names all genomes that the user will use in the pipeline.
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
             *   Pre-generated filse with specie named found within the the github. Variations of these files may be used, or one of the pregenerated files could be used as well. 
 *   <a name="query"><h5>"query"</h5></a>
@@ -184,9 +183,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 *   <a name="final"><h5>"final"</h5></a>
     * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
 *   <a name="tH"><h5>"tH"</h5></a>
-    *   Path to the user generated threshold.txt file. Users must generate this file before running the pipeline.
-        *   threshold.txt 
-            *   Blank, pre-generated file that can be used instead of user generated file.
+    *   User generated threshold value that can be changed. Can contain user decimials. 
 *   <a name="trash"><h5>"trash"</h5></a>
     *   Pathway for a directory in which all Blast outputs can be moved to. This allows for the decluttering of working directory and lets the user choose if they would rather keep blast outputs, or remove.
         *   To generate a directory use command:
@@ -282,12 +279,6 @@ Pregenerated file created by maintainer that has a list of every species corresp
 Pregenerated file created by maintainer that has a list of every species corresponding '*.dna.toplevel.fa'files from ONLY Ensembl pub/release-103 database. Can be modified or ignored. Users may generate their own file, but must change the path file in config to adapt to change.
 
 
-**_threshold.txt_**
-
-Empty file that user may or may not use when inputting threshold value. Users may generate their own file, but must change the path file in config to adapt to change.
-
-
-
 
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -315,7 +306,7 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 	1. Generate new directory for "[trash](#trash)" in _config.json_
 	2. Generate new directory for "[final](#final)" in _config.json_
 
-4. Open file corresponding to that of "[tH](#tH)" in **_config.json_**
+4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
     4. Within this file, enter a single value ***can be in scientific notation but not required***
         
@@ -348,7 +339,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
     
 10. Run Snakemake.smk:
 
-    9. $ /opt/conda/bin/snakemake -s Snakefil2.smk -k
+    9. $ /opt/conda/bin/snakemake -s VGP_Con_Ana22.6.smk -k
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
@@ -358,6 +349,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     10. Execute LSF code:
         6. Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
+        	a. export LSF_DOCKER_VOLUMES="/home/###USER###/VGP-Conservation-Analysis/Pipeline_Files/VGP_SnakeFile:/home/elvisa/VGP-Conservation-Analysis/Pipeline_Files:/Pipeline_Files" 	
         7. Run Docker interactively to see if successful:
             1. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
@@ -368,10 +360,10 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
-        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
+        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana22.6.smk -k -w 120 --rerun-incomplete --keep-going 
     13. Example:
     
-        9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s Snakefile.smk -k -w 120 --rerun-incomplete --keep-going 
+        9. bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana22.6.smk -k -w 120 --rerun-incomplete --keep-going 
 
 
 
@@ -382,7 +374,8 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
-When ran successfully these output files should be generated or filled with information:
+When ran successfully these output files should be generated in a unique folder with a naming sceme related to user inputtted files and input threshhold:
+This folder will be created in the same folder as users genomesdb input document.
 
 View [FILES GUIDE](#FILES_GUIDE): for more information.
 
