@@ -82,9 +82,9 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 
 
 
-1. Snakefile.smk
-2. Dockerfile
-3. Config.json
+1. [Snakefile.smk](#SNAKE)
+2. [Dockerfile](#Dock)
+3. [config.json](#config_file)
 
 <span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN / genomesdb_input_document: </h4></a></span>
 
@@ -92,7 +92,7 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 2. ENSEMBLE_AND_VGP_TOGETHER_FILE.TXT
 3. ENSEMBLE_ONLY_FILE.TXT
 
-<sub><sup>** DISCLAIMER: Files listed are mainainer generated files, user is allowed to input any customization of each file as long as the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files foun in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. File 4 can be edited or created to fir the piprlinr requirments.</sup></sub>
+<sub><sup>** DISCLAIMER: Files listed are mainainer generated files, user is allowed to input any customization of each file as long as the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files foun in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, makesure to change file pathway for genomesdbs in file [config.json](#config_file).</sup></sub>
 	
 <span style="text-decoration:underline;"><a name="USER"><h4>USER MUST RETREIVE or PROVIDE:</h4></a></span>
 
@@ -377,7 +377,11 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 When ran successfully these output files should be generated in a unique folder with a naming sceme related to user inputtted files and input threshhold:
 This folder will be created in the same folder as users genomesdb input document.
 
+
 View [FILES GUIDE](#FILES_GUIDE): for more information.
+
+Filenames may vary:
+These filenames will also have the name of the users query file and threshold value in the position where the star is denoted.
 
 1. <h4> '*_Multi_Seq_Align.fa' </h4> 
     
