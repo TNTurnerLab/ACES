@@ -1,5 +1,5 @@
 {
-    "genomesdb": "/Pipeline_Files/Genomes/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
+    "genomesdb": "/Pipeline_Files/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
     "query": "/Pipeline_Files/USERS_query_Files/#USERINPUTQUERYFILE",
     "dbs": "/Pipeline_Files/Genomes",
     "tH": "0.0001"
