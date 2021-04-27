@@ -105,6 +105,7 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 
 1. {subject}: All VGP ‘*-unmasked.fa’ species files or ensembl ‘*-.dna.toplevel.fa’ species files.
 	- These files can be downloaded through provided script.
+	
 2. {query}: Any reference genome file that is a FASTA forma. PLEASE PUT USER QUERY FILE IN FILE USERS_query_Files
 
 
@@ -128,7 +129,7 @@ For those not familiar with docker reference this link: [https://docs.docker.com
 
 
 *   Docker files must be built locally before use, therefore you must build a Docker image by the command :
-    - $  Docker build &lt;THE DIRECTORY / WHERE THE DOCKERFILE IS LOCATED>
+*   			- $  Docker build &lt;THE DIRECTORY / WHERE THE DOCKERFILE IS LOCATED>
 *   Once the Docker has built an image for the Dockerfile, it is beneficial to tag the image for later use:
     *   To view &lt;IMAGE ID> for tagging run command :
     *   		- $ docker images
