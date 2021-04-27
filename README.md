@@ -50,7 +50,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [wgetfile_ensembl.sh](#ENS)
 	* [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF)
 	
-* [SUB FILES GUIDE](#SUB_FILES_GUIDE) (genomesdb input document)(USERS query Files)
+* [SUB FILES GUIDE](#SUB_FILES_GUIDE) (genomesdb input document) (USERS query Files)
 
 * [HOW TO RUN](#HOWRUN)
 * [Output Files Generated](#Outfile)
@@ -179,7 +179,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
             *   Pre-generated filse with specie named found within the the github. Variations of these files may be used, or one of the pregenerated files could be used as well. 
 *   <a name="query"><h5>"query"</h5></a>
-    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast
+    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommeneded that user puts file inside pre generated file named USERS query Files. If user choses not to, full file path along with file name needs to be chaged in config.json file.
         *   Must be a FASTA file
 *   <a name="dbs"><h5>"dbs"</h5></a>
     *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
