@@ -122,9 +122,9 @@ Short guide that explains files in the repository. Users can find examples, comm
 
 **<span style="text-decoration:underline;"><a name="Dock"><h4>Dockerfile</h4></a></span>**
 
-For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
-
 *** Disclaimer Make sure to build the Dockerfile locally on machine before attempting to on LSF server **
+
+For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
 
 
 
