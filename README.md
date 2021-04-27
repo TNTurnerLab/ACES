@@ -61,6 +61,15 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 
 
 
+OUTLINE: 
+
+![OUTLINE IMAGE](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720)
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
