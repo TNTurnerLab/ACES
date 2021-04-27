@@ -49,7 +49,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [wgetfile_ensembl.sh](#ENS)
 	* [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF)
 	
-* [SUB FILES GUIDE](#SUB_FILES_GUIDE) (genomesdb input document)
+* [SUB FILES GUIDE](#SUB_FILES_GUIDE) (genomesdb input document)(USERS query Files)
 
 * [HOW TO RUN](#HOWRUN)
 * [Output Files Generated](#Outfile)
@@ -97,7 +97,7 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 
 1. {subject}: All VGP ‘*-unmasked.fa’ species files or ensembl ‘*-.dna.toplevel.fa’ species files.
 	- These files can be downloaded through provided script.
-2. {query}: Any reference genome file that is a FASTA format.
+2. {query}: Any reference genome file that is a FASTA forma. PLEASE PUT USER QUERY FILE IN FILE USERS_query_Files
 
 
 
@@ -312,9 +312,10 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 
 6. Users must upload or have handy their {query} file for Blast. 
     
-    6. Open  **_config.json _** to configure pathway to user file**_:_**
+    6. Open  **_config.json _** to set which file is the useres queryfile:
         
 	4. "[query](#query)"
+	5. your query file should be put in file USERS_query_Files
 
 7. Open [Snakefile.smk](#SNAKE) 
 
