@@ -179,8 +179,8 @@ rule parse: #Parses out wanted information to a temp file for later use
 
                             #If file is from VGP naming
                             #If file is from VGP naming
-                            if '-GCA' in line:
-                                species = line
+                            if '-GCA' in f.name::
+                                species = f.name:
                                 spName = species.split('-GCA')[0]
                                 spNID = spName [:1]
                                 sp = species.split('_',1)[1]
@@ -192,7 +192,7 @@ rule parse: #Parses out wanted information to a temp file for later use
 
                         #If file is from ensemble naming
                             else:
-                                species = line
+                                species = f.name:
                                 species = species.split('.dna.')[0]
                                 spName = species.split('_v1')[0]
                                 spName = spName.split('na-1')[0]
