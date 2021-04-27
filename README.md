@@ -50,7 +50,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 	* [wgetfile_ensembl.sh](#ENS)
 	* [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF)
 	
-* [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) (genomesdb input document) (USERS query Files)
+* [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE)
 
 * [HOW TO RUN](#HOWRUN)
 * [Output Files Generated](#Outfile)
@@ -272,11 +272,6 @@ Pregenerated file created by maintainer that has a list of every species corresp
 
 Pregenerated file created by maintainer that has a list of every species corresponding '*.dna.toplevel.fa'files from ONLY Ensembl pub/release-103 database. Can be modified or ignored. Users may generate their own file, but must change the path file in config to adapt to change.
 
-USERS query Files:
-	This is am empty folder generated for user to include their input query files that can be used at a later date. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file.
-
-
-
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -287,6 +282,10 @@ USERS query Files:
 Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
+
+
+BEFORE EXECUTION: USERS query Files:
+	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file.
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
     
