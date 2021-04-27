@@ -40,7 +40,7 @@ genomesdb=GENOMESDB
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
 rule all:
-    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end , expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB) 
+    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end  
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
 rule BLAST: #Creates a blastn output
@@ -549,6 +549,6 @@ rule Move:
     shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} """
 #####################################################################
 rule Delete:
-    input:  "%s_RAxML_bestTree.RAXML_output.phy" %end
+    input:  expand(["{genomesdb}_parsed_Final.fa"], genomesdb=GENOMESDB)
     output: temp("DONE.txt")
-    shell: """ rm *_blast_results.txt && rm *_parsed_Final.fa && rm *_results_test_2.txt"""
+    shell: """ rm *_blast_results.txt && rm *_parsed_Final.fa && rm *_results_test_2.txt && rm *_parsed.fa && touch {output[0]}"""
