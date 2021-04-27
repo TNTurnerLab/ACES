@@ -86,17 +86,20 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 <span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN </h4></a></span>
 
     These files can be found inside the folder genomes input document:
-	view [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
+	View [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
+	
 	1. VGP_ONLY_FILE.TXT
 	2. ENSEMBLE_AND_VGP_TOGETHER_FILE.TXT
 	3. ENSEMBLE_ONLY_FILE.TXT
 
     These files can be found in the Genomes folder and should be executed in Genomes folder:
-	view [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
+	View [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
+	
 	1. wgetfile_ensembl.sh
 	2. wgetfile_VGP.sh
 
     USERS_query_Files is a blank folder that is recomeneded for user to use to store postential input files:
+    	
 	1. USERES_QUERY_INPUT.fa
 
 <sub><sup>** DISCLAIMER: Files listed are mainainer generated files, user is allowed to input any customization of each file as long as the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files foun in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, makesure to change file pathway for genomesdbs in file [config.json](#config_file).</sup></sub>
@@ -295,7 +298,7 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 
 
 BEFORE EXECUTION: USERS query Files:
-	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file.
+	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
     
@@ -366,7 +369,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
-        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going 
+        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
     13. Example:
     
         9.  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
