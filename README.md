@@ -354,11 +354,11 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 11. Tell Docker where data and code are:
 	
-	a. Execute LSF code:
+		a. Execute LSF code:
 	
-	- Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
+		- Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
      
-     	- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline" 	
+     		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline" 	
 		
         b. Run Docker interactively to see if successful:
 	
