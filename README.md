@@ -342,10 +342,10 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command: 
 
-    8. $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
+		-$ $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
     
 10. Run Snakemake.smk:
- 		-$ docker run -v "/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline"  ##DOCKER USERNAME##/##DOCKER REPO##:#TAGGED NAME# /opt/conda/bin/snakemake -s /home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/VGP_Con_Ana24.smk -k
+		- $ docker run -v "/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline"  ##DOCKER USERNAME##/##DOCKER REPO##:#TAGGED NAME# /opt/conda/bin/snakemake -s /home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/VGP_Con_Ana24.smk -k
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
@@ -353,7 +353,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 11. Tell Docker where data and code are:
  	a. Execute LSF code:
-		- $ Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
+	- $ Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
      
         	- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline" 	
 		
