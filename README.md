@@ -133,12 +133,12 @@ For those not familiar with docker reference this link: [https://docs.docker.com
     *   To view &lt;IMAGE ID> for tagging run command :
     *   		- $ docker images
     *   To tag Dockerfile run command:
-        		- $ docker tag &lt;IMAGE ID> &lt;your_docker_username>**/**&lt;the _name_ of_repository>:&lt;what_you_would_like_to_call_the_image>
+    *   		- $ docker tag &lt;IMAGE ID> &lt;your_docker_username>**/**&lt;the _name_ of_repository>:&lt;what_you_would_like_to_call_the_image>
             *   Ex: docker tag myuser01/home**:**myimage
     *   Push docker image to your docker hub:
-        		- $ docker push &lt;docker_username>/&lt;repo_name>:&lt;image_name>
+    *   		- $ docker push &lt;docker_username>/&lt;repo_name>:&lt;image_name>
     *   ***If executed on Ris server one must execute export LSF. ***
-       			-  $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
+    *   		-  $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
 --------------------------------------------------------------------------------------------------------------------------------
 
