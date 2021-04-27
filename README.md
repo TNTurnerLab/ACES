@@ -342,9 +342,10 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command: 
 
-		-$ $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
+		-$  docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
     
 10. Run Snakemake.smk:
+
 		- $ docker run -v "/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline"  ##DOCKER USERNAME##/##DOCKER REPO##:#TAGGED NAME# /opt/conda/bin/snakemake -s /home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/VGP_Con_Ana24.smk -k
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
