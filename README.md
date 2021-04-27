@@ -344,7 +344,9 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     10. Execute LSF code:
         6. Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
-        	a. export LSF_DOCKER_VOLUMES="/home/###USER###/VGP-Conservation-Analysis/Pipeline_Files/VGP_SnakeFile:/home/elvisa/VGP-Conservation-Analysis/Pipeline_Files:/Pipeline_Files" 	
+     
+        	a. export LSF_DOCKER_VOLUMES="/home/###USER###/VGP-Conservation-Analysis/Pipeline_Files/VGP_SnakeFile_Pipeline:/home/##USER##/VGP-Conservation-Analysis/Pipeline_Files:/Pipeline_Files" 	
+		
         7. Run Docker interactively to see if successful:
             1. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
