@@ -20,5 +20,4 @@ RUN apt-get update \
 
 LABEL maintainer "elvisa@wustl.edu"
 
-USER dockeruser
 CMD ["/bin/bash"]
