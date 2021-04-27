@@ -330,7 +330,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command: 
 
-    8. $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  
+    8. $ docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
     
 10. Run Snakemake.smk:
 
@@ -345,7 +345,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
     10. Execute LSF code:
         6. Example: export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home
      
-        	a. export LSF_DOCKER_VOLUMES="/home/###USER###/VGP-Conservation-Analysis/Pipeline_Files/VGP_SnakeFile_Pipeline:/home/##USER##/VGP-Conservation-Analysis/Pipeline_Files:/Pipeline_Files" 	
+        	a. export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline" 	
 		
         7. Run Docker interactively to see if successful:
             1. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
@@ -357,7 +357,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     12. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
-        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo Done2.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going 
+        8. bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going 
     13. Example:
     
         9.  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
