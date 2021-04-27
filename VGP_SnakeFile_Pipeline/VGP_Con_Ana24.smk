@@ -5,7 +5,7 @@ import os
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-     configfile: "config.json"
+    configfile: "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/config.json"
 
 #Varibles in config file
 query = config['query']
@@ -38,11 +38,13 @@ with open(GENOMESDB_FILE) as f:
 
 genomesdb=GENOMESDB
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+#~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
 rule all:
     input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end  
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
+
 rule BLAST: #Creates a blastn output
     input: "%s/{genomesdb}" %dbsFind, {query} 
     params: prefix="{genomesdb}"
@@ -51,6 +53,7 @@ rule BLAST: #Creates a blastn output
     shell: """ /opt/conda/bin/blastn -query {input[1]} -subject {input[0]} > {output} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
+
 rule findThresh: #Finds files that meets threshold requiement 
     input:"{genomesdb}_parsed.fa"
     output: temp("{genomesdb}_results_test_2.txt")
@@ -123,6 +126,7 @@ rule findThresh: #Finds files that meets threshold requiement
         main()        
        
 #~~~~~~~~~~~~~~~~~~~~~~~~~~PARSE OUT FILE ~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
 rule parse: #Parses out wanted information to a temp file for later use
     input: "{genomesdb}_blast_results.txt"
     output: temp("{genomesdb}_parsed.fa")
@@ -198,8 +202,6 @@ rule parse: #Parses out wanted information to a temp file for later use
                                 spName = spName.split('na-1')[0]
                                 spName = spName.split('_pig')[0]
                                 
-                                #spName = spName.split('-1')[0]
-                                
                                 spName = spName 
                                 spNID= spName [:1]
                                 
@@ -225,7 +227,8 @@ rule parse: #Parses out wanted information to a temp file for later use
                                     
         main()
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~GENERATEREPORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~                       
+#~~~~~~~~~~~~~~~~~~~~~~~~~~GENERATEREPORT~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
 rule generateReport: #Generates a Report of all files seen, which files did or did not meet threshold requirement, and their counts
     input: expand(["{genomesdb}_blast_results.txt"], genomesdb=GENOMESDB)
     output: "%s_Files_Generated_Report.txt" %end
@@ -235,12 +238,12 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             a = 0 
             thresh = config['tH']
             reportOut = output[0]
-            ThreshHitCount = 0
-            threshNOHitCnt = 0
-            totalFileCount = 0
+            ThreshHitCount = -1
+            threshNOHitCnt = -1
+            totalFileCount = -1
             Threshkey = {}
-            NoHitThresh = []
-            HitThresh = []
+            NoHitThresh = ['+']
+            HitThresh = ['+']
             
             #Opens Tresh.txt file to view user input        
             ln = thresh
@@ -275,16 +278,18 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 
                 #Loop through files in input 
                 while a < len(input): 
+
                     file = input[a]
-                    a+=1
-                    
+                    a+=1 
+      
                     #Open our file
                     with open(file, 'r') as fp:
-                        
+   
                         for line in fp:
 
                             #Converting evalues of file to check if its a hit file or not                             
                             if 'Expect' in line:
+                            
                                 expect = line.split(',')[1]
                                 valueOnly = expect.split('=')[1]
                                 valOne = float(valueOnly)
@@ -362,7 +367,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 NoHitThresh.append(fname)
                                 threshNOHitCnt +=1
                                 totalFileCount +=1
-                                            
+                                     
+
                 #Renaming varibles for printing
                 tnhc= str(threshNOHitCnt) 
                 thc = str(ThreshHitCount)
@@ -375,15 +381,24 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 Nohit = Nohit[:50]
                 Hit = str(HitThresh[0]) + space
                 Hit = Hit[:50]
+                
                 ln =  space + '\t' + space + '\t' +  tnhc + '/' + thc+ '\t' + '\t' + str(Threshkey) + '\t' + tc +'\n'
-                rp.write(ln)
+                
+                #If no hits are found changes counter from -1 to 0 or returns respective values
+                if '-1' in ln:
+                    ln = ln.replace('-1','0')
+
+                    rp.write(ln)
+                else:
+                    rp.write(ln)
+
                 printthis = Nohit + '\t' + Hit + '\n'
                 rp.write(printthis)
-
 
                 #New line For Hit Thresh    
                 if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 1 :
                     x = 1
+                    
                     while x < len(HitThresh):
                         
                         #Formatting lines 
@@ -450,6 +465,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
         main()
         
 #~~~~~~~~~~~~~~~~~~~~~~~~~~Name Key Document~~~~~~~~~~~~~~~~~~~~~~~~~
+
 rule KeyDoc: #Opens all files and creates a name key for user
     input: expand(["{genomesdb}_parsed.fa"], genomesdb=GENOMESDB)
     output: "%s_NameKey.txt" %end
@@ -510,6 +526,7 @@ rule ParsedOut: # Moves all files generated by rule 'parse' to user generated fi
     shell: """ touch {input[1]} && cat {input[0]} >> {output[0]} && cat {output[0]} >> {input[1]} """ 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~MULTI SEQ ALIGN~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 rule muscle: # Runs a simple multi-sequence alignment on all parsed out files
     input:  "%s_Parsed_Final.fa" %end , expand(["{genomesdb}_parsed_Final.fa"], genomesdb=GENOMESDB)
     output: temp("Multi_Seq_Align.aln")
@@ -522,14 +539,16 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
     input: "%s_Multi_Seq_Align.aln" %end 
     output: "%s_Phy_Align.phy" %end
     shell: """ /opt/conda/bin/muscle -in {input[0]} -phyiout {output[0]} """
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~MSA2GFA~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" cd msa_to_gfa/msa_to_gfa/ && python main.py -f {input[0]} -o {output[0]} --log test.log"""
+    shell:""" cd /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/ && python main.py -f {input[0]} -o {output[0]} --log test.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic tree
     input: "%s_Phy_Align.phy" %end
     output: temp("RAxML_bestTree.RAXML_output.phy"), temp("RAxML_info.RAXML_output.phy"), temp("RAxML_parsimonyTree.RAXML_output.phy"), temp("RAxML_log.RAXML_output.phy")
@@ -543,10 +562,12 @@ rule cleanRAxML:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
 #-------------------------------------------------------------------#
 ############################DIRECTORY CLEAN UP#######################
+
 rule Move:
     input: "{genomesdb}_blast_results.txt", "%s_Files_Generated_Report.txt" %end 
     output: "%s_{genomesdb}_blast_results.txt" %mid
     shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} """
+
 #####################################################################
 rule Delete:
     input:  expand(["{genomesdb}_parsed_Final.fa"], genomesdb=GENOMESDB)
