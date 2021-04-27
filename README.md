@@ -57,9 +57,6 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 * [More Information](#more)
 * [Citations](#cite)
 		
-
-<sub><sup>** DISCLAIMER: I am not the orginal creater of the msa_to_gfa program found in this repository. I have a slightly modified version of an existing workflow from the github: https://github.com/fawaz-dabbaghieh/msa_to_gfa. </sup></sub>
-
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
@@ -468,3 +465,4 @@ https://github.com/fawaz-dabbaghieh/msa_to_gfa.
  A. Stamatakis: "RAxML Version 8: A tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies". In Bioinformatics, 2014, open access.
 
 
+** DISCLAIMER: I am not the orginal creater of the msa_to_gfa program found in this repository. I have a slightly modified version of an existing workflow from the github: https://github.com/fawaz-dabbaghieh/msa_to_gfa. 
