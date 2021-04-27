@@ -40,7 +40,7 @@ genomesdb=GENOMESDB
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
 rule all:
-    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, expand("{genomesdb}_blast_results.txt",genomesdb=GENOMESDB),  expand("{genomesdb}_results_test_2.txt",genomesdb=GENOMESDB),expand("{genomesdb}_parsed_Final.fa",genomesdb=GENOMESDB ),   "%s_Parsed_Final.fa" %end , "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy","%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end , expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB) #,expand("{genomesdb}_DONE.txt", genomesdb=GENOMESDB)
+    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end , expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB) 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
 rule BLAST: #Creates a blastn output
@@ -178,26 +178,37 @@ rule parse: #Parses out wanted information to a temp file for later use
                             print (comment)
 
                             #If file is from VGP naming
-                            if '-GCA' in f.name:
-                                species = f.name
+                            #If file is from VGP naming
+                            if '-GCA' in line:
+                                species = line
                                 spName = species.split('-GCA')[0]
                                 spNID = spName [:1]
+                                sp = species.split('_',1)[1]
+                                sp = sp[:1]
                                 spID = species.split('-GCA')[1]
                                 spID = spID.split('-')[0]
                                 spID = spID[5:]
                                 spID = spID 
 
-                            #If file is from ensemble naming
+                        #If file is from ensemble naming
                             else:
-                                species = f.name
-                                spName = species.split('.dna.')[0]
-                                spName = spName.split('_v1')[0]
+                                species = line
+                                species = species.split('.dna.')[0]
+                                spName = species.split('_v1')[0]
+                                spName = spName.split('na-1')[0]
+                                spName = spName.split('_pig')[0]
+                                
+                                #spName = spName.split('-1')[0]
+                                
                                 spName = spName 
                                 spNID= spName [:1]
+                                
                                 spI=spName.split('.',1)[1]
+                                sp= spI[:1]
                                 spID=str(spI)
-                                spID2=spID[-7:]
-                                spID= str( spID2)
+                                spID2=spID[-6:]
+                                spID= str(spID2)
+                                spID = sp + spID
 
                             #Prints lines
                             f.write( eval + '~' + '>' +spNID + spID +  '.' + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
@@ -521,12 +532,12 @@ rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic tree
     input: "%s_Phy_Align.phy" %end
-    output: "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
+    output: temp("RAxML_bestTree.RAXML_output.phy"), temp("RAxML_info.RAXML_output.phy"), temp("RAxML_parsimonyTree.RAXML_output.phy"), temp("RAxML_log.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
     shell: """ /opt/conda/bin/raxmlHPC -s {input[0]} -p 42 -m PROTGAMMAWAG -n {params.prefix} """
 rule cleanRAxML:
     input:  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
-    output:  temp("%s_RAxML_bestTree.RAXML_output.phy" %end), temp("%s_RAxML_info.RAXML_output.phy" %end), temp("%s_RAxML_parsimonyTree.RAXML_output.phy" %end), temp("%s_RAxML_log.RAXML_output.phy" %end)
+    output:  "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end
     shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} && touch {output[1]} && cat {input[1]} >> {output[1]} && touch {output[2]} && cat {input[2]} >> {output[2]} && touch {output[3]} && cat {input[3]} >> {output[3]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
