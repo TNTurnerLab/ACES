@@ -40,7 +40,6 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [genomesdb](#genomesdb)
 		*  [query](#query)
 		*  [dbs](#dbs)
-		*  [final](#final)
 		*  [tH](#tH)
 		
 		
@@ -186,8 +185,6 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
         *   Must be a FASTA file
 *   <a name="dbs"><h5>"dbs"</h5></a>
     *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
-*   <a name="final"><h5>"final"</h5></a>
-    * User must provide a pathway to where they would prefer to have the pipelines output files to be exported to. File path should end with a '/'.
 *   <a name="tH"><h5>"tH"</h5></a>
     *   User generated threshold value that can be changed. Can contain user decimials. 
 
