@@ -107,6 +107,7 @@ Marmota_monax-GCA_901343595.1-unmasked.fa
 Martes_zibellina-GCA_012583365.1-unmasked.fa
 Mastacembelus_armatus-GCA_900324485.1-unmasked.fa
 Mastacembelus_armatus-GCA_900324485.2-unmasked.fa
+Megaderma_lyra-GCA_004026885.1-unmasked.fa
 Megalops_cyprinoides-GCA_013368585.1-unmasked.fa
 Meleagris_gallopavo-GCA_000146605.4-unmasked.fa
 Melopsittacus_undulatus-GCA_012275295.1-unmasked.fa
