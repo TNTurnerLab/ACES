@@ -360,11 +360,11 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
      		
 		Example: 
 		
-		- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
+			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
 		
         b. Run Docker interactively to see if successful:
 	
-           - $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
+           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
 
     	- $ bgadd -L 2000  /username/&lt;ANY NAME YOU WOULD LIKE TO CALL JOB>
