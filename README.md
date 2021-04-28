@@ -259,19 +259,19 @@ Explanation of wgetfile_*.sh. Could run manually or execute files with shell com
 
 To run locally to get Ensembl files:
 
-	- $ nohup bash wgetfile_ensembl.sh &
+	- $ ./wgetfile_ensembl.sh 
 	
 Tor run on an LSF example:
 
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_ensembl.sh
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_ensembl.sh
 	
 To run locally to get VGP files:
 
-	- $ nohup bash wgetfile_VGP.sh &
+	- $ ./wgetfile_VGP.sh 
 	
 Tor run on an LSF example:
 
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' wget wgetfile_VGP.sh
+	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
 	
 
 
