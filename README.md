@@ -112,9 +112,15 @@ Files listed are mainainer generated files, user is allowed to input any customi
 
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -201,9 +207,15 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 **<span style="text-decoration:underline;"><a name="RETREIVING-VGP-AND-ENSEMBL-FILES"><h3>RETREIVING VGP AND ENSEMBL FILES</h3></a></span>**
@@ -264,9 +276,15 @@ Tor run on an LSF example:
 
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 **_<span style="text-decoration:underline;"><a name="SUB_FILES_GUIDE"><h3>SUBFILES GUIDE: genomes input document </h3></a></span>_**
 
@@ -286,9 +304,16 @@ Pregenerated file created by maintainer that has a list of every species corresp
 Pregenerated file created by maintainer that has a list of every species corresponding '*.dna.toplevel.fa'files from ONLY Ensembl pub/release-103 database. Can be modified or ignored. Users may generate their own file, but must change the path file in config to adapt to change.
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
 
@@ -380,9 +405,15 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
@@ -452,9 +483,15 @@ These filenames will also have the name of the users query file and threshold va
 *** Files 1, 6, 7 ,8 listed above will not generate if there is no file hits ***
 
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 **<span style="text-decoration:underline;"> <a name="more"><h4>More Information</h4></a> </span>**
 
@@ -464,9 +501,15 @@ https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
 
 https://github.com/fawaz-dabbaghieh/msa_to_gfa.
 
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 **<span style="text-decoration:underline;"> <a name="cite"><h4> Citations </h4></a></span>**
  A. Stamatakis: "RAxML Version 8: A tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies". In Bioinformatics, 2014, open access.
