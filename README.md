@@ -153,6 +153,8 @@ For those not familiar with docker reference this link: [https://docs.docker.com
 
 **<span style="text-decoration:underline;"><a name="SNAKE"><h4>Snakefile.smk</h4></a></span>**
 
+The user has two options for which snake they can run, Desktop_VS_VGP_Con_Ana25.smk is for running on a local device while VGP_Con_Ana24.smk is used for running on a LSF server. The files execute exactly the same and can be found in the VGP SnakeFiles folder. 
+
 The snakefile consists of a few rules:
 
 *   <a name= "RB"><h5>Rule BLAST:</h5></a>
@@ -356,7 +358,7 @@ BEFORE EXECUTION: USERS query Files:
 	6. "[query](#query)"
 	6. Your query file should be put in file USERS_query_Files, If not please modify complete pathway to input file in config.json file.
 
-7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline.
+7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an lsf server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
 
         
 8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
@@ -371,7 +373,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
     
 10. Run Snakemake.smk:
 
-		- $ docker run -v "/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline"  ##DOCKER USERNAME##/##DOCKER REPO##:#TAGGED NAME# /opt/conda/bin/snakemake -s /home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/VGP_Con_Ana24.smk -k
+		- $ docker run -v "/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline"  ##DOCKER USERNAME##/##DOCKER REPO##:#TAGGED NAME# /opt/conda/bin/snakemake -s /home/##USER##/## PATHWAY TO GITHUB ON LOCAL DEVICE ##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
@@ -381,7 +383,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 	
 		a. Execute LSF code:
      
-     		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
+     		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
      		
 		Example: 
 		
