@@ -5,7 +5,7 @@ import os
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-    configfile: "./config.json"
+    configfile: "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/config.json"
 
 #Varibles in config file
 query = config['query']
@@ -27,7 +27,6 @@ dbsFind = dbp
 end =  str(config["genomesdb"]) + '_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
 mid = str(config["genomesdb"]) + '_BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
-
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
@@ -398,7 +397,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 #New line For Hit Thresh    
                 if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 1 :
                     x = 1
-                    
+
                     while x < len(HitThresh):
                         
                         #Formatting lines 
@@ -545,7 +544,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" cd /msa_to_gfa/msa_to_gfa/ && python main.py -f {input[0]} -o {output[0]} --log test.log"""
+    shell:""" cd /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/ && python main.py -f {input[0]} -o {output[0]} --log test.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
