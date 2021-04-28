@@ -135,18 +135,18 @@ Short guide that explains files in the repository. Users can find examples, comm
 For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
 
 
-
+* Find folder VGP-Conservation-Analysis. This is the folder user will use to build docker image.
 *   Docker files must be built locally before use, therefore you must build a Docker image by the command :
-*   			- $  Docker build &lt;THE DIRECTORY / WHERE THE DOCKERFILE IS LOCATED>
+*   			- $  Docker build  ###PATH TO DIRECTORY/VGP-Conservation-Analysis
 *   Once the Docker has built an image for the Dockerfile, it is beneficial to tag the image for later use:
     *   To view &lt;IMAGE ID> for tagging run command :
     *   		- $ docker images
     *   To tag Dockerfile run command:
-    *   		- $ docker tag &lt;IMAGE ID> &lt;your_docker_username>**/**&lt;the _name_ of_repository>:&lt;what_you_would_like_to_call_the_image>
+    *   		- $ docker tag &lt;IMAGE ID> &lt;your_docker_username>**/**&lt;the _name_ of_useres_repository>:&lt;what_you_would_like_to_call_the_image>
     *   		Ex: docker tag myuser01/home**:**myimage
     *   Push docker image to your docker hub:
     *   		- $ docker push &lt;docker_username>/&lt;repo_name>:&lt;image_name>
-    *   ***If executed on Ris server one must execute export LSF. ***
+    *   ***If executed on a LSF server one must execute export LSF. ***
     *   		-  $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -325,15 +325,15 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline 
 BEFORE EXECUTION: USERS query Files:
 	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
 
-1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in a single directory, and unzipped.
+1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
     1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for command line codes that will help achieve this.
 
-2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE)
+2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
     
     2. *** Files can be modified or changed based on user requirements***
 
-3. Configure all file pathways in file [config](#config_file).json
+3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
     3. Reference FILES GUIDE: [config](#config_file).json
 
@@ -341,22 +341,22 @@ BEFORE EXECUTION: USERS query Files:
     
     4. Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
         
-	2. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+	4. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
 
-5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**
+5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
     
-    5. Default file is set to run all 198 specific files given from the VGP database.
+    5. Default file is set to run all VGP and Ensembl genomes.
         
-	3. Modify or close this file when content.
+	5. Modify and close this file when content.
 
 6. Users must upload or have handy their {query} file for Blast. 
     
-    6. Open  **_config.json _** to set which file is the useres queryfile:
+    6. Open  **_config.json _** to set which file is the useres query file:
         
-	4. "[query](#query)"
-	5. your query file should be put in file USERS_query_Files
+	6. "[query](#query)"
+	6. Your query file should be put in file USERS_query_Files, If not please modify complete pathway to input file in config.json file.
 
-7. Open [Snakefile.smk](#SNAKE) 
+7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline.
 
         
 8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
