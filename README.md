@@ -139,13 +139,13 @@ For those not familiar with docker reference this link: [https://docs.docker.com
 *   Docker files must be built locally before use, therefore you must build a Docker image by the command :
 *   			- $  Docker build  ###PATH TO DIRECTORY/VGP-Conservation-Analysis
 *   Once the Docker has built an image for the Dockerfile, it is beneficial to tag the image for later use:
-    *   To view &lt;IMAGE ID> for tagging run command :
+    *   To view IMAGE ID for tagging run command :
     *   		- $ docker images
     *   To tag Dockerfile run command:
-    *   		- $ docker tag &lt;IMAGE ID> &lt;your_docker_username>**/**&lt;the _name_ of_useres_repository>:&lt;what_you_would_like_to_call_the_image>
-    *   		Ex: docker tag myuser01/home**:**myimage
+    *   		- $ docker tag ###IMAGE ID NUMBER##  ##(your_docker_username##/##the _name_ of_useres_repository>:&lt;what_you_would_like_to_call_the_image)##
+    *   		Ex: docker tag myuser01/home:##myimagename##
     *   Push docker image to your docker hub:
-    *   		- $ docker push &lt;docker_username>/&lt;repo_name>:&lt;image_name>
+    *   		- $ docker push ##(docker_username>/repo_name:image_name)##
     *   ***If executed on a LSF server one must execute export LSF. ***
     *   		-  $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
@@ -367,7 +367,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command: 
 
-		-$  docker run &lt;DOCKERFILE NAME GENERATED ABOVE>  (CHECK IF CAN BUID)
+		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUID)
     
 10. Run Snakemake.smk:
 
@@ -392,7 +392,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
            	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
 12. Create a group job:
 
-    	- $ bgadd -L 2000  /username/&lt;ANY NAME YOU WOULD LIKE TO CALL JOB>
+    	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
     
 13. Run following script:
 
