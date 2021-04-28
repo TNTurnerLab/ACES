@@ -137,7 +137,7 @@ For those not familiar with docker reference this link: [https://docs.docker.com
 
 * Find folder VGP-Conservation-Analysis. This is the folder user will use to build docker image.
 *   Docker files must be built locally before use, therefore you must build a Docker image by the command :
-*   			- $  Docker build  ###PATH TO DIRECTORY/VGP-Conservation-Analysis
+*   			- $  docker build  ###PATH TO DIRECTORY/VGP-Conservation-Analysis
 *   Once the Docker has built an image for the Dockerfile, it is beneficial to tag the image for later use:
     *   To view IMAGE ID for tagging run command :
     *   		- $ docker images
