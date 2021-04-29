@@ -457,11 +457,17 @@ These filenames will also have the name of the users query file and threshold va
 
 	5. This file will contain all the name of all genome files and their respective unqiue names generated from the VGPA pipeline. Generated in [Rule keyDoc](#RKD) .
 		6. When converting a multisequence alignment to a PHYLIP file format, the formatting only allows for 10 charaters to be used. This PHYLIP file is neccesary for the RAxML execution, however RAxML requires all sequences to be named in a unique manner. To meet this requirment the pipline gerates a unique naming schema for all the genomes file. When looking at the RAxML best tree in a viewer, the unique names will be present. '*_NameKey.txt' will provide user with a document containing all unique names and their corrisponding genome file. for a quick visual, filenames that came from the Ensembl genome will have a '#' before its name. The naming scheme for how the ID's were generated follows these patterns. 
+			
 			7.VGP Genomes:
+			
 			Example: A87025.1.2
+			
 				8. A: First letter of the species name: Accipiter_gentilis
+				
 				9. 87025: Last five numbers of its unique Genome Collections Accession: GCA_012487025
+				
 				10. .1: Version of file number: .1
+				
 				11. .2: Sequence order number: Second sequence in    
 
 6. <h4> '*_Phy_Align.py' </h4> 
