@@ -271,7 +271,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 tv = 'Threshold Value' 
                 nhf= '# of No Hit Files'
                 hf = 'Hit File'
-                ts = 'Total Number Of Files Seen'+ '\t'
+                ts = 'Total Number Of Sequences Seen'+ '\t'
                 
                 header = (NohitFile + '\t' +  hitFile  + nhf + '/' + hf + '\t' + tv + '\t' +  ts + '\n')
                 rp.write(header)
@@ -553,7 +553,7 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     input: "%s_Phy_Align.phy" %end
     output: temp("RAxML_bestTree.RAXML_output.phy"), temp("RAxML_info.RAXML_output.phy"), temp("RAxML_parsimonyTree.RAXML_output.phy"), temp("RAxML_log.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
-    shell: """ /opt/conda/bin/raxmlHPC -s {input[0]} -p 42 -m PROTGAMMAWAG -n {params.prefix} """
+    shell: """ /opt/conda/bin/raxmlHPC -s {input[0]} -p 5 -m PROTGAMMAWAG -n {params.prefix} """
 rule cleanRAxML:
     input:  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
     output:  "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end
