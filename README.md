@@ -432,14 +432,17 @@ These filenames will also have the name of the users query file and threshold va
 1. <h4> '*_Multi_Seq_Align.fa' </h4> 
     
 	1. Generated results from [Rule muscle](#RM). 
+		2. This file will contain all sequences that have meet the treshold requirment. More importantly, the sequences have been modified to be arranged in a multi sequence alignment format. This format allows multiple biological sequences to be aligned with one another by length. This formatting can used to show the homology of the sequences and infer about their evolutionary relationships.
 
-2. <h4> '*SPECIESNAME*_blast_results.txt' </h4> 
+2. <h4> '*USERES_QUERYFILE_USERES_TREASH_VALUE_SPECIESNAME*_blast_results.txt' </h4> 
     
-	2. Should be generated and moved to archived directory. Created in [Rule BLAST](#RB) , and moved by [Rule clean0](#RC)
+	2. Should be generated tagged and moved to a pipeline generated directory in the genomes input document folder. Created in [Rule BLAST](#RB) , and moved by Rule Move.
+		3. The series of files that will be generated is created by taking the useres query sequence and running a Nucelotide blast search on all the genome files. BLAST will generate an alignment of the genome that matched closes with the useres query file. Each alignment will be given scores, identities, and E-values. Specifically in this pipeline, the E-value provided is used as the restrictive element that teels the pipeline if the blast sequence is significant or not. 
 
 3. <h4> '*_Files_Generated_Report.txt' </h4> 
     
-	3. Report of all files created from rule ‘BLAST’ and if their hits were significant or not. Generated in [Rule genratedReport](#RGR). 
+	3. Report of all files created from rule ‘BLAST’ and if their hits were significant or not. Generated in [Rule genratedReport](#RGR).
+		4. After all the genomes have run through a BLASTn search,   *_Files_Generated_Report.txt will loop through all BLAST outputs and report back if the genome had meet the users treshold value requirment or not. There is a header file at the top. The header states that the first column are 'No Hit files' meaning that the file had no BLAST hits at all, denoted with a star '*', or a sequence in that file did not meet the treshold requirment. The second are files that had sequences generating a hit and meet the treshold requirment set by user. In the third column there is a count of how many sequences where no hits to hits ratio, followed by a print of the users treshold value in the forth column, and a total number of sequences seen in the fifth.   
 
 4. <h4> '*_Parsed_Final.fa' </h4> 
     
