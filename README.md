@@ -2,9 +2,9 @@
 
 Maintainer: Elvisa Mehinovic
 
-   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, phylips reformatting, conversion to a GFA file, and finaly a RAXML best tree output. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl from their pub/release-103. Specifically those files with '*.dna.toplevel.fa' suffix. These files are the equivilent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 files together, however user can edit those files found in the sub-file folder.
+   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, conversion to a GFA file, and finaly a RAXML best tree output. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also has the ability to run files that are found on ensembl from their pub/release-103. Specifically those files with '*.dna.toplevel.fa' suffix. These files are the equivilent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 files together, however user can edit those files found in the sub-file folder.
 
-   When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the users threshold requirment.‘*_Files_Generated_Report.fa’ will generate a report on how many files contained hits, no hits, or did not meet the treshold requirement. This file will also tell you exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is similar to the ‘*_MSA2GFA.fa’, execpt it is a multiple sequence file in Phylip format. This file format is required for running the RAXML analysis. When viewing the Phylip file or any RAXML file, please refer to the ‘*_NameKey.txt’. This Doccument will hold qunique names to identify files and sequences in the named files. Changing this file will not change the names of files or identy names with in files. RAXML will generate 4 files: ‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ ‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipline under the users descression. For more information regarding RAXML please refer to the manual linked in the "More Infomation" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogentic viewer.
+   When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the users threshold requirment.‘*_Files_Generated_Report.fa’ will generate a report on how many files contained hits, no hits, or did not meet the treshold requirement. This file will also tell you exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is similar to the ‘*_MSA2GFA.fa’, execpt it is a multiple sequence file in PHYLIP format. This file format is required for running the RAXML analysis. When viewing the PHYLIP file or any RAXML file, please refer to the ‘*_NameKey.txt’. This Doccument will hold qunique names to identify files and sequences in the named files. Changing this file will not change the names of files or identy names with in files. RAXML will generate 4 files: ‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ ‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipline under the users descression. For more information regarding RAXML please refer to the manual linked in the "More Infomation" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogentic viewer.
 
 The purpose of this pipeline is to create a full scale analysis of vertebrate species either or both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced may also be looked at in external viewers for deeper, more complexed analysis. 
 
@@ -35,7 +35,7 @@ The purpose of this pipeline is to create a full scale analysis of vertebrate sp
 		*  [Rule muscle2](#RM2) 
 		*  [Rule MSA2GFA](#RMG) 
 		*  [Rule RAXML](#RR)
-		*  [Rule clean#](#RC) 
+		*  [Rule clean](#RC) 
 		
 	*  [config.json](#config_file)
 		*  [genomesdb](#genomesdb)
@@ -174,7 +174,7 @@ The snakefile consists of a few rules:
 *   <a name= "RM"><h5> Rule muscle:</h5></a>
     *   MUSCLE is a multiple sequence alignment tool that takes in the user generated parsed file, and runs this command. 
 *  <a name= "RM2"><h5> Rule muscle2:</h5></a>
-    * MUSCLE will take the multi sequence alignment file generated from rule muscle and convert the file into a Phylips file format. Phylips files are plain text files consisting of 10 charater header of the sequence name and the sequence alignment. 
+    * MUSCLE will take the multi sequence alignment file generated from rule muscle and convert the file into a PHYLIP file format. PHYLIP files are plain text files consisting of 10 charater header of the sequence name and the sequence alignment. 
 *   <a name= "RR"><h5> Rule RAXML:</h5></a>
     * Randomized Axelerated Maximum Likelihood, or RAXML, is a program for creating a phylogenetic analysis of large datasets restricted by maximum likelihood. This specific program will generate tress of best fit which may be used in an external phylogenic tree viewer. The pipeline should export 4 different files, one of which would be labled ‘*_RAxML_bestTree.RAXML_output.phy’. This file is recommend to use for analysis. RAXML requires a large number of sequences in order to run. If rule does not execute, it may be caused by a small amount of sequences in its input file. Try rerunning at lower treshold value or use an external phylogenic tree builder. 
 *   <a name= "RMG"><h5> Rule MSA2GFA:</h5></a>
@@ -258,6 +258,9 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 
 Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
 
+Before runnning either file please make sure file is executable this can be done with:
+
+        - $ chmod +x *.sh
 
 To run locally to get Ensembl files:
 
@@ -453,12 +456,18 @@ These filenames will also have the name of the users query file and threshold va
 5. <h4> '*_NameKey.txt' </h4> 
 
 	5. This file will contain all the name of all genome files and their respective unqiue names generated from the VGPA pipeline. Generated in [Rule keyDoc](#RKD) .
-		6. When converting a multisequence alignment to a phylips file format, the formatting only allows for 10 charaters to be used. This phylips file is neccesary for the RAxML execution, however RAxML requires all sequences to be named in a unique manner. To meet this requirment the pipline gerates a unique naming schema for all the genomes file. When looking at the RAxML best tree in a viewer, the unique names will be present. '*_NameKey.txt' will provide user with a document containing all unique names and their corrisponding genome file. for a quick visual, filenames that came from the Ensembl genome will have a '#' before its name. 
+		6. When converting a multisequence alignment to a PHYLIP file format, the formatting only allows for 10 charaters to be used. This PHYLIP file is neccesary for the RAxML execution, however RAxML requires all sequences to be named in a unique manner. To meet this requirment the pipline gerates a unique naming schema for all the genomes file. When looking at the RAxML best tree in a viewer, the unique names will be present. '*_NameKey.txt' will provide user with a document containing all unique names and their corrisponding genome file. for a quick visual, filenames that came from the Ensembl genome will have a '#' before its name. The naming scheme for how the ID's were generated follows these patterns. 
+			7.VGP Genomes:
+			Example: A87025.1.2
+				8. A: First letter of the species name: Accipiter_gentilis
+				9. 87025: Last five numbers of its unique Genome Collections Accession: GCA_012487025
+				10. .1: Version of file number: .1
+				11. .2: Sequence order number: Second sequence in    
 
 6. <h4> '*_Phy_Align.py' </h4> 
 
-	6. Multi sequence file given from rule muscle, and converted into a phylips file format. Generated by [Rule muscle2](#RM2) .
-		7. 
+	6. Multi sequence file given from rule muscle, and converted into a PHYLIP file format. Generated by [Rule muscle2](#RM2) .
+		7. '*_Phy_Align.py' is a multisequence alignment file that follows the formatting of PHYLIP files. The file contains a unique id for all the sequences that are hits and found in file '*_Multi_Seq_Align.fa'. This file is used as the input to rule [Rule RAXML](#RR), and can be refranced by user at any time. PHYLIPS formatting consits of two main parts a header that describes the dementions of the alignment, and the sequences itself. To understand ID name, refrence '*_NameKey.txt'.  
 	
 7. <h4> '*_MSA2GFA.gfa' </h4>  
 
