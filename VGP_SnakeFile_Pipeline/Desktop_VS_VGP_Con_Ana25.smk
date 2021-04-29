@@ -563,7 +563,7 @@ rule cleanRAxML:
 ############################DIRECTORY CLEAN UP#######################
 
 rule Move:
-    input: "{genomesdb}_blast_results.txt", "%s_Files_Generated_Report.txt" %end 
+    input: "{genomesdb}_blast_results.txt"
     output: "%s_{genomesdb}_blast_results.txt" %mid
     shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} """
 
