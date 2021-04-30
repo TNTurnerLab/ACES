@@ -1,7 +1,7 @@
 {
-    "genomesdb": "/VGP_Pipeline_Files/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
-    "query": "/VGP_Pipeline_Files/USERS_query_Files/#USERINPUTQUERYFILE",
-    "dbs": "/VGP_Pipeline_Files/Genomes",
+    "genomesdb": "/VGP-Conservation-Analysis/VGP_Pipeline_Files/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
+    "query": "/VGP-Conservation-Analysis/VGP_Pipeline_Files/USERS_query_Files/#USERINPUTQUERYFILE",
+    "dbs": "/VGP-Conservation-Analysis/VGP_Pipeline_Files/Genomes",
     "tH": "0.0001"
     
 }
