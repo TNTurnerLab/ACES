@@ -8,7 +8,7 @@ Runtime depends on many factors such as size of users query file, RAxML file inp
 
 User will need to download all genome files, provide a fasta file in which they will use as a query file, and designate a threshold value.
 
-PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution] (#USER_REQUIRED):
+PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED):
 
 
 BEFORE EXECUTION: 
