@@ -360,6 +360,8 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 
 Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
 
+Open /Genomes folder and execute the following commands:
+
 Before running either file please make sure file is executable this can be done with:
 
         - $ chmod +x *.sh
