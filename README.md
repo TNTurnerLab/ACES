@@ -20,36 +20,36 @@ USERS query Files:
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
-    1. See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
-    2. Approximate download and unzip time for all genomes: 10 hours minimum
+    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
+    * Approximate download and unzip time for all genomes: 10 hours minimum
 
 2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
     
-    2. *** Files can be modified or changed based on user requirements***
+    * *** Files can be modified or changed based on user requirements***
 
 3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
-    3. Reference FILES GUIDE: [config](#config_file).json
+    * Reference FILES GUIDE: [config](#config_file).json
 
 4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
-    4. Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
+    * Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
         
-	4. Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
+	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
 
 5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
     
-    5. Default file is set to run all VGP and Ensembl genomes.
+    * Default file is set to run all VGP and Ensembl genomes.
         
-	5. Modify and close this file when content.
+	* Modify and close this file when content.
 
 6. Users must upload or have handy their {query} file for Blast. 
     
-    6. Open  **_config.json _** to set which file is the users query file:
+    * Open  **_config.json _** to set which file is the users query file:
         
-	6. "[query](#query)"
-	6. Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
-	6. Query file can not be full genomes nor LINE repeat elements. 
+	* "[query](#query)"
+	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
+	* Query file can not be full genomes nor LINE repeat elements. 
 
 7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
 
