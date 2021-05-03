@@ -16,7 +16,7 @@ BEFORE EXECUTION:
 USERS query Files:
 	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
 
-	
+--------------------------------------------------------------------------------------------------------------------------------	
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
