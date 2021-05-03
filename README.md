@@ -4,7 +4,7 @@ Maintainer: Elvisa Mehinovic
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
 Approximate minimum runtime: 1.5 hours. 
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, etc.
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, etc. Runtime can exceed over 12 hours. Average runtime is around 4-5 hours.
 
 User will need to download all genome files, provide a fasta file in which they will use as a query file, and designate a threshold value.
 
