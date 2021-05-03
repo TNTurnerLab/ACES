@@ -238,9 +238,9 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             a = 0 
             thresh = config['tH']
             reportOut = output[0]
-            ThreshHitCount = -1
-            threshNOHitCnt = -1
-            totalFileCount = -1
+            ThreshHitCount = 0
+            threshNOHitCnt = 0
+            totalFileCount = 0
             Threshkey = {}
             NoHitThresh = ['+']
             HitThresh = ['+']
