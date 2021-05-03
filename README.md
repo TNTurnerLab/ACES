@@ -2,18 +2,106 @@
 
 Maintainer: Elvisa Mehinovic
 
+**<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
+
+Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
+
+PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
+
+
+BEFORE EXECUTION: USERS query Files:
+	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
+
+1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
+    
+    1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for command line codes that will help achieve this.
+
+2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
+    
+    2. *** Files can be modified or changed based on user requirements***
+
+3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+    
+    3. Reference FILES GUIDE: [config](#config_file).json
+
+4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
+    
+    4. Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
+        
+	4. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
+
+5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
+    
+    5. Default file is set to run all VGP and Ensembl genomes.
+        
+	5. Modify and close this file when content.
+
+6. Users must upload or have handy their {query} file for Blast. 
+    
+    6. Open  **_config.json _** to set which file is the useres query file:
+        
+	6. "[query](#query)"
+	6. Your query file should be put in file USERS_query_Files, If not please modify complete pathway to input file in config.json file.
+
+7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an lsf server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
+
+        
+8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
+
+
+_<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
+
+
+9. Run Dockerfile command: 
+
+		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUID)
+    
+10. Run Snakemake.smk:
+
+		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" jng2/testrepo2_actual:vgp_test /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k
+
+_<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
+
+
+
+11. Tell Docker where data and code are:
+	
+		a. Execute LSF code:
+     
+     		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
+     		
+		Example: 
+		
+			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
+		
+        b. Run Docker interactively to see if successful:
+	
+           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
+12. Create a group job:
+
+    	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
+    
+13. Run following script:
+
+    	a. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
+    
+        	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+    	b. Example:
+    
+        	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+
+
   
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720) 
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
+* [HOW TO RUN](#HOWRUN)
 
 * [User Required Script Files For Pipeline Execution](#USER_REQUIRED)
 
 	* [SCRIPT FILES REQUIRED](#Script_req)
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETREIVE or PROVIDE](#USER)
-
-* [HOW TO RUN](#HOWRUN)
   		
 * [FILES GUIDE](#FILES_GUIDE) 
 	* [Dockerfile](#Dock)
@@ -317,111 +405,6 @@ Pregenerated file created by maintainer that has a list of every species corresp
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-**<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
-
-Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
-
-PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
-
-
-BEFORE EXECUTION: USERS query Files:
-	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
-
-1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
-    
-    1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for command line codes that will help achieve this.
-
-2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
-    
-    2. *** Files can be modified or changed based on user requirements***
-
-3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
-    
-    3. Reference FILES GUIDE: [config](#config_file).json
-
-4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
-    
-    4. Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
-        
-	4. Value should correspond to a threshold requirement species blast outputs must meet before they are allowed to generate a parse file.
-
-5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
-    
-    5. Default file is set to run all VGP and Ensembl genomes.
-        
-	5. Modify and close this file when content.
-
-6. Users must upload or have handy their {query} file for Blast. 
-    
-    6. Open  **_config.json _** to set which file is the useres query file:
-        
-	6. "[query](#query)"
-	6. Your query file should be put in file USERS_query_Files, If not please modify complete pathway to input file in config.json file.
-
-7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an lsf server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
-
-        
-8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
-
-
-_<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
-
-
-9. Run Dockerfile command: 
-
-		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUID)
-    
-10. Run Snakemake.smk:
-
-		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" jng2/testrepo2_actual:vgp_test /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k
-
-_<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
-
-
-
-11. Tell Docker where data and code are:
-	
-		a. Execute LSF code:
-     
-     		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
-     		
-		Example: 
-		
-			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
-		
-        b. Run Docker interactively to see if successful:
-	
-           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
-12. Create a group job:
-
-    	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
-    
-13. Run following script:
-
-    	a. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
-    
-        	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
-    	b. Example:
-    
-        	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
-
-
-
-
-
-
---------------------------------------------------------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
 
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
