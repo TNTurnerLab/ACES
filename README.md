@@ -4,7 +4,7 @@ Maintainer: Elvisa Mehinovic
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
 
-Have all files downloaded and ready to run before moving onto this step. See FILES GUIDE and SUB-FILES GUIDE for more information before moving on.
+User will need to download all genome files, provide a fasta file in which they will use as a query file, and desginate a threshold value.
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
 
@@ -18,7 +18,7 @@ USERS query Files:
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
-    1. See file [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for command line codes that will help achieve this.
+    1. See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
 2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
     
@@ -195,6 +195,7 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 
 Files listed are mainainer generated files, user is allowed to input any customization of each file as long as the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files foun in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, makesure to change file pathway for genomesdbs in file [config.json](#config_file).
 
+Back to [HOW TO RUN](#HOWRUN)
 
 	
 <span style="text-decoration:underline;"><a name="USER"><h4>USER MUST RETREIVE or PROVIDE:</h4></a></span>
@@ -205,7 +206,7 @@ Files listed are mainainer generated files, user is allowed to input any customi
 2. {query}: Any reference genome file that is a FASTA forma. PLEASE PUT USER QUERY FILE IN FILE USERS_query_Files
 
 
-
+Back to [HOW TO RUN](#HOWRUN)
 
 
 
@@ -406,7 +407,7 @@ Pregenerated file created by maintainer that has a list of every species corresp
 Pregenerated file created by maintainer that has a list of every species corresponding '*.dna.toplevel.fa'files from ONLY Ensembl pub/release-103 database. Can be modified or ignored. Users may generate their own file, but must change the path file in config to adapt to change.
 
 
-
+Back to [HOW TO RUN](#HOWRUN)
 
 
 --------------------------------------------------------------------------------------------------------------------------------
