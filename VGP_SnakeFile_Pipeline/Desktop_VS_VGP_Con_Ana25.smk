@@ -544,7 +544,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" cd /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/ && python main.py -f {input[0]} -o {output[0]} --log test.log"""
+    shell:""" python /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log test.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
