@@ -49,6 +49,7 @@ USERS query Files:
         
 	6. "[query](#query)"
 	6. Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
+	6. Query file can not be full genomes nor LINE repeat elements. 
 
 7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
 
