@@ -9,8 +9,12 @@ Have all files downloaded and ready to run before moving onto this step. See FIL
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files For Pipeline Execution](#USER_REQUIRED):
 
 
-BEFORE EXECUTION: USERS query Files:
+BEFORE EXECUTION: 
+
+USERS query Files:
 	This is an empty folder generated for user to store all their input query files that will be ran currently or at a later time. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
+
+	
 
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
@@ -239,6 +243,9 @@ For those not familiar with docker reference this link: [https://docs.docker.com
     *   ***If executed on a LSF server one must execute export LSF. ***
     *   		-  $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
+
+Back to [HOW TO RUN](#HOWRUN)
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="SNAKE"><h4>Snakefile.smk</h4></a></span>**
@@ -298,7 +305,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
     *   User generated threshold value that can be changed. Can contain user decimials. 
 
 
-
+Back to [HOW TO RUN](#HOWRUN)
 
 
 
@@ -369,7 +376,7 @@ Tor run on an LSF example:
 	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
 	
 
-
+Back to [HOW TO RUN](#HOWRUN)
 
 
 
