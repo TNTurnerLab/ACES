@@ -12,9 +12,9 @@ Maintainer: Elvisa Mehinovic
 	* [SCRIPT FILES REQUIRED](#Script_req)
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETREIVE or PROVIDE](#USER)
-  
-  
-		
+
+* [HOW TO RUN](#HOWRUN)
+  		
 * [FILES GUIDE](#FILES_GUIDE) 
 	* [Dockerfile](#Dock)
    	* [Snakefile.smk](#SNAKE) 
@@ -47,7 +47,6 @@ Maintainer: Elvisa Mehinovic
 	
 * [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE)
 
-* [HOW TO RUN](#HOWRUN)
 * [Output Files Generated](#Outfile)
 * [More Information](#more)
 * [Citations](#cite)
