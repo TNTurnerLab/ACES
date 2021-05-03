@@ -3,6 +3,8 @@
 Maintainer: Elvisa Mehinovic
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
+Approximate minimum runtime: 1.5 hours. 
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, etc.
 
 User will need to download all genome files, provide a fasta file in which they will use as a query file, and designate a threshold value.
 
@@ -19,6 +21,7 @@ USERS query Files:
 1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
     1. See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
+    2. Approximate download and unzip time for all genomes: 10 hours minimum
 
 2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
     
