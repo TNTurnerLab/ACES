@@ -41,7 +41,7 @@ USERS query Files:
     
     * Default file is set to run all VGP and Ensembl genomes.
         
-	* Modify and close this file when content.
+	* Modify and/or close this file when content.
 
 6. Users must upload or have handy their {query} file for Blast. 
     
