@@ -61,7 +61,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command: 
 
-		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUID)
+		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUILD)
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
