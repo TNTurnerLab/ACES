@@ -5,7 +5,7 @@ import os
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-    configfile: "./config.json"
+    configfile: "config.json"
 
 #Varibles in config file
 query = config['query']
