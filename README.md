@@ -60,7 +60,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUID)
     
-10. Run VGP_Con_Ana24.smk:
+10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
 		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" jng2/testrepo2_actual:vgp_test /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k
 
