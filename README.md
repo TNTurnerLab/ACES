@@ -3,7 +3,7 @@
 Maintainer: Elvisa Mehinovic
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
-<h3>Minimum Compute requirements: </h3>
+<h3>Minimum Compute Requirements: </h3>
 	
 	30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.
 
