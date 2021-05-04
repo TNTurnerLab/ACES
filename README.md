@@ -111,7 +111,7 @@ _<span style="text-decoration:underline;"><h4>To Run on a Local Machine:</h4></s
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
-		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
+		- $ docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
