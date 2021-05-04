@@ -8,6 +8,7 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline 
 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Runtime Seen Running All 511 Genome Inputs: 
+
 Minimum: 1.5 hours
 Maximum: 12+ hours
 Average: 4 to 5 Hours
@@ -16,15 +17,18 @@ Runtime depends on many factors such as size of users query file, RAxML file inp
 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
+
 Minimum: 15 hours
 Maximum: 24+ hours
 Average: 24 Hours
 
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
+
 Refrence Outline Provided Below to Understand File Placement.
 
 USERS query Files:
+
 	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
 
 --------------------------------------------------------------------------------------------------------------------------------	
