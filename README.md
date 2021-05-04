@@ -107,7 +107,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 * [HOW TO RUN](#HOWRUN)
 
-*[PIPELINE BACKGROUND](#PB)
+* [PIPELINE BACKGROUND](#PB)
 
 * [User Required Script Files for Pipeline Execution](#USER_REQUIRED)
 
