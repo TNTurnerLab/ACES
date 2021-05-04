@@ -17,17 +17,21 @@ USERS query Files:
 	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
 
 --------------------------------------------------------------------------------------------------------------------------------	
+1. Pull down ready to run docker image with the code provided below:
 
-1. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
+        - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
+    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
+    
+2. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
     * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
     * Approximate download and unzip time for all genomes: 10 hours minimum
 
-2. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
+3. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
     
     * *** Files can be modified or changed based on user requirements***
 
-3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+4. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
     * Reference FILES GUIDE: [config](#config_file).json
         * genomesdb: currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all VGP and Ensembl genomes agaist users query sequence.
@@ -35,42 +39,36 @@ USERS query Files:
         * dbs: Do not edit this path
         * tH: Defualt is set to 0.001. User may change if desired. 
 
-4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
+5. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
-    * Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
-        
+    * Within this file, enter a single value with decimal point ***can be in scientific notation but not required***  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
 
-5. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
+6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
     
     * Default file is set to run all VGP and Ensembl genomes.
-        
 	* Modify and/or close this file when content.
 
-6. Users must upload or have handy their {query} file for Blast. 
+7. Users must upload or have handy their {query} file for Blast. 
     
     * Open  **_config.json _** to set which file is the users query file:
-        
 	* "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
 
-7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran on local machine.
-
-        
-8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
+8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran on local machine.
 
 
 _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
 
 
-9. Run Dockerfile command: 
+9. Run Dockerfile command- CHECK: 
 
-		-$  docker run ###DOCKERFILE NAME GENERATED ABOVE### (CHECK IF CAN BUILD)
+		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
-		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" jng2/testrepo2_actual:vgp_test /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
+		- $ docker run -v "##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
 _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
@@ -88,7 +86,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 		
         b. Run Docker interactively to see if successful:
 	
-           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(username/repository:TAGGEDNAME)' /bin/bash
+           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
 12. Create a group job:
 
     	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
@@ -97,17 +95,19 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
     	a. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
-        	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(username/repository:TAGGEDNAME)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
     	b. Example:
     
-        	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(emehinovic72/home:bwp2)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
-
+* View [Output Files Generated](#Outfile) to see which files are generated and more information on each.
   
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720) 
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
 * [HOW TO RUN](#HOWRUN)
+
+* [PIPELINE BACKGROUND](#PB)
 
 * [User Required Script Files for Pipeline Execution](#USER_REQUIRED)
 
@@ -154,7 +154,9 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
- The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also can run files that are found on Ensembl from their pub/release-103. Specifically, those files with '*.dna.toplevel.fa' suffix. These files are the equivalent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 files together, however user can edit those files found in the sub-file folder. When choosing a query file to blast against, please not that LINE element repeats are not able to be run on this pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn search. The pipeline will also not handle full genomes as query inputs. 
+<a name="PB"><h3>PIPELINE BACKGROUND</h3></a>
+
+The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP), and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that allows the user to input any value to a threshold, to only parse out files if it meets the set threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. The pipeline also can run files that are found on Ensembl from their pub/release-103. Specifically, those files with '*.dna.toplevel.fa' suffix. These files are the equivalent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 files together, however user can edit those files found in the sub-file folder. When choosing a query file to blast against, please not that LINE element repeats are not able to be run on this pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn search. The pipeline will also not handle full genomes as query inputs. 
 
    When executing the pipeline, there are a total of 10 files will be generated if ran successfully. These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many files contained hits, no hits, or did not meet the threshold requirement. This file will also tell you exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is like the ‘*_MSA2GFA.fa’, except it is a multiple sequence file in PHYLIP format. This file format is required for running the RAXML analysis. When viewing the PHYLIP file or any RAXML file, please refer to the ‘*_NameKey.txt’. This Document will hold unique names to identify files and sequences in the named files. Changing this file will not change the names of files or identity names within files. RAXML will generate 4 files: ‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ ‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipeline under the user’s discretion. For more information regarding RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogenetic viewer.
 
@@ -237,6 +239,7 @@ Short guide that explains files in the repository. Users can find examples, comm
 
 For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
 
+<h4>There is a dockerfile provided for user to modify or view, however by executing the command in [HOW TO RUN](#HOWRUN), docker image is pre-built and ready to run. Only follow these steps if user wishes to manually build the docker image.</h4>
 
 * Find folder VGP-Conservation-Analysis. This is the folder user will use to build docker image.
 *   Docker files must be built locally before use; therefore, you must build a Docker image by the command :
