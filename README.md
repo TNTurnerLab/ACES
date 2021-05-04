@@ -36,7 +36,7 @@ BEFORE EXECUTION:
 
 [Refrence Outline](#O) Provided Below to Understand Pipeline Files Formation.
 
-USERS query Files:
+<h5>USERS query Files:</h5>
 
 		    This is an empty folder generated for user to store all their input query files 
 		    that will be ran currently or later. This is an optional folder however, if user 
