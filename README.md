@@ -32,7 +32,7 @@ Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneo
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
-[Refrence Outline](#O) Provided Below to Understand File Placement.
+[Refrence Outline](#O) Provided Below to Understand Pipeline Files Formation.
 
 USERS query Files:
 
