@@ -214,20 +214,20 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 
 <span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN </h4></a></span>
 
-    These files can be found inside the folder genomes input document:
-View [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
+   These files can be found inside the folder genomes input document:
+   View [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
 	
 	1. VGP_ONLY_FILE.TXT
 	2. ENSEMBLE_AND_VGP_TOGETHER_FILE.TXT
 	3. ENSEMBLE_ONLY_FILE.TXT
 
-    These files can be found in the Genomes folder and should be executed in Genomes folder:
-View [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
+   These files can be found in the Genomes folder and should be executed in Genomes folder:
+   View [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
 	
 	1. wgetfile_ensembl.sh
 	2. wgetfile_VGP.sh
 
-    USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
+   USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
     	
 	1. USERES_QUERY_INPUT.fa
 
