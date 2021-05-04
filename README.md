@@ -30,6 +30,10 @@ USERS query Files:
 3. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
     * Reference FILES GUIDE: [config](#config_file).json
+        * genomesdb: currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all VGP and Ensembl genomes agaist users query sequence.
+        * query: Pathway to this file does not have to change if user puts their input file inside the pre-generated folder, USER query Files. When editing this portion of the config, please only input the filename after the last /. User does not need to edit path unless they did not place their input file in provided folder.
+        * dbs: Dp not edit this path
+        * tH: Defualt is set to 0.001. User may change if desired. 
 
 4. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
@@ -51,7 +55,7 @@ USERS query Files:
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
 
-7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran locally.
+7. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran on local machine.
 
         
 8. (See FILES GUIDE: Docker for generating [Dockerfile](#Dock))
