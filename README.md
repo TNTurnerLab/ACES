@@ -41,14 +41,12 @@ USERS query Files:
 
 5. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
-    * Within this file, enter a single value with decimal point ***can be in scientific notation but not required***
-        
+    * Within this file, enter a single value with decimal point ***can be in scientific notation but not required***  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
 
 6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
     
     * Default file is set to run all VGP and Ensembl genomes.
-        
 	* Modify and/or close this file when content.
 
 7. Users must upload or have handy their {query} file for Blast. 
