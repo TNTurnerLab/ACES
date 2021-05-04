@@ -64,7 +64,7 @@ _<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></spa
 
 9. Run Dockerfile command- CHECK: 
 
-		-$  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
+		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
