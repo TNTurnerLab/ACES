@@ -2,16 +2,25 @@
 
 Maintainer: Elvisa Mehinovic
 
-**<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
-Approximate minimum runtime: 1.5 hours. 
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, etc. Runtime can exceed over 12 hours. Average runtime is around 4-5 hours.
-
-User will need to download all genome files, provide a fasta file in which they will use as a query file, and designate a threshold value.
-
+**<span style="text-decoration:underline;"><a name="HOWRUN"><h2>HOW TO RUN</h2></a></span>**
+<h4>Minimum Compute requirements: 30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.</h4>
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED):
+--------------------------------------------------------------------------------------------------------------------------------
+Approximate Runtime Seen Running All 511 Genome Inputs: 
+Minimum: 1.5 hours
+Maximum: 12+ hours
+Average: 4 to 5 Hours
 
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
+--------------------------------------------------------------------------------------------------------------------------------
+Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
+Minimum: 15 hours
+Maximum: 24+ hours
+Average: 24 Hours
 
+--------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
+Refrence Outline Provided Below to Understand File Placement.
 
 USERS query Files:
 	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
@@ -336,8 +345,10 @@ The files named below will be used to download all files needed for this pipelin
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
 		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
 		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-		Please insure there is enough storage for all files with at least an extra 2GB for 
-		those files created in the pipeline.
+		Please insure there is enough storage for all files the minimum recomended free storage
+		should be  approximitly 500 BG. This insures all downloaded and created files have enough
+		stroage space on users device.
+		
 		
 --------------------------------------------------------------------------------------------------------------------------------
 
