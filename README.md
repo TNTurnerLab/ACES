@@ -52,7 +52,6 @@ USERS query Files:
 7. Users must upload or have handy their {query} file for Blast. 
     
     * Open  **_config.json _** to set which file is the users query file:
-        
 	* "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
