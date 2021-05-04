@@ -321,7 +321,8 @@ Short guide that explains files in the repository. Users can find examples, comm
 
 For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
 
-<h4>There is a dockerfile provided for user to modify or view, however by executing the command in [HOW TO RUN](#HOWRUN), docker image is pre-built and ready to run. Only follow these steps if user wishes to manually build the docker image.</h4>
+<h5> There is a dockerfile provided for user to modify or view, however by executing the command in [HOW TO RUN](#HOWRUN), 
+	docker image is pre-built and ready to run. Only follow these steps if user wishes to manually build the docker image.</h5>
 
 * Find folder VGP-Conservation-Analysis. This is the folder user will use to build docker image.
 *   Docker files must be built locally before use; therefore, you must build a Docker image by the command :
