@@ -2,8 +2,9 @@
 
 Maintainer: Elvisa Mehinovic
 
-**<span style="text-decoration:underline;"><a name="HOWRUN"><h2>HOW TO RUN</h2></a></span>**
-<h4>Minimum Compute requirements: 30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.</h4>
+**<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
+<h3>Minimum Compute requirements: 
+	30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.</h3>
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
 --------------------------------------------------------------------------------------------------------------------------------
