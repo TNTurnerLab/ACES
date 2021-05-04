@@ -75,7 +75,7 @@ BEFORE EXECUTION:
 	* query: 
            * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder, 
              USER query Files. When editing this portion of the config, please only input the filename after the last /. 
-	     User does not need to edit path unless they did not place their input file in provided folder.
+	         User does not need to edit path unless they did not place their input file in provided folder.
            
    	* dbs: 
            * Do not edit this path
