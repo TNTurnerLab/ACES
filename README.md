@@ -32,9 +32,6 @@ Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneo
 Download time will vary between users.
 
 --------------------------------------------------------------------------------------------------------------------------------
-BEFORE EXECUTION: 
-
-[Refrence Outline](#O) Provided Below to Understand Pipeline Files Formation.
 
 <h4>USERS query Files:</h4>
 
@@ -46,7 +43,11 @@ BEFORE EXECUTION:
 
       
 
---------------------------------------------------------------------------------------------------------------------------------	
+--------------------------------------------------------------------------------------------------------------------------------
+BEFORE EXECUTION: 
+
+[Refrence Outline](#O) Provided Below to Better Understand Pipeline Files Formation.
+
 1. Pull down ready to run docker image with the code provided below:
 
         - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
