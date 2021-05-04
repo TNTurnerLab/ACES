@@ -67,7 +67,8 @@ BEFORE EXECUTION:
 <a name = "HTF"> 4 </a>. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
    * Reference FILES GUIDE: [config](#config_file).json
-        * genomesdb: 
+        
+	* genomesdb: 
            * currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all VGP and Ensembl genomes agaist users query sequence.
         * query: 
            * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder, USER query Files. When editing this portion of the config, please only input the filename after the last /. User does not need to edit path unless they did not place their input file in provided folder.
