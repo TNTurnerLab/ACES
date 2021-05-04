@@ -29,7 +29,7 @@ Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneo
 
 	Average: 24 Hours
 
-Download Time Will Vary Between Users.
+Download time will vary between users.
 
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
@@ -241,7 +241,6 @@ Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens
 
 Files listed are maintainer generated files, user can input any customization of each file if the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files found in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, make sure to change file pathway for genomesdbs in file [config.json](#config_file).
 
-Back to [HOW TO RUN](#HOWRUN)
 
 	
 <span style="text-decoration:underline;"><a name="USER"><h4>USER MUST RETREIVE or PROVIDE:</h4></a></span>
