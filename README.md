@@ -2,19 +2,46 @@
 
 Maintainer: Elvisa Mehinovic
 
-**<span style="text-decoration:underline;"><a name="HOWRUN"><h3>HOW TO RUN</h3></a></span>**
-Approximate minimum runtime: 1.5 hours. 
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, etc. Runtime can exceed over 12 hours. Average runtime is around 4-5 hours.
+**<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
+<h3>Minimum Compute requirements: </h3>
+	
+	30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.
 
-User will need to download all genome files, provide a fasta file in which they will use as a query file, and designate a threshold value.
+PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
-PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED):
+--------------------------------------------------------------------------------------------------------------------------------
+Approximate Runtime Seen Running All 511 Genome Inputs: 
 
+	Minimum: 1.5 hours
 
+	Maximum: 12+ hours
+
+	Average: 4 to 5 Hours
+
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
+
+--------------------------------------------------------------------------------------------------------------------------------
+Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
+
+	Minimum: 15 hours
+
+	Maximum: 24+ hours
+
+	Average: 24 Hours
+
+Download Time Will Vary Between Users.
+
+--------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
+[Refrence Outline](#O) Provided Below to Understand Pipeline Files Formation.
+
 USERS query Files:
-	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
+
+			This is an empty folder generated for user to store all their input query files 
+			that will be ran currently or later. This is an optional folder however, if user 
+			decides to call file outside of this folder, they must include fill path to that 
+			file in config.json - "[query](#query)".
 
 --------------------------------------------------------------------------------------------------------------------------------	
 1. Pull down ready to run docker image with the code provided below:
@@ -25,9 +52,8 @@ USERS query Files:
 2. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
     * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
-    * Approximate download and unzip time for all genomes: 10 hours minimum
 
-3. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
+3. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * *** Files can be modified or changed based on user requirements***
 
@@ -56,13 +82,13 @@ USERS query Files:
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
 
-8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran on local machine.
+8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
 
-_<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
+_<span style="text-decoration:underline;"><h4>To Run on a Local Machine:</h4></span>_
 
 
-9. Run Dockerfile command- CHECK: 
+9. Run Dockerfile command - CHECK: 
 
 		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
@@ -76,7 +102,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 11. Tell Docker where data and code are:
 	
-		a. Execute LSF code:
+		* Execute LSF code:
      
      		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
      		
@@ -84,7 +110,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 		
 			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
 		
-        b. Run Docker interactively to see if successful:
+        * Run Docker interactively to see if successful:
 	
            	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
 12. Create a group job:
@@ -93,15 +119,17 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
     
 13. Run following script:
 
-    	a. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
+    	* MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
         	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
-    	b. Example:
+    	* Example:
     
         	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
 * View [Output Files Generated](#Outfile) to see which files are generated and more information on each.
-  
+ 
+ <a name="o"> Refrence Outline </a>
+ 
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720) 
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
@@ -111,7 +139,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 * [User Required Script Files for Pipeline Execution](#USER_REQUIRED)
 
-	* [SCRIPT FILES REQUIRED](#Script_req)
+	* [SCRIPT FILES](#Script_req)
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETREIVE or PROVIDE](#USER)
   		
@@ -176,32 +204,37 @@ Or can be pulled on LSF with command:
 
 	- $ git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
-_<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES REQUIRED: </h4></a></span>_
+_<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES: </h4></a></span>_
 
-
+These files are given inside of the pipeline In the folder VGP SnakeFile Pipeline:
 
 1. [Snakefile.smk](#SNAKE)
-2. [Dockerfile](#Dock)
-3. [config.json](#config_file)
+2. [config.json](#config_file)
+
+The provided Docker file is given for users to have, but is not required for pipeline execution.
+Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens_pipeline:latest)
+
+1. [Dockerfile](#Dock)
 
 <span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN </h4></a></span>
 
-    These files can be found inside the folder genomes input document:
-	View [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
+   These files can be found inside the folder genomes input document:
+   View [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE) for more information on each file.
 	
 	1. VGP_ONLY_FILE.TXT
 	2. ENSEMBLE_AND_VGP_TOGETHER_FILE.TXT
 	3. ENSEMBLE_ONLY_FILE.TXT
 
-    These files can be found in the Genomes folder and should be executed in Genomes folder:
-	View [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
+   These files can be found in the Genomes folder and should be executed in Genomes folder:
+   View [RETREIVING VGP AND ENSEMBL FILES](#RETREIVING-VGP-AND-ENSEMBL-FILES) for more information on each file.
 	
 	1. wgetfile_ensembl.sh
 	2. wgetfile_VGP.sh
 
-    USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
+   USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
+   Open and read PLACE USER QUERY INPUT FILES HERE.txt for more information.
     	
-	1. USERES_QUERY_INPUT.fa
+	1. PLACE USER QUERY INPUT FILES HERE.txt
 
 Files listed are maintainer generated files, user can input any customization of each file if the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files found in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, make sure to change file pathway for genomesdbs in file [config.json](#config_file).
 
@@ -336,8 +369,10 @@ The files named below will be used to download all files needed for this pipelin
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
 		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
 		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-		Please insure there is enough storage for all files with at least an extra 2GB for 
-		those files created in the pipeline.
+		Please insure there is enough storage for all files the minimum recomended free storage
+		should be  approximitly 500 BG. This insures all downloaded and created files have enough
+		stroage space on users device.
+		
 		
 --------------------------------------------------------------------------------------------------------------------------------
 
