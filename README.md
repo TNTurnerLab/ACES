@@ -4,30 +4,30 @@ Maintainer: Elvisa Mehinovic
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute requirements: </h3>
-
-   30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.
+	
+	30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Runtime Seen Running All 511 Genome Inputs: 
 
-Minimum: 1.5 hours
+	Minimum: 1.5 hours
 
-Maximum: 12+ hours
+	Maximum: 12+ hours
 
-Average: 4 to 5 Hours
+	Average: 4 to 5 Hours
 
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
 
-Minimum: 15 hours
+	Minimum: 15 hours
 
-Maximum: 24+ hours
+	Maximum: 24+ hours
 
-Average: 24 Hours
+	Average: 24 Hours
 
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
@@ -36,7 +36,10 @@ Refrence Outline Provided Below to Understand File Placement.
 
 USERS query Files:
 
-	This is an empty folder generated for user to store all their input query files that will be ran currently or later. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json - "[query](#query)".
+			This is an empty folder generated for user to store all their input query files 
+			that will be ran currently or later. This is an optional folder however, if user 
+			decides to call file outside of this folder, they must include fill path to that 
+			file in config.json - "[query](#query)".
 
 --------------------------------------------------------------------------------------------------------------------------------	
 1. Pull down ready to run docker image with the code provided below:
