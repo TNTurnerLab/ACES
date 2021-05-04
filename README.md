@@ -46,7 +46,7 @@ Download time will vary between users.
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
-[Refrence Outline](#O) Provided Below to Better Understand Pipeline Files Formation.
+[Refrence Outline](#O) Provided Below to Better Understand Pipeline File Locations.
 
 1. Pull down ready to run docker image with the code provided below:
 
