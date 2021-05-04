@@ -291,7 +291,7 @@ Files listed are maintainer generated files, user can input any customization of
 	
 <span style="text-decoration:underline;"><a name="USER"><h4>USER MUST RETREIVE or PROVIDE:</h4></a></span>
 
-1. {subject}: All VGP ‘*-unmasked.fa’ species files or Ensembl ‘*-.dna.toplevel.fa’ species files.
+1. {subject}: All VGP ‘* -unmasked.fa’ species files or Ensembl ‘* -.dna.toplevel.fa’ species files.
 	- These files can be downloaded through provided script.
 	
 2. {query}: Any reference genome file that is a FASTA forma. PLEASE PUT USER QUERY FILE IN FILE USERS_query_Files
