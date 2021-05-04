@@ -52,6 +52,7 @@ USERS query Files:
     * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
 
 <a=name"H">Dowloading Files </a>:
+
 2. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
     
     * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
