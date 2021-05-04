@@ -201,7 +201,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 --------------------------------------------------------------------------------------------------------------------------------
 <a name="PB"><h3>PIPELINE BACKGROUND</h3></a>
 
-		The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP),
+		   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP),
 		and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, 
 		conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that 
 		allows the user to input any value to a threshold, to only parse out files if it meets the set 
@@ -214,7 +214,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 		pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn 
 		search. The pipeline will also not handle full genomes as query inputs. 
 
-  		When executing the pipeline, there are a total of 10 files will be generated if ran successfully. 
+  		   When executing the pipeline, there are a total of 10 files will be generated if ran successfully. 
 		Thesefiles include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the 
 		user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many 
 		files containedhits, no hits, or did not meet the threshold requirement. This file will also tell 
@@ -235,9 +235,9 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 		RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic 
 		tree createdfrom RAXML, the user will need to use an external phylogenetic viewer.
 
-		The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or both
-		from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files 
-		produced may also be looked at in external viewers for deeper, more complexed analysis. 
+		   The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or both
+		from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced 
+		may also be looked at in external viewers for deeper, more complexed analysis. 
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
