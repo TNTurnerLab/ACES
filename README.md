@@ -29,6 +29,8 @@ Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneo
 
 	Average: 24 Hours
 
+Download Time Will Vary Between Users.
+
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
@@ -50,9 +52,8 @@ USERS query Files:
 2. Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
     
     * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
-    * Approximate download and unzip time for all genomes: 10 hours minimum
 
-3. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files.
+3. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * *** Files can be modified or changed based on user requirements***
 
@@ -81,13 +82,13 @@ USERS query Files:
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
 
-8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline, indicate whether you will be using file VGP_Con_Ana24.smk for running on an LSF server or Desktop_VS_VGP_Con_Ana25.smk if ran on local machine.
+8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
 
-_<span style="text-decoration:underline;"><h4>To Run on Local Machine:</h4></span>_
+_<span style="text-decoration:underline;"><h4>To Run on a Local Machine:</h4></span>_
 
 
-9. Run Dockerfile command- CHECK: 
+9. Run Dockerfile command - CHECK: 
 
 		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
