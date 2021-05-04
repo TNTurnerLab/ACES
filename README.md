@@ -5,6 +5,7 @@ Maintainer: Elvisa Mehinovic
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h2>HOW TO RUN</h2></a></span>**
 <h4>Minimum Compute requirements: 30 GB RAM, 500 GB FREE Storage Space, recomended that user has a dual or quad core, 64-bit, x86 CPU or better.</h4>
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED):
+
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Runtime Seen Running All 511 Genome Inputs: 
 Minimum: 1.5 hours
@@ -12,6 +13,7 @@ Maximum: 12+ hours
 Average: 4 to 5 Hours
 
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
+
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
 Minimum: 15 hours
