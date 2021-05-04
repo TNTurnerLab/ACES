@@ -272,6 +272,7 @@ Back to [HOW TO RUN](#HOWRUN)
 
 Short guide that explains files in the repository. Users can find examples, commands, and explanations on each file. This also includes a mini summary of internal components of files.
 
+--------------------------------------------------------------------------------------------------------------------------------
 **<span style="text-decoration:underline;"><a name="Dock"><h4>Dockerfile</h4></a></span>**
 
 *** Disclaimer Make sure to build the Dockerfile locally on machine before attempting to on LSF server **
@@ -302,7 +303,7 @@ Back to [HOW TO RUN](#HOWRUN)
 **<span style="text-decoration:underline;"><a name="SNAKE"><h4>Snakefile.smk</h4></a></span>**
 
 The user has two options for which snake they can run, Desktop_VS_VGP_Con_Ana25.smk is for running on a local device while VGP_Con_Ana24.smk is used for running on a LSF server. The files execute the same and can be found in the VGP SnakeFiles folder. 
-
+--------------------------------------------------------------------------------------------------------------------------------
 The snakefile consists of a few rules:
 
 *   <a name= "RB"><h5>Rule BLAST:</h5></a>
