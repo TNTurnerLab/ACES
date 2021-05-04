@@ -38,10 +38,10 @@ BEFORE EXECUTION:
 
 USERS query Files:
 
-			This is an empty folder generated for user to store all their input query files 
-			that will be ran currently or later. This is an optional folder however, if user 
-			decides to call file outside of this folder, they must include fill path to that 
-			file in config.json - "[query](#query)".
+		This is an empty folder generated for user to store all their input query files 
+		that will be ran currently or later. This is an optional folder however, if user 
+		decides to call file outside of this folder, they must include fill path to that 
+		file in config.json - "[query](#query)".
 
 --------------------------------------------------------------------------------------------------------------------------------	
 1. Pull down ready to run docker image with the code provided below:
