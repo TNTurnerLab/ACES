@@ -587,7 +587,7 @@ These filenames will also have the name of the users query file and threshold va
 		  and their corresponding genome file. for a quick visual, filenames that came from the Ensembl genome 
 		  will have a '#' before its name. The naming scheme for how the ID's were generated follows these patterns. 
 			
-		1. VGP Genomes:
+		1: VGP Genomes:
 			
 		    Example: A87025.1.2
 			
