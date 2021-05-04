@@ -313,6 +313,7 @@ Back to [HOW TO RUN](#HOWRUN)
 **<span style="text-decoration:underline;"><a name="SNAKE"><h4>Snakefile.smk</h4></a></span>**
 
 The user has two options for which snake they can run, Desktop_VS_VGP_Con_Ana25.smk is for running on a local device while VGP_Con_Ana24.smk is used for running on a LSF server. The files execute the same and can be found in the VGP SnakeFiles folder. 
+
 --------------------------------------------------------------------------------------------------------------------------------
 The snakefile consists of a few rules:
 
