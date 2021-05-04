@@ -51,9 +51,9 @@ USERS query Files:
         - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
     * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
 
+<a name = "HTR"> </a>
 
-
-2.<a name = "H"> Have </a> all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
+2.Have all VGP species ‘*-unmasked.fa’ files, and '*.dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
     
     * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
@@ -429,7 +429,7 @@ Tor run on an LSF example:
 	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
 	
 
-Back to [HOW TO RUN](#H)
+Back to [HOW TO RUN #2](#HTR)
 
 
 
