@@ -587,9 +587,9 @@ These filenames will also have the name of the users query file and threshold va
 		  and their corresponding genome file. for a quick visual, filenames that came from the Ensembl genome 
 		  will have a '#' before its name. The naming scheme for how the ID's were generated follows these patterns. 
 			
-			1.VGP Genomes:
+		1. VGP Genomes:
 			
-			Example: A87025.1.2
+		    Example: A87025.1.2
 			
 				1. A: First letter of the species name: Accipiter_gentilis
 				
@@ -598,9 +598,9 @@ These filenames will also have the name of the users query file and threshold va
 				3. .1: Version of file number: .1
 				
 				4. .2: Sequence order number: Second sequence in species parsed out file. 
-			2: Ensembl Genomes:
+		2: Ensembl Genomes:
 			
-			Example: AAver1.0.1
+		    Example: AAver1.0.1
 			
 				1. A: First letter of the species name: Accipiter nisus
 				
