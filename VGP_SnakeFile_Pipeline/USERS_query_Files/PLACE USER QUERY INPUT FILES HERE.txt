@@ -23,8 +23,8 @@
 *    VGP_AND_ENSEMBL_TOGETHER_FILE.txt",                            *
 *-------------------------------------------------------------------*                         
 *|*---------------------------------------------------------------*|*
-*|* "query": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/ |*|*
-*|*  USERS_query_Files/Users_First_Query_Input.fa",              |*|*
+*|*| "query": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/|*|*
+*|*| USERS_query_Files/Users_First_Query_Input.fa",              |*|*
 *|*---------------------------------------------------------------*|*
 *-------------------------------------------------------------------*
 *    "dbs": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/     *   
