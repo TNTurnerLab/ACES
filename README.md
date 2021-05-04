@@ -139,7 +139,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 * [User Required Script Files for Pipeline Execution](#USER_REQUIRED)
 
-	* [SCRIPT FILES REQUIRED](#Script_req)
+	* [SCRIPT FILES](#Script_req)
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETREIVE or PROVIDE](#USER)
   		
@@ -204,13 +204,17 @@ Or can be pulled on LSF with command:
 
 	- $ git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
-_<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES REQUIRED: </h4></a></span>_
+_<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES: </h4></a></span>_
 
-
+These files are given inside of the pipeline In the folder VGP SnakeFile Pipeline:
 
 1. [Snakefile.smk](#SNAKE)
-2. [Dockerfile](#Dock)
-3. [config.json](#config_file)
+2. [config.json](#config_file)
+
+The provided Docker file is given for users to have, but is not required for pipeline execution.
+Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens_pipeline:latest)
+
+1. [Dockerfile](#Dock)
 
 <span style="text-decoration:underline;"><a name="Given"><h4>SUBFILES_GIVEN </h4></a></span>
 
@@ -228,8 +232,9 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 	2. wgetfile_VGP.sh
 
    USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
+   Open and read PLACE USER QUERY INPUT FILES HERE.txt for more information.
     	
-	1. USERES_QUERY_INPUT.fa
+	1. PLACE USER QUERY INPUT FILES HERE.txt
 
 Files listed are maintainer generated files, user can input any customization of each file if the custom file follows the same format as the given files. File 1 contains only and all VGP files. File 2 will contain a mixture of all files found in Ensembl pub/release-103 as well as all files in the VGP database. File 3 will only contain the files pub/release-103. To run user file, make sure to change file pathway for genomesdbs in file [config.json](#config_file).
 
