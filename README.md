@@ -32,7 +32,7 @@ Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneo
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
-Refrence Outline Provided Below to Understand File Placement.
+[Refrence Outline](#O) Provided Below to Understand File Placement.
 
 USERS query Files:
 
@@ -126,7 +126,9 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
         	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
 * View [Output Files Generated](#Outfile) to see which files are generated and more information on each.
-  
+ 
+ <a name="o"> Refrence Outline </a>
+ 
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720) 
 
 **<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
