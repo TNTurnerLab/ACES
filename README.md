@@ -62,7 +62,7 @@ BEFORE EXECUTION:
 
 <a name = "HTT"> 3 </a>. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
-    * *** Files can be modified or changed based on user requirements***
+    * Files can be modified or changed based on user's requirements
 
 <a name = "HTF"> 4 </a>. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
