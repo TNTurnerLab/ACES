@@ -95,7 +95,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 
 11. Tell Docker where data and code are:
 	
-		a. Execute LSF code:
+		* Execute LSF code:
      
      		- $ export LSF_DOCKER_VOLUMES="/home/###USER###//VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/home/##USER##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
      		
@@ -103,7 +103,7 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
 		
 			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
 		
-        b. Run Docker interactively to see if successful:
+        * Run Docker interactively to see if successful:
 	
            	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
 12. Create a group job:
@@ -112,10 +112,10 @@ _<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
     
 13. Run following script:
 
-    	a. MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
+    	* MODIFY SCRIPT TO YOUR SPECIFIC DOCKER:
     
         	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(username/repository:TAGGEDNAME)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
-    	b. Example:
+    	* Example:
     
         	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGPl  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
