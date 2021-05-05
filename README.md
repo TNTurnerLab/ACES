@@ -571,14 +571,14 @@ Filenames will vary:
 	* Report of all files created from rule ‘BLAST’ and if their hits were significant or not. Generated in [Rule genratedReport](#RGR).
 		
 		* After all the genomes have run through a BLASTn search: 
-		  *_Files_Generated_Report.txt will loop through all BLAST outputs and report back if the genome
-		  had met the users threshold value requirement or not. There is a header file at the top.
-		  The header states that the first column is 'No Hit files' meaning that the file had no BLAST 
-		  hits at all, denoted with a star "*", or a sequence in that file did not meet the threshold
-		  requirement. The second are files that had sequences generating a hit and meet the threshold 
-		  requirement set by user. In the third column there is a count of how many sequences where
-		  no hits-to-hits ratio, followed by a print of the users threshold value in the fourth column,
-		  and a total number of sequences seen in the fifth.   
+		  	*_Files_Generated_Report.txt will loop through all BLAST outputs and report back if the genome
+		  	had met the users threshold value requirement or not. There is a header file at the top.
+		  	The header states that the first column is 'No Hit files' meaning that the file had no BLAST 
+		  	hits at all, denoted with a star "*", or a sequence in that file did not meet the threshold
+		  	requirement. The second are files that had sequences generating a hit and meet the threshold 
+		 	requirement set by user. In the third column there is a count of how many sequences where
+		  	no hits-to-hits ratio, followed by a print of the users threshold value in the fourth column,
+		  	and a total number of sequences seen in the fifth.   
 
 4. <h4> '*_Parsed_Final.fa' </h4> 
     
