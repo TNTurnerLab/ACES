@@ -39,8 +39,8 @@ Download time will vary between users.
 		    This is an empty folder generated for user to store all their input query files 
 		    that will be ran currently or later. This is an optional folder however, if user 
 		    decides to call file outside of this folder, they must include fill path to that 
-		    file in config.json: 'query'. Open and read file the inside USERS query Files called
-		    PLACE USER QUERY INPUT FILES HERE.txt for more information and example.
+		    file in config.json: 'query'. Open and read file the inside USERS query Files 
+		    called: PLACE USER QUERY INPUT FILES HERE.txt for more information and example.
 
       
 
