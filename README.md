@@ -216,29 +216,29 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		search. The pipeline will also not handle full genomes as query inputs. 
 
   		   When executing the pipeline, there is a total of 10 files will be generated if ran successfully. 
-		Thesefiles include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the 
+		These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the 
 		user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many 
-		files containedhits, no hits, or did not meet the threshold requirement. This file will also tell 
+		files contained hits, no hits, or did not meet the threshold requirement. This file will also tell 
 		the user exactly how many hits, no hits, and total number of sequences read. After receiving the 
 		‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes 
 		all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will
 		be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a 
-		Graphical Fragment Assembly viewer foranalysis.‘*_Phy_Align.phy’ is like the ‘*_MSA2GFA.fa’, except
+		Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is like the ‘*_MSA2GFA.fa’, except
 		it is a multiple sequence file in PHYLIP format. This file format is required for running the RAXML 
 		analysis. When viewing the PHYLIP file or any RAXML file, please refer to the ‘*_NameKey.txt’. This 
 		document will hold unique names to identify files and sequences in the named files. Changing this 
 		file will not change the names of files or identity names within files. RAXML will generate 4 files:
 		‘*_RAxML_bestTree.RAXML_output.phy’ ‘*_RAxML_info. RAXML_output.phy’ ‘*_RAxML_log.RAXML_output.phy’ 
 		‘*_RAxML_parsimonyTree.RAXML_output.phy’. Each file will contain information regarding to the 
-		program.In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity 
-		on aprotein dataset while using the empirical base frequencies and the LG substitution model. This 
+		program. In the VGP_Con_Ana21.5.smk, RAXML will be running PROTGAMMAWAG GAMMA model of heterogeneity 
+		on a protein dataset while using the empirical base frequencies and the LG substitution model. This 
 		can be changed with in the pipeline under the user’s discretion. For more information regarding 
 		RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic 
 		tree createdfrom RAXML, the user will need to use an external phylogenetic viewer.
 
-		   The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or both
-		from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files produced 
-		may also be looked at in external viewers for deeper, more complexed analysis. 
+		   The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or 
+		both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files 
+		produced may also be looked at in external viewers for deeper, more complexed analysis. 
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
