@@ -641,26 +641,26 @@ These filenames will also have the name of the users query file and threshold va
    	
    		* "*_RAxML_info.RAXML_output.phy"
 		
-			- This file holds information about RAXML and the user generated tree.
+				- This file holds information about RAXML and the user generated tree.
 		    
 		  * "*_RAxML_parsimonyTree.RAXML_output.phy"
 		
-			- A file that can be viewed with a parsimony tree viewer. This file contained 
-			   grouped taxas together based on their minimal evolutionary change.
+				- A file that can be viewed with a parsimony tree viewer. This file contained 
+			   	  grouped taxas together based on their minimal evolutionary change.
 			
 		  * "*_RAxML_log.RAXML_output.phy"
 		
-			- Logs of program running.
+				- Logs of program running.
 			
 		  * "*_RAxML_bestTree.RAXML_output.phy"
 		  	  
 			  REFER TO DOC '*_NameKey.txt' FOR NAMING OF SPECIES IN FILES
 		
-			- This file will be generated last and takes the longest to be made. This file can be 
-			   viewed with a phylogenic tree viewer. It contains a computer-generated tree that is 
-			   presumed to best fit species sequences into their respective branch. In order to view 
-			   the tree, user must use an external viewer of their chose that is designed for viewing 
-			   phylogenetic trees.
+				- This file will be generated last and takes the longest to be made. This file can be 
+			  	  viewed with a phylogenic tree viewer. It contains a computer-generated tree that is 
+			   	  presumed to best fit species sequences into their respective branch. In order to view 
+			   	  the tree, user must use an external viewer of their chose that is designed for viewing 
+			   	  phylogenetic trees.
 			   
     * These files are produced by inputting the '*_Phy_Align.py into the RAxML program. The program is used for creating a sequential and parallel Maximum Likelihood [1] based deduction of large phylogenetic trees.
 
