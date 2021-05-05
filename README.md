@@ -631,7 +631,7 @@ Filenames will vary:
 
 		* ' *_Phy_Align.phy' is a multisequence alignment file that follows the formatting of PHYLIP files.
 		  The file contains a unique id for all the sequences that are hits and found in file 
-		  ' *_Multi_Seq_Align.fa'. This file is used as the input to rule [Rule RAXML](#RR), and can be 
+		  '**_Multi_Seq_Align.fa'. This file is used as the input to rule [Rule RAXML](#RR), and can be 
 		  referenced by user at any time. PHYLIPS formatting consist of two main parts a header that 
 		  describes the dimensions of the alignment, and the sequences itself. To understand ID name, 
 		  reference '*_NameKey.txt'.  
