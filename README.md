@@ -144,7 +144,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
     
         	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
-* View [Output Files Generated](#Outfile) to see which files are generated and more information on each.
+* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated in the genomesdb_input_document. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. 
  
  <a name="o"> Refrence Outline </a>
  
@@ -354,7 +354,7 @@ The user has two options for which snake they can run, Desktop_VS_VGP_Con_Ana25.
 The snakefile consists of a few rules:
 
 *   <a name= "RB"><h5>Rule BLAST:</h5></a>
-    *   Takes an input from genomes.txt as the subject and the given FASTA file as query and Blastn the files to create a blast output file
+    *   Takes a text input from the folder genomes input document as the subject and the given FASTA file as query and Blastn the files to create a blast output file
 *   <a name= "RFT"><h5>Rule findThresh:</h5></a>
     *   This rule will take a value from user input from the threshold.txt and uses the value as a requirement to create a parsed-out file. The rule looks at the evalue in the Blast generated document and will continue with parsing out the sequence if the evalue is the same or smaller than the given threshold.
 *   <a name= "RP"><h5>Rule parse:</h5></a>
