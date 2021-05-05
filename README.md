@@ -395,7 +395,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 *   <a name="genomesdb"><h5>"genomesdb"</h5></a>
     *   This will be the pathway to the one txt document that holds the names all genomes that the user will use in the pipeline.
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
-            *   Pre-generated files with specie named found within the  GitHub. Variations of these files may be used, or one of the pre-generated files could be used as well. 
+            *   Pre-generated files with species names found within the GitHub. Variations of these files may be used, or one of the pre-generated files could be used as well. 
 *   <a name="query"><h5>"query"</h5></a>
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file.
         *   Must be a FASTA file
