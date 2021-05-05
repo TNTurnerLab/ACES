@@ -54,7 +54,7 @@ BEFORE EXECUTION:
 
    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
    
-   		*  - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
+   	  - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
 
 
 <a name = "HTR"> 2 </a>. Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
