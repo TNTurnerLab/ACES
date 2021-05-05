@@ -531,6 +531,7 @@ When ran successfully these output files should be generated in a unique folder 
 This folder will be created in the folder genomesdb_input_document. There will be two folders created inside, one with the tag name of '*_Outputfiles_*' that will hold the output files generated. Another folder named with the tag '*_BLAST_Outputfiles_*' will hold a copy of all blast files generated. User may chose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and treshold value used. 
 
 	Example:
+	   path:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/genomes_input_document/
 
 		Blast folder output:
 
