@@ -144,7 +144,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
     
         	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
-* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated in the genomesdb_input_document. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. 
+* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated in the genomesdb_input_document. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
  
  <a name="o"> Refrence Outline </a>
  
