@@ -639,20 +639,20 @@ These filenames will also have the name of the users query file and threshold va
     
       * The [Rule RAXML](#RR) will generate 4 files total:
    	
-   		 * "*_RAxML_info.RAXML_output.phy"
+   		    * "*_RAxML_info.RAXML_output.phy"
 		
 			- This file holds information about RAXML and the user generated tree.
-			
-		 * "*_RAxML_parsimonyTree.RAXML_output.phy"
+		    
+		    * "*_RAxML_parsimonyTree.RAXML_output.phy"
 		
 			- A file that can be viewed with a parsimony tree viewer. This file contained 
 			   grouped taxas together based on their minimal evolutionary change.
 			
-		 * "*_RAxML_log.RAXML_output.phy"
+		    * "*_RAxML_log.RAXML_output.phy"
 		
 			- Logs of program running.
 			
-		 * "*_RAxML_bestTree.RAXML_output.phy" *REFER TO DOC '*_NameKey.txt' FOR NAMING OF SPECIES IN FILES*
+		    * "*_RAxML_bestTree.RAXML_output.phy" *REFER TO DOC '*_NameKey.txt' FOR NAMING OF SPECIES IN FILES*
 		
 			- This file will be generated last and takes the longest to be made. This file can be 
 			   viewed with a phylogenic tree viewer. It contains a computer-generated tree that is 
