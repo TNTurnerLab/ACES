@@ -362,7 +362,7 @@ The snakefile consists of a few rules:
 *   <a name= "RGR"><h5>Rule generateReport:</h5></a> 
     *   The rule generates a report for the user to allow a visual of what files have met the threshold requirement, or returned a hit, and those who have not hit. If file contains ** before its name, this indicates that there was no hit with the given species file based on the query file. There is also a running count of how many files are seen in total, number of hit files, and number of no-hit files. Number of no-hit files are a combination of files that generated a complete not hit and those who have not meet the threshold requirement. This report will also display the threshold value used. When viewing the file, the user will also notice '#'. Filenames with '#' in front of it indicates these files are specifically from the Ensembl database. Keep in mind that this file will generate if there are no hits on the query sequence that meet the threshold. If no other files aside from this rule, there is no hit, or not enough significant hits.
 *   <a name= "RKD"><h5>Rule KeyDoc:</h5></a>  
-    *   KeyDoc will generate a file that holds the unique filenames used throughout the pipeline. The RAXML function requires a unique naming schema with no more than ten characters being used. The logic of the naming patterns follows one of two naming techniques. Those files produced by the VGP will have the first letter of the species, followed by the last five values of their id number, file number, and sequence place within the file. File who has been pulled from the Ensembl database will appear to have a '#' inside the produced document. These files have a naming pattern like those of the VGP files. The first letter indicates the letter the species name starts with. After the first letter, the last 7 unique consecutive characters of the species name, followed by the sequence place within the file. This file will generate with the word "*NameKey.txt".
+    *   KeyDoc will generate a file that holds the unique filenames used throughout the pipeline. The RAXML function requires a unique naming schema with no more than ten characters being used. The logic of the naming patterns follows one of two naming techniques. Those files produced by the VGP will have the first letter of the species, followed by the last five values of their id number, file number, and sequence place within the file. File who has been pulled from the Ensembl database will appear to have a '#' inside the produced document. These files have a naming pattern like those of the VGP files. The first letter indicates the letter the species name starts with. After the first letter, the last 7 unique consecutive characters of the species name, followed by the sequence place within the file. This file will generate with the word "* NameKey.txt".
 *   <a name= "RQI"><h5>Rule qInput:</h5></a>
     *   qInput will generate an empty file with the suffix as "Parsed_Final.fa". This file will be used in the rule ParsedOut to hold all sequences that meet the threshold requirement. 		
 *   <a name= "RPO"><h5>Rule ParsedOut:</h5></a> 
@@ -372,7 +372,7 @@ The snakefile consists of a few rules:
 *  <a name= "RM2"><h5> Rule muscle2:</h5></a>
     * MUSCLE will take the multi sequence alignment file generated from rule muscle and convert the file into a PHYLIP file format. PHYLIP files are plain text files consisting of 10-character header of the sequence name and the sequence alignment. 
 *   <a name= "RR"><h5> Rule RAXML:</h5></a>
-    * Randomized Accelerated Maximum Likelihood, or RAXML, is a program for creating a phylogenetic analysis of large datasets restricted by maximum likelihood. This specific program will generate tress of best fit which may be used in an external phylogenic tree viewer. The pipeline should export 4 different files, one of which would be labeled ‘*_RAxML_bestTree.RAXML_output.phy’. This file is recommended to use for analysis. RAXML requires many sequences in order to run. If rule does not execute, it may be caused by a small number of sequences in its input file. Try rerunning at lower threshold value or use an external phylogenic tree builder. 
+    * Randomized Accelerated Maximum Likelihood, or RAXML, is a program for creating a phylogenetic analysis of large datasets restricted by maximum likelihood. This specific program will generate tress of best fit which may be used in an external phylogenic tree viewer. The pipeline should export 4 different files, one of which would be labeled ‘*_ RAxML_bestTree.RAXML_output.phy’. This file is recommended to use for analysis. RAXML requires many sequences in order to run. If rule does not execute, it may be caused by a small number of sequences in its input file. Try rerunning at lower threshold value or use an external phylogenic tree builder. 
 *   <a name= "RMG"><h5> Rule MSA2GFA:</h5></a>
     * This rule contains code that is not original to the current maintainer but has been slightly modified for use in the pipeline. Please see Citation for credit, and link to creators GitHub repository. This rule will take the generated multi sequence alignment file and convert it to a Graphical Fragment Assembly file. To view the file, the user must use an external GFA viewer for further analysis. 
 
@@ -433,7 +433,7 @@ The files named below will be used to download all files needed for this pipelin
 
 **<span style="text-decoration:underline;"><a name="VGP"><h3>wgetfile_VGP.sh</h3></a></span>**
 
-This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz’ files from the VGP rapid release archive. This shell file also contains the command used to extract the ‘*-unmasked.fa.gz’ files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip *-unmasked.fa.gz. Modification to these commands is a must and should occur before running. The command used could be written into a snake, written directly onto the command line , or by running a file on the command line with code given in DOWNLOADING VGP AND ENSEMBL SPECIES FILES.Shell command is found in the Genomes folder.
+This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz’ files from the VGP rapid release archive. This shell file also contains the command used to extract the ‘*-unmasked.fa.gz’ files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip * unmasked.fa.gz. Modification to these commands is a must and should occur before running. The command used could be written into a snake, written directly onto the command line , or by running a file on the command line with code given in DOWNLOADING VGP AND ENSEMBL SPECIES FILES.Shell command is found in the Genomes folder.
 
 
 
@@ -443,7 +443,7 @@ This file contains the shell file that was used to pull all ‘*-unmasked.fa.gz�
 
 **<span style="text-decoration:underline;"><a name="ENS"><h3>wgetfile_ensembl.sh</h3></a></span>**
 
-This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '*.dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
+This script is used to pull all '* .dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '* .dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
 
 
 
@@ -455,9 +455,9 @@ This script is used to pull all '*.dna.toplevel.fa' from Ensembl's pub/release-1
 	
 					**** FILES UNZIPPED ARE ABOUT 458.93 GBS ***
 
-Explanation of wgetfile_*.sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_*.sh for more information.
+Explanation of wgetfile_* .sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_* .sh for more information.
 
-Open /Genomes folder and execute the following commands:
+Open /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Genomes folder and execute the following commands:
 
 Before running either file please make sure file is executable this can be done with:
 
