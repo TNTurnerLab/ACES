@@ -50,7 +50,7 @@ BEFORE EXECUTION:
 [Refrence Outline](#O) Provided Below to Better Understand Pipeline File Locations.
 
 
-1 . Pull down ready to run docker image with the code provided below:
+1 .  Pull down ready to run docker image with the code provided below:
 
    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, 
       follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
@@ -58,15 +58,15 @@ BEFORE EXECUTION:
     	 - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
 
 
-<a name = "HTR"> 2 </a>. Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
+<a name = "HTR"> 2 </a>.  Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
     
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
-<a name = "HTT"> 3 </a>. Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 3 </a>.  Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * Files can be modified or changed based on user's requirements
 
-<a name = "HTF"> 4 </a>. Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+<a name = "HTF"> 4 </a>.  Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
    * Reference FILES GUIDE: [config](#config_file).json
         
