@@ -570,7 +570,7 @@ Filenames will vary:
     
 	* Report of all files created from rule ‘BLAST’ and if their hits were significant or not. Generated in [Rule genratedReport](#RGR).
 		
-		* After all the genomes have run through a BLASTn search,   *_Files_Generated_Report.txt will loop 
+		* After all the genomes have run through a BLASTn search, *_Files_Generated_Report.txt will loop 
 		  through all BLAST outputs and report back if the genome had met the users threshold value requirement
 		  or not. There is a header file at the top. The header states that the first column is 'No Hit files' 
 		  meaning that the file had no BLAST hits at all, denoted with a star '*', or a sequence in that file 
