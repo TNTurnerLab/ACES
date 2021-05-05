@@ -425,8 +425,8 @@ The files named below will be used to download all files needed for this pipelin
 		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
 		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
 		Please insure there is enough storage for all files the minimum recomended free storage
-		should be  approximitly 500 BG. This insures all downloaded and created files have enough
-		stroage space on users device.
+		should be approximitly 500 GB. This insures all downloaded and created files have enough
+		stroage space on users device. There are 511 files in total between the two databases.
 		
 		
 --------------------------------------------------------------------------------------------------------------------------------
