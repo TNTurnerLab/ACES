@@ -51,6 +51,7 @@ BEFORE EXECUTION:
 
 
 1 . Pull down ready to run docker image with the code provided below:
+
 	* This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
 
         - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
