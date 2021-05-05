@@ -103,7 +103,7 @@ BEFORE EXECUTION:
 8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
 
-_<span style="text-decoration:underline;"><h4>To Run on a Local Machine:</h4></span>_
+_<span style="text-decoration:underline;"><h3>To Run on a Local Machine:</h3></span>_
 
 
 9. Run Dockerfile command - CHECK: 
@@ -114,7 +114,7 @@ _<span style="text-decoration:underline;"><h4>To Run on a Local Machine:</h4></s
 
 		- $ docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
-_<span style="text-decoration:underline;"><h4>To Run On LSF:</h4></span>_
+_<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 
 
 
