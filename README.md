@@ -205,17 +205,17 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP),
 		and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, 
 		conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that 
-		allows the user to input any value to a threshold, to only parse out files if it meets the set 
-		threshold requirement. This allows the user to only MUSCLE align if the files are at, or below 
+		allows the user to input any value to a threshold delimitor that will parse out files if it meets
+		the threshold requirement. This allows the user to only MUSCLE align if the files are at, or below 
 		threshold requirement. The pipeline also can run files that are found on Ensembl from their 
 		pub/release-103. Specifically, those files with'*.dna.toplevel.fa' suffix. These files are the 
 		equivalent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 
 		files together, however user can edit those files found in the sub-file folder. When choosing a 
-		query file to blast against, please not that LINE element repeats are not able to be run on this 
+		query file to blast against, full genome foles nor LINE element repeats are not able to be run on this 
 		pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn 
 		search. The pipeline will also not handle full genomes as query inputs. 
 
-  		   When executing the pipeline, there are a total of 10 files will be generated if ran successfully. 
+  		   When executing the pipeline, there is a total of 10 files will be generated if ran successfully. 
 		Thesefiles include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the 
 		user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many 
 		files containedhits, no hits, or did not meet the threshold requirement. This file will also tell 
