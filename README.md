@@ -6,7 +6,7 @@ Maintainer: Elvisa Mehinovic
 <h3>Minimum Compute Requirements: </h3>
 	
 	Linux Machine with 30GB RAM, 500GB FREE Storage Space, recomended 
-	that user has a dual/quad core, 64-bit, x86 CPU or better
+	that user has a dual or quad core, 64-bit, x86 CPU or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
