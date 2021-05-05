@@ -528,13 +528,25 @@ Back to [HOW TO RUN #3](#HTT)
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
 When ran successfully these output files should be generated in a unique folder with a naming scheme related to user inputted files and input threshold:
-This folder will be created in the folder genomesdb_input_document.
+This folder will be created in the folder genomesdb_input_document. There will be two folders created inside, one with the tag name of '*_Outputfiles_*' that will hold the output files generated. Another folder named with the tag '*_BLAST_Outputfiles_*' will hold a copy of all blast files generated. User may chose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and treshold value used. 
 
+	Example:
+
+		Blast folder output:
+
+			VGP_AND_ENSEMBL_TOGETHER.txt__BLAST_Outputfiles_For_MyQUERY.fa_0.001
+
+		Output files folder:
+
+			VGP_AND_ENSEMBL_TOGETHER.txt__Outputfiles_For_MyQUERY.fa_0.001
 
 View [FILES GUIDE](#FILES_GUIDE): for more information.
 
-Filenames may vary:
-These filenames will also have the name of the users query file and threshold value in the position where the star is denoted.
+--------------------------------------------------------------------------------------------------------------------------------
+
+Filenames will vary:
+
+	These filenames will have the name of the users query file and threshold value in the position where the star is denoted.
 
 1. <h4> '*_Multi_Seq_Align.fa' </h4> 
     
