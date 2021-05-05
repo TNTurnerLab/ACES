@@ -50,7 +50,7 @@ BEFORE EXECUTION:
 [Refrence Outline](#O) Provided Below to Better Understand Pipeline File Locations.
 
 
-1 .  Pull down ready to run docker image with the code provided below:
+1 .Pull down ready to run docker image with the code provided below:
 
    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, 
       follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
@@ -58,15 +58,15 @@ BEFORE EXECUTION:
     	 - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
 
 
-<a name = "HTR"> 2 </a>.  Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
+<a name = "HTR"> 2 </a>.Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
     
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
-<a name = "HTT"> 3 </a>.  Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 3 </a>.Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * Files can be modified or changed based on user's requirements
 
-<a name = "HTF"> 4 </a>.  Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+<a name = "HTF"> 4 </a>.Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
     
    * Reference FILES GUIDE: [config](#config_file).json
         
@@ -85,33 +85,33 @@ BEFORE EXECUTION:
    	* tH: 
           * Defualt is set to 0.001. User may change if desired. 
 
-5. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
+5 Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
     * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
 
-6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
+6.Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
     
     * Default file is set to run all VGP and Ensembl genomes.
 	* Modify and/or close this file when content.
 
-7. Users must upload or have handy their {query} file for Blast. 
+7.Users must upload or have handy their {query} file for Blast. 
     
     * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file can not be full genomes nor LINE repeat elements. 
 
-8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
+8.Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
 
 _<span style="text-decoration:underline;"><h3>To Run on a Local Machine:</h3></span>_
 
 
-9. Run Dockerfile command - CHECK: 
+9.Run Dockerfile command - CHECK: 
 
 		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
-10. Run Desktop_VS_VGP_Con_Ana25.smk:
+10.Run Desktop_VS_VGP_Con_Ana25.smk:
 
 		- $ docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
@@ -119,7 +119,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 
 
 
-11. Tell Docker where data and code are:
+11.Tell Docker where data and code are:
 	
 		* Execute LSF code:
      
@@ -132,11 +132,11 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
         * Run Docker interactively to see if successful:
 	
            	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
-12. Create a group job:
+12.Create a group job:
 
     	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
     
-13. Run following script:
+13.Run following script:
 
     	* MUST MODIFY SCRIPT TO RUN:
     
