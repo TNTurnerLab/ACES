@@ -662,7 +662,7 @@ These filenames will also have the name of the users query file and threshold va
 			   	  the tree, user must use an external viewer of their chose that is designed for viewing 
 			   	  phylogenetic trees.
 			   
-    * These files are produced by inputting the '*_Phy_Align.py into the RAxML program. The program is used for creating a sequential and parallel Maximum Likelihood [1] based deduction of large phylogenetic trees.
+    * These files are produced by inputting the '*_Phy_Align.py' into the RAxML program. The program is used for creating a sequential and parallel Maximum Likelihood [1] based deduction of large phylogenetic trees.
 
 9. <h4> Done.log.out and #.log.out </h4> 
     
