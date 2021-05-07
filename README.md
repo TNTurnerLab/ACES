@@ -5,18 +5,18 @@ Maintainer: Elvisa Mehinovic
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
 	
-	30GB RAM, 500GB FREE storage space, recommended a dual or quad core, 64-bit, x86 CPU, equivalent or better
+	30GB RAM, 1.2TB FREE storage space, recommended a dual or quad core, 64-bit, x86 CPU, equivalent or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
 --------------------------------------------------------------------------------------------------------------------------------
-Approximate Runtime Seen Running All 511 Genome Inputs: 
+Approximate Runtime Seen Running All 529 Genome Inputs: 
 
-	Minimum: 1.5 hours
+	Minimum: 3.5 hours
 
 	Maximum: 12+ hours
 
-	Average: 4 to 5 Hours
+	Average: 6 Hours
 
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc. 
 
@@ -48,13 +48,25 @@ BEFORE EXECUTION:
 
 [Reference Outline](#O) Provided Below to Better Understand Pipeline File Locations.
 
+Start by cloning VGP Conservation Analysis GitHub:
+
+All required script files will be available on GitHub to be pulled on a desktop by using:
+
+	wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+
+Or can be pulled on LSF with command:
+
+	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+
+
+
 
 1. Pull down ready to run docker image with the code provided below:
 
    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, 
       follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
    
-    	 - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
+    	 docker pull tnturnerlab/vgp_ens_pipeline:latest 
 
 
 <a name = "HTR"> 2. </a>   Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
@@ -108,11 +120,11 @@ _<span style="text-decoration:underline;"><h3>To Run on a Local Machine:</h3></s
 
 9. Run Dockerfile command - CHECK: 
 
-		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
+		docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
-		- $ docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
+		docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
 _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 
@@ -422,11 +434,11 @@ The files named below will be used to download all files needed for this pipelin
 
 						***WARNING:***
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
-		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
-		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
+		The total storage needed for downloading all VGP files is estimated to be 
+		The total storage needed for downloading all Ensembl file is estimated at 
 		Please insure there is enough storage for all files the minimum recommended free storage
-		should be approximately 500 GB. This insures all downloaded and created files have enough
-		storage space on users device. There are 511 files in total between the two databases.
+		should be approximately 1.2TB. This insures all downloaded and created files have enough
+		storage space on users device. There are 529 files in total between the two databases.
 		
 		
 --------------------------------------------------------------------------------------------------------------------------------
