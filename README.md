@@ -122,27 +122,27 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 	
 		* Execute LSF code:
      
-     		- $ export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
+     		export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
      		
 		Example: 
 		
-			- $ export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
+		export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home 	
 		
         * Run Docker interactively to see if successful:
 	
-           	- $. bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
+           	bsub -Is -R 'rusage[mem=50GB]' -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /bin/bash
 12. Create a group job:
 
-    	- $ bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
+    	bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
     
 13. Run following script:
 
     	* MUST MODIFY SCRIPT TO RUN:
     
-        	- $ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
     	* Example:
     
-        	- $  bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
 * View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated in the genomesdb_input_document. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
  
@@ -248,11 +248,11 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 
 All required script files will be available on GitHub to be pulled on a desktop by using:
 
-	- $ wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+	wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
 Or can be pulled on LSF with command:
 
-	- $ git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
 _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES: </h4></a></span>_
 
@@ -461,23 +461,23 @@ Open /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Genomes folder and execut
 
 Before running either file please make sure file is executable this can be done with:
 
-        - $ chmod +x *.sh
+        chmod +x *.sh
 
 To run locally to get Ensembl files:
 
-	- $ ./wgetfile_ensembl.sh 
+	./wgetfile_ensembl.sh 
 	
 Tor run on an LSF example:
 
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_ensembl.sh
+	bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_ensembl.sh
 	
 To run locally to get VGP files:
 
-	- $ ./wgetfile_VGP.sh 
+	./wgetfile_VGP.sh 
 	
 Tor run on an LSF example:
 
-	- $  bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
+	bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
 	
 
 Back to [HOW TO RUN #2](#HTR)
