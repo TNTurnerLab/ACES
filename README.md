@@ -5,7 +5,7 @@ Maintainer: Elvisa Mehinovic
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
 	
-	30GB RAM, 500GB FREE storage space, recomended a dual or quad core, 64-bit, x86 CPU, equivalent or better
+	30GB RAM, 500GB FREE storage space, recommended a dual or quad core, 64-bit, x86 CPU, equivalent or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
@@ -18,7 +18,7 @@ Approximate Runtime Seen Running All 511 Genome Inputs:
 
 	Average: 4 to 5 Hours
 
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc. 
 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
@@ -46,7 +46,7 @@ Download time will vary between users.
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
-[Refrence Outline](#O) Provided Below to Better Understand Pipeline File Locations.
+[Reference Outline](#O) Provided Below to Better Understand Pipeline File Locations.
 
 
 1. Pull down ready to run docker image with the code provided below:
@@ -61,17 +61,17 @@ BEFORE EXECUTION:
     
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
-<a name = "HTT"> 3. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 3. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * Files can be modified or changed based on user's requirements
 
-<a name = "HTF"> 4. </a>   Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+<a name = "HTF"> 4. </a>   Configure all file pathways in file [config](#config_file).json. This file can be in VGP SnakeFile Pipeline.
     
    * Reference FILES GUIDE: [config](#config_file).json
         
 	* genomesdb: 
           * currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all
-            VGP and Ensembl genomes agaist users query sequence.
+            VGP and Ensembl genomes against users query sequence.
    	
 	* query: 
           * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder,
@@ -82,14 +82,14 @@ BEFORE EXECUTION:
           * Do not edit this path
            
    	* tH: 
-          * Defualt is set to 0.001. User may change if desired. 
+          * Default is set to 0.001. User may change if desired. 
 
 5. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
     * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
 
-6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
+6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
     
     * Default file is set to run all VGP and Ensembl genomes.
 	* Modify and/or close this file when content.
@@ -98,7 +98,7 @@ BEFORE EXECUTION:
     
     * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
-	* Query file can not be full genomes nor LINE repeat elements. 
+	* Query file cannot be full genomes nor LINE repeat elements. 
 
 8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
@@ -205,13 +205,13 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP),
 		and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, 
 		conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that 
-		allows the user to input any value to a threshold delimitor that will parse out files if it meets
+		allows the user to input any value to a threshold delimiter that will parse out files if it meets
 		the threshold requirement. This allows the user to only MUSCLE align if the files are at, or below 
 		threshold requirement. The pipeline also can run files that are found on Ensembl from their 
 		pub/release-103. Specifically, those files with'*.dna.toplevel.fa' suffix. These files are the 
 		equivalent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 
 		files together, however user can edit those files found in the sub-file folder. When choosing a 
-		query file to blast against, full genome foles nor LINE element repeats are not able to be run on this 
+		query file to blast against, files larger than 1MB, or 1,000,000 kb, nor repeats are not able to be run on this 
 		pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn 
 		search. The pipeline will also not handle full genomes as query inputs. 
 
@@ -234,7 +234,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		on a protein dataset while using the empirical base frequencies and the LG substitution model. This 
 		can be changed with in the pipeline under the user’s discretion. For more information regarding 
 		RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic 
-		tree createdfrom RAXML, the user will need to use an external phylogenetic viewer.
+		tree created from RAXML, the user will need to use an external phylogenetic viewer.
 
 		   The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or 
 		both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files 
@@ -256,7 +256,7 @@ Or can be pulled on LSF with command:
 
 _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES: </h4></a></span>_
 
-These files are given inside of the pipeline In the folder VGP SnakeFile Pipeline:
+These files are given inside of the pipeline in the folder VGP SnakeFile Pipeline:
 
 1. [Snakefile.smk](#SNAKE)
 2. [config.json](#config_file)
@@ -424,9 +424,9 @@ The files named below will be used to download all files needed for this pipelin
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
 		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
 		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-		Please insure there is enough storage for all files the minimum recomended free storage
-		should be approximitly 500 GB. This insures all downloaded and created files have enough
-		stroage space on users device. There are 511 files in total between the two databases.
+		Please insure there is enough storage for all files the minimum recommended free storage
+		should be approximately 500 GB. This insures all downloaded and created files have enough
+		storage space on users device. There are 511 files in total between the two databases.
 		
 		
 --------------------------------------------------------------------------------------------------------------------------------
@@ -528,7 +528,7 @@ Back to [HOW TO RUN #3](#HTT)
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
 When ran successfully these output files should be generated in a unique folder with a naming scheme related to user inputted files and input threshold:
-This folder will be created in the folder genomesdb_input_document. There will be two folders created inside, one with the tag name of '*_Outputfiles_*' that will hold the output files generated. Another folder named with the tag '*_BLAST_Outputfiles_*' will hold a copy of all blast files generated. User may chose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and treshold value used. 
+This folder will be created in the folder genomesdb_input_document. There will be two folders created inside, one with the tag name of '*_Outputfiles_*' that will hold the output files generated. Another folder named with the tag '*_BLAST_Outputfiles_*' will hold a copy of all blast files generated. User may choose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and threshold value used. 
 
 	Example:
 	   path:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/genomes_input_document/
@@ -659,7 +659,7 @@ Filenames will vary:
 		* "*_RAxML_parsimonyTree.RAXML_output.phy"
 		
 				- A file that can be viewed with a parsimony tree viewer. This file contained 
-			   	  grouped taxas together based on their minimal evolutionary change.
+			   	  grouped taxa together based on their minimal evolutionary change.
 			
 		* "*_RAxML_log.RAXML_output.phy"
 		
