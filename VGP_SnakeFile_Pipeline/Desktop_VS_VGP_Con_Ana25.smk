@@ -24,9 +24,9 @@ dbp= dbs
 dbsFind = dbp 
 #################
 
-end =  str(config["genomesdb"]) + '_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+end =  str(config["Output"]) + '_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
-mid = str(config["genomesdb"]) + '_BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+mid = str(config["Output"]) + '_BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
@@ -193,6 +193,16 @@ rule parse: #Parses out wanted information to a temp file for later use
                                 spID = spID[5:]
                                 spID = spID 
 
+                            elif 'Cyprinus_carpio_hebao_red.Hebao_red_carp_1.0.dna.toplevel.fa' in f.name:
+
+                                spNID = 'C'
+                                spID = 'H_red'
+                            
+                            elif 'Cyprinus_carpio_german_mirror.German_Mirror_carp_1.0.dna.toplevel.fa' in f.name:
+
+                                spNID = 'C'
+                                spID = 'G_Mir'
+                                
                         #If file is from ensemble naming
                             else:
                                 species = f.name
