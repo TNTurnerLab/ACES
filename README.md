@@ -12,7 +12,7 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline 
 --------------------------------------------------------------------------------------------------------------------------------
 Approximate Runtime Seen Running All 529 Genome Inputs: 
 
-	Minimum: 3.5 hours
+	Minimum: 4.5 hours
 
 	Maximum: 12+ hours
 
@@ -57,7 +57,6 @@ All required script files will be available on GitHub to be pulled on a desktop 
 Or can be pulled on LSF with command:
 
 	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
-
 
 
 
@@ -434,8 +433,8 @@ The files named below will be used to download all files needed for this pipelin
 
 						***WARNING:***
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
-		The total storage needed for downloading all VGP files is estimated to be 
-		The total storage needed for downloading all Ensembl file is estimated at 
+		The total storage needed for downloading all VGP files is estimated to be 334.75 GB
+		The total storage needed for downloading all Ensembl file is estimated at 669.18 GB
 		Please insure there is enough storage for all files the minimum recommended free storage
 		should be approximately 1.2TB. This insures all downloaded and created files have enough
 		storage space on users device. There are 529 files in total between the two databases.
@@ -459,13 +458,13 @@ This script is used to pull all '* .dna.toplevel.fa' from Ensembl's pub/release-
 
 
 
-***After execution, there should be 312 species files in the given directory.***
+***After execution, there should be 311 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="DOWNF"><h3>DOWNLOADING VGP AND ENSEMBL SPECIES FILES: </h3></a></span>**
 	
-					**** FILES UNZIPPED ARE ABOUT 458.93 GBS ***
+					**** FILES UNZIPPED ARE ABOUT 1.2 TB GBS ***
 
 Explanation of wgetfile_* .sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_* .sh for more information.
 
