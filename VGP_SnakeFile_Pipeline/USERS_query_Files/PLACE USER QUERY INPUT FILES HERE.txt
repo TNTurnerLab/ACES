@@ -42,6 +42,6 @@
 ***   The File Users_First_Query_Input.fa Will Now Be Used AS     *** 
 ***   The Query File For Genome Blasting. It Is Also Important    *** 
 ***   To Note That The Pipeline Is Not Intented For LINE Element  ***  
-***   Repeats Nor Full Genome Blasting. Thus User Query Input     *** 
-***               Files Should Not Contain Any.                   ***
+***   Repeats Nor Genome larger than 1MB Blasting. Thus User      *** 
+***           Query Input Files Should Not Contain Any.           ***
 *********************************************************************
