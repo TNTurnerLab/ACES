@@ -104,7 +104,7 @@ Or can be pulled on LSF with command:
     
     * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
-	* The threshold isvalue of the expected number of chance matches in a random model. For more information about threshold values visit this link: http://pathblast.org/docs/e_value.html
+	* The threshold is a value of the expected number of chance matches in a random model. For more information about threshold values visit this link: http://pathblast.org/docs/e_value.html
 
 6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
     
@@ -659,7 +659,7 @@ Filenames will vary:
 		  referenced by user at any time. PHYLIPS formatting consist of two main parts a header that 
 		  describes the dimensions of the alignment, and the sequences itself. To understand ID name, 
 		  reference *_NameKey.txt .  
-	* '* _ Phy_Align.phy.reduced' may also be created, but is not needed for pipeline execution. 
+	* '* _ Phy_Align.phy.reduced' may also be created, but is not needed for pipeline execution. This file is a compressed form of the PHYLIPS file created.
 	
 7. <h4> '*_MSA2GFA.gfa' </h4>  
 
@@ -726,6 +726,11 @@ https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
 
 https://github.com/fawaz-dabbaghieh/msa_to_gfa.
 
+https://www.ncbi.nlm.nih.gov/books/NBK279690/
+
+http://www.drive5.com/muscle/muscle.html
+
+http://pathblast.org/docs/e_value.html
 
 
 
