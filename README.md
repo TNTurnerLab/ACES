@@ -38,7 +38,8 @@ Download time will vary between users.
 		    This is an empty folder generated for user to store all their input query files 
 		    that will be ran currently or later. This is an optional folder however, if user 
 		    decides to call file outside of this folder, they must include fill path to that 
-		    file in config.json: 'query'. 
+		    file in config.json: 'query'. Query file may not be a repeating sequence nor 
+		    a file larger than 1MB. These files will not generate accurate information.
       
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -86,6 +87,8 @@ Or can be pulled on LSF with command:
           * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder,
             USER query Files. When editing this portion of the config, please only input the filename after the last /.
 	        User does not need to edit path unless they did not place their input file in provided folder.
+	  * Input file may not be a repeating sequence nor a file larger than 1MB. These files will not generate
+	    accurate information.
            
    	* dbs: 
           * Do not edit this path
@@ -159,7 +162,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
         	bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
 14. Output files will be generated in the Output folder provided in this pipeline.
-	* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated inside the empty Output Folder provided in this pipeline. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
+	* View [Output Files Generated: Output](#Outfile) to see which files are generated and more information on each. Output files will be generated inside the empty Output Folder provided in this pipeline. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
  
  <a name="o"> Refrence Outline </a>
  
@@ -209,7 +212,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 	
 * [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE)
 
-* [Output Files Generated](#Outfile)
+* [Output Files Generated: Output](#Outfile)
 * [More Information](#more)
 * [Citations](#cite)
 		
@@ -413,7 +416,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
             *   Pre-generated files with species names found within the GitHub. Variations of these files may be used, or one of the pre-generated files could be used as well. 
 *   <a name="query"><h5>"query"</h5></a>
-    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file.
+    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file. Users input file may not be a repeating sequence nor a file larger than 1MB.
         *   Must be a FASTA file
 *   <a name="Output"><h5>"OP"</h5></a>
     *   Blank file that will hold pipeline generated outputs. 
@@ -543,7 +546,7 @@ Back to [HOW TO RUN #3](#HTT)
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-**<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
+**<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: Output </h3></a></span>**
 
 The folder named Output will contain all output files generated from the pipeline. When ran successfully these output files should be generated with a unique naming scheme related to user inputted files and input threshold.
 
@@ -656,6 +659,7 @@ Filenames will vary:
 		  referenced by user at any time. PHYLIPS formatting consist of two main parts a header that 
 		  describes the dimensions of the alignment, and the sequences itself. To understand ID name, 
 		  reference *_NameKey.txt .  
+	* '* _ Phy_Align.phy.reduced' may also be created, but is not needed for pipeline execution. 
 	
 7. <h4> '*_MSA2GFA.gfa' </h4>  
 
