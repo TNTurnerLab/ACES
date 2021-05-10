@@ -301,6 +301,7 @@ Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens
 	2. wgetfile_VGP.sh
 
    USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
+   *** Files should not contain repeating sequences nor file that is over 1MB large ***
    Open and read PLACE USER QUERY INPUT FILES HERE.txt for more information.
     	
 	1. PLACE USER QUERY INPUT FILES HERE.txt
