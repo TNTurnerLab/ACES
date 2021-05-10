@@ -24,9 +24,9 @@ dbp= dbs
 dbsFind = dbp 
 #################
 
-end =  str(config["Output"]) + '_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
-mid = str(config["Output"]) + '_BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
@@ -252,8 +252,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             threshNOHitCnt = 0
             totalFileCount = 0
             Threshkey = {}
-            NoHitThresh = ['+']
-            HitThresh = ['+']
+            NoHitThresh = ['--------------------------------------------------']
+            HitThresh = ['--------------------------------------------------']
             
             #Opens Tresh.txt file to view user input        
             ln = thresh
@@ -283,7 +283,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 hf = 'Hit File'
                 ts = 'Total Number Of Sequences Seen'+ '\t'
                 
-                header = (NohitFile + '\t' +  hitFile  + nhf + '/' + hf + '\t' + tv + '\t' +  ts + '\n')
+                header = (NohitFile + '\t' +  hitFile  + nhf + ' / ' + hf + ' | ' + tv + ' | ' +  ts + '\n')
                 rp.write(header)
                 
                 #Loop through files in input 
@@ -296,6 +296,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                     with open(file, 'r') as fp:
    
                         for line in fp:
+			   
 
                             #Converting evalues of file to check if its a hit file or not                             
                             if 'Expect' in line:
@@ -316,47 +317,62 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                                         evalue= float(evalue)
                                         var= float(var)
+                                        
 
                                         #If the file does not meet threshold requirmen, strip name and add name to NO HITS list, + add 1 to counters
                                         if evalue > var:
-
+					    
                                             fname = ''
                                             #If files are from VGP print file:
                                             if '-unmasked' in fp.name:
                         
                                                 fname = (str(fp.name).rsplit('-unmasked')[0])
+                                            
+						
 
                                             #If files are from ensemble print files with #:  
                                             else:
 
                                                 fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname = '#' + fnam
+                                            
+                                                
 
                                             #Increases count and stores filenames
-                                            NoHitThresh.append(fname)
+                                            
+                                            NoHitThresh.append( fname )
                                             threshNOHitCnt +=1
                                             totalFileCount +=1
+                                            
+                                            
+					    
 
                                         #If the file meets threshold requirment, strip name and add name to HITS list, + add 1 to counters                                                                                                   
                                         else:
-
+                                            
                                             fname = ''
 
                                             #If files are from VGP print file:
                                             if '-unmasked' in fp.name:
 
                                                 fname = (str(fp.name).rsplit('-unmasked')[0])
+                                            
+                                                
 
                                             #If files are from ensemble print files with #: 
                                             else:
 
                                                 fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname='#'+fnam
+                                           
+                                                
                                             
                                             #Increases count and stores filenames
-                                            HitThresh.append(fname)
+                                            HitThresh.append( fname )
                                             ThreshHitCount +=1
                                             totalFileCount  +=1
+                                            
+					    
 
                             #If files have 0 possible hits, or 'No Hits', strip name, add '**' in front of filename, and add name to NO HITS list, + add 1 to counters 
                             elif 'No hits' in line:
@@ -392,21 +408,16 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 Hit = str(HitThresh[0]) + space
                 Hit = Hit[:50]
                 
-                ln =  space + '\t' + space + '\t' +  tnhc + '/' + thc+ '\t' + '\t' + str(Threshkey) + '\t' + tc +'\n'
+                ln =  space + '\t' + space + ' ' +  tnhc + ' / ' + thc+ '  |  ' + str(Threshkey) + '  |  ' + tc +'\n'
                 
-                #If no hits are found changes counter from -1 to 0 or returns respective values
-                if '-1' in ln:
-                    ln = ln.replace('-1','0')
-
-                    rp.write(ln)
-                else:
-                    rp.write(ln)
+               
+                rp.write(ln)
 
                 printthis = Nohit + '\t' + Hit + '\n'
                 rp.write(printthis)
 
                 #New line For Hit Thresh    
-                if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 1 :
+                if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 0 :
                     x = 1
                     
                     while x < len(HitThresh):
@@ -439,7 +450,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                             
                 
                 #New line For No Hit Thresh                
-                if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 1 :
+                if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 0 :
                     x = 1
 
                     while x < len(NoHitThresh):
@@ -467,7 +478,29 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                         #Illeterates and writes lines
                         x += 1 
-                        rp.write(ln)   
+                        rp.write(ln) 
+
+                if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
+		    
+                    x = 1 
+
+		            while x < len(NoHitThresh): 
+
+                        if x <= len(HitThresh):
+                            ln=''
+                            space = '                                                  '
+                            Nohit = str(NoHitThresh[x]) + space
+                            Nohit = Nohit[:50]
+                            Hit = str(HitThresh[x]) + space
+                            Hit = Hit[:50]
+                            #Final line for printing
+                            ln =  (Nohit+ '\t' + Hit + '\n')
+			
+
+                        #Illeterates and writes lines
+                        x += 1 
+                        rp.write(ln) 
+			  
         
                 #Close the files
                 fp.close()

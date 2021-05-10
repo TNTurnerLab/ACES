@@ -467,7 +467,28 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         #Illeterates and writes lines
                         x += 1 
                         rp.write(ln)   
-        
+                
+                if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
+		    
+                    x = 1 
+
+		            while x < len(NoHitThresh): 
+
+                        if x <= len(HitThresh):
+                            ln=''
+                            space = '                                                  '
+                            Nohit = str(NoHitThresh[x]) + space
+                            Nohit = Nohit[:50]
+                            Hit = str(HitThresh[x]) + space
+                            Hit = Hit[:50]
+                            #Final line for printing
+                            ln =  (Nohit+ '\t' + Hit + '\n')
+			
+
+                        #Illeterates and writes lines
+                        x += 1 
+                        rp.write(ln) 
+
                 #Close the files
                 fp.close()
                         
