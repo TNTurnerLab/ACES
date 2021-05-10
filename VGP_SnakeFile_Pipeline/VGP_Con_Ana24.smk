@@ -28,7 +28,6 @@ end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config[
 
 mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
-
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB = []
@@ -296,7 +295,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                     with open(file, 'r') as fp:
    
                         for line in fp:
-			   
 
                             #Converting evalues of file to check if its a hit file or not                             
                             if 'Expect' in line:
@@ -318,7 +316,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                         evalue= float(evalue)
                                         var= float(var)
                                         
-
                                         #If the file does not meet threshold requirmen, strip name and add name to NO HITS list, + add 1 to counters
                                         if evalue > var:
 					    
@@ -328,25 +325,18 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         
                                                 fname = (str(fp.name).rsplit('-unmasked')[0])
                                             
-						
-
                                             #If files are from ensemble print files with #:  
                                             else:
 
                                                 fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname = '#' + fnam
-                                            
-                                                
 
                                             #Increases count and stores filenames
                                             
                                             NoHitThresh.append( fname )
                                             threshNOHitCnt +=1
                                             totalFileCount +=1
-                                            
-                                            
-					    
-
+    
                                         #If the file meets threshold requirment, strip name and add name to HITS list, + add 1 to counters                                                                                                   
                                         else:
                                             
@@ -356,23 +346,17 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                             if '-unmasked' in fp.name:
 
                                                 fname = (str(fp.name).rsplit('-unmasked')[0])
-                                            
-                                                
 
                                             #If files are from ensemble print files with #: 
                                             else:
 
                                                 fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname='#'+fnam
-                                           
-                                                
-                                            
+                               
                                             #Increases count and stores filenames
                                             HitThresh.append( fname )
                                             ThreshHitCount +=1
                                             totalFileCount  +=1
-                                            
-					    
 
                             #If files have 0 possible hits, or 'No Hits', strip name, add '**' in front of filename, and add name to NO HITS list, + add 1 to counters 
                             elif 'No hits' in line:
@@ -394,7 +378,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 threshNOHitCnt +=1
                                 totalFileCount +=1
                                      
-
                 #Renaming varibles for printing
                 tnhc= str(threshNOHitCnt) 
                 thc = str(ThreshHitCount)
@@ -409,8 +392,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 Hit = Hit[:50]
                 
                 ln =  space + '\t' + space + ' ' +  tnhc + ' / ' + thc+ '  |  ' + str(Threshkey) + '  |  ' + tc +'\n'
-                
-               
+
                 rp.write(ln)
 
                 printthis = Nohit + '\t' + Hit + '\n'
@@ -448,7 +430,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         x += 1 
                         rp.write(ln)
                             
-                
                 #New line For No Hit Thresh                
                 if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 0 :
                     x = 1
@@ -481,7 +462,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         rp.write(ln) 
 
                 if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
-		    
                     x = 1 
 
 		            while x < len(NoHitThresh): 
@@ -501,7 +481,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         x += 1 
                         rp.write(ln) 
 			  
-        
                 #Close the files
                 fp.close()
                         

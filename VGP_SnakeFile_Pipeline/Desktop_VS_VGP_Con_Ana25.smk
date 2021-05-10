@@ -251,8 +251,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             threshNOHitCnt = 0
             totalFileCount = 0
             Threshkey = {}
-            NoHitThresh = ['+']
-            HitThresh = ['+']
+            NoHitThresh = ['--------------------------------------------------']
+            HitThresh = ['--------------------------------------------------']
             
             #Opens Tresh.txt file to view user input        
             ln = thresh
@@ -282,7 +282,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 hf = 'Hit File'
                 ts = 'Total Number Of Sequences Seen'+ '\t'
                 
-                header = (NohitFile + '\t' +  hitFile  + nhf + '/' + hf + '\t' + tv + '\t' +  ts + '\n')
+                header = (NohitFile + '\t' +  hitFile  + nhf + ' / ' + hf + ' | ' + tv + ' | ' +  ts + '\n')
                 rp.write(header)
                 
                 #Loop through files in input 
@@ -377,7 +377,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 threshNOHitCnt +=1
                                 totalFileCount +=1
                                      
-
                 #Renaming varibles for printing
                 tnhc= str(threshNOHitCnt) 
                 thc = str(ThreshHitCount)
@@ -391,15 +390,9 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 Hit = str(HitThresh[0]) + space
                 Hit = Hit[:50]
                 
-                ln =  space + '\t' + space + '\t' +  tnhc + '/' + thc+ '\t' + '\t' + str(Threshkey) + '\t' + tc +'\n'
-                
-                #If no hits are found changes counter from -1 to 0 or returns respective values
-                if '-1' in ln:
-                    ln = ln.replace('-1','0')
-
-                    rp.write(ln)
-                else:
-                    rp.write(ln)
+                ln =  space + '\t' + space + ' ' +  tnhc + ' / ' + thc+ '  |  ' + str(Threshkey) + '  |  ' + tc +'\n'
+                                
+                rp.write(ln)
 
                 printthis = Nohit + '\t' + Hit + '\n'
                 rp.write(printthis)
@@ -434,8 +427,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                         #Illeterates and writes lines
                         x += 1 
-                        rp.write(ln)
-                            
+                        rp.write(ln)      
                 
                 #New line For No Hit Thresh                
                 if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 1 :
@@ -469,7 +461,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         rp.write(ln)   
                 
                 if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
-		    
                     x = 1 
 
 		            while x < len(NoHitThresh): 
