@@ -5,23 +5,23 @@ Maintainer: Elvisa Mehinovic
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
 	
-	30GB RAM, 500GB FREE storage space, recomended a dual or quad core, 64-bit, x86 CPU, equivalent or better
+	30GB RAM, 1.2TB FREE storage space, recommended a dual or quad core, 64-bit, x86 CPU, equivalent or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
 --------------------------------------------------------------------------------------------------------------------------------
-Approximate Runtime Seen Running All 511 Genome Inputs: 
+Approximate Runtime Seen Running All 529 Genome Inputs: 
 
-	Minimum: 1.5 hours
+	Minimum: 4.5 hours
 
 	Maximum: 12+ hours
 
-	Average: 4 to 5 Hours
+	Average: 6 Hours
 
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran agasint, etc. 
+Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc. 
 
 --------------------------------------------------------------------------------------------------------------------------------
-Approximate Download and Unzip All 511 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
+Approximate Download and Unzip All 529 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
 
 	Minimum: 15 hours
 
@@ -38,15 +38,24 @@ Download time will vary between users.
 		    This is an empty folder generated for user to store all their input query files 
 		    that will be ran currently or later. This is an optional folder however, if user 
 		    decides to call file outside of this folder, they must include fill path to that 
-		    file in config.json: 'query'. Open and read file the inside USERS query Files 
-		    called: PLACE USER QUERY INPUT FILES HERE.txt for more information and example.
-
+		    file in config.json: 'query'. 
       
 
 --------------------------------------------------------------------------------------------------------------------------------
 BEFORE EXECUTION: 
 
-[Refrence Outline](#O) Provided Below to Better Understand Pipeline File Locations.
+[Reference Outline](#O) Provided Below to Better Understand Pipeline File Locations.
+
+Start by cloning VGP Conservation Analysis GitHub:
+
+All required script files will be available on GitHub to be pulled on a desktop by using:
+
+	wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+
+Or can be pulled on LSF with command:
+
+	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+
 
 
 1. Pull down ready to run docker image with the code provided below:
@@ -54,24 +63,24 @@ BEFORE EXECUTION:
    * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually, 
       follow steps in [Dockerfile](#Dock) with the provided dockerfile in this pipeline.
    
-    	 - $ docker pull tnturnerlab/vgp_ens_pipeline:latest 
+    	 docker pull tnturnerlab/vgp_ens_pipeline:latest 
 
 
 <a name = "HTR"> 2. </a>   Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them. 
     
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
-<a name = "HTT"> 3. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pregenerated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 3. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
     
     * Files can be modified or changed based on user's requirements
 
-<a name = "HTF"> 4. </a>   Configure all file pathways in file [config](#config_file).json. This file can be located in VGP SnakeFile Pipeline.
+<a name = "HTF"> 4. </a>   Configure all file pathways in file [config](#config_file).json. This file can be in VGP SnakeFile Pipeline.
     
    * Reference FILES GUIDE: [config](#config_file).json
         
 	* genomesdb: 
           * currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all
-            VGP and Ensembl genomes agaist users query sequence.
+            VGP and Ensembl genomes against users query sequence.
    	
 	* query: 
           * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder,
@@ -82,14 +91,19 @@ BEFORE EXECUTION:
           * Do not edit this path
            
    	* tH: 
-          * Defualt is set to 0.001. User may change if desired. 
+          * Default is set to 0.001. User may change if desired. 
+        
+	* Output:
+	  * Do not edit this path
+	  * Blank folder that will hold output files generated by the pipeline  
 
 5. Open file **_config.json_**, and fill in value for "[tH](#tH)" 
     
     * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
+	* The threshold isvalue of the expected number of chance matches in a random model. For more information about threshold values visit this link: http://pathblast.org/docs/e_value.html
 
-6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is located in the file genomes input document.
+6. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
     
     * Default file is set to run all VGP and Ensembl genomes.
 	* Modify and/or close this file when content.
@@ -98,7 +112,7 @@ BEFORE EXECUTION:
     
     * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
-	* Query file can not be full genomes nor LINE repeat elements. 
+	* Query file cannot be full genomes nor LINE repeat elements. 
 
 8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
@@ -108,11 +122,11 @@ _<span style="text-decoration:underline;"><h3>To Run on a Local Machine:</h3></s
 
 9. Run Dockerfile command - CHECK: 
 
-		- $  docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
+		docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
     
 10. Run Desktop_VS_VGP_Con_Ana25.smk:
 
-		- $ docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
+		docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Desktop_VS_VGP_Con_Ana25.smk -k -w 120 --rerun-incomplete --keep-going
 
 _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 
@@ -144,7 +158,8 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
     
         	bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s VGP_Con_Ana24.smk -k -w 120 --rerun-incomplete --keep-going -F
 
-* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated in the genomesdb_input_document. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
+14. Output files will be generated in the Output folder provided in this pipeline.
+	* View [Output Files Generated](#Outfile) to see which files are generated and more information on each. Output files will be generated inside the empty Output Folder provided in this pipeline. There will be two folders created within genomesdb_input_document. One folder will hold all BLAST outputs from the pipeline execution, and the other holding those 10 output files. The file with the name '*_BLAST_Outputfiles_*' can be deleted or kept. '*__Outputfiles__*' will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
  
  <a name="o"> Refrence Outline </a>
  
@@ -181,6 +196,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 	*  [config.json](#config_file)
 		*  [genomesdb](#genomesdb)
 		*  [query](#query)
+		*  [Output](#op)
 		*  [dbs](#dbs)
 		*  [tH](#tH)
 		
@@ -205,13 +221,13 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		   The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP),
 		and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, 
 		conversion to a GFA file, and finally a RAXML best tree output. There is an added feature that 
-		allows the user to input any value to a threshold delimitor that will parse out files if it meets
+		allows the user to input any value to a threshold delimiter that will parse out files if it meets
 		the threshold requirement. This allows the user to only MUSCLE align if the files are at, or below 
 		threshold requirement. The pipeline also can run files that are found on Ensembl from their 
 		pub/release-103. Specifically, those files with'*.dna.toplevel.fa' suffix. These files are the 
 		equivalent to unmasked files in the VGP database. The pipeline is currently set up to run all 511 
 		files together, however user can edit those files found in the sub-file folder. When choosing a 
-		query file to blast against, full genome foles nor LINE element repeats are not able to be run on this 
+		query file to blast against, files larger than 1MB, or 1,000,000 kb, nor repeats are not able to be run on this 
 		pipeline. This pipeline is currently set up to handle files that can be generated with a BLASTn 
 		search. The pipeline will also not handle full genomes as query inputs. 
 
@@ -234,7 +250,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 		on a protein dataset while using the empirical base frequencies and the LG substitution model. This 
 		can be changed with in the pipeline under the user’s discretion. For more information regarding 
 		RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic 
-		tree createdfrom RAXML, the user will need to use an external phylogenetic viewer.
+		tree created from RAXML, the user will need to use an external phylogenetic viewer.
 
 		   The purpose of this pipeline is to create a full-scale analysis of vertebrate species either or 
 		both from the Vertebrate Genome Project, or from Ensembl, in a quick and accurate manner. The files 
@@ -256,7 +272,7 @@ Or can be pulled on LSF with command:
 
 _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES: </h4></a></span>_
 
-These files are given inside of the pipeline In the folder VGP SnakeFile Pipeline:
+These files are given inside of the pipeline in the folder VGP SnakeFile Pipeline:
 
 1. [Snakefile.smk](#SNAKE)
 2. [config.json](#config_file)
@@ -399,6 +415,8 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
 *   <a name="query"><h5>"query"</h5></a>
     *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file.
         *   Must be a FASTA file
+*   <a name="Output"><h5>"OP"</h5></a>
+    *   Blank file that will hold pipeline generated outputs. 
 *   <a name="dbs"><h5>"dbs"</h5></a>
     *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
 *   <a name="tH"><h5>"tH"</h5></a>
@@ -422,11 +440,11 @@ The files named below will be used to download all files needed for this pipelin
 
 						***WARNING:***
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
-		The total storage needed for downloading all VGP files is estimated to be 339.09GB.
-		The total storage needed for downloading all Ensembl file is estimated at 117.84GB.
-		Please insure there is enough storage for all files the minimum recomended free storage
-		should be approximitly 500 GB. This insures all downloaded and created files have enough
-		stroage space on users device. There are 511 files in total between the two databases.
+		The total storage needed for downloading all VGP files is estimated to be 334.75 GB
+		The total storage needed for downloading all Ensembl file is estimated at 669.18 GB
+		Please insure there is enough storage for all files the minimum recommended free storage
+		should be approximately 1.2TB. This insures all downloaded and created files have enough
+		storage space on users device. There are 529 files in total between the two databases.
 		
 		
 --------------------------------------------------------------------------------------------------------------------------------
@@ -447,13 +465,13 @@ This script is used to pull all '* .dna.toplevel.fa' from Ensembl's pub/release-
 
 
 
-***After execution, there should be 312 species files in the given directory.***
+***After execution, there should be 311 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="DOWNF"><h3>DOWNLOADING VGP AND ENSEMBL SPECIES FILES: </h3></a></span>**
 	
-					**** FILES UNZIPPED ARE ABOUT 458.93 GBS ***
+					**** FILES UNZIPPED ARE ABOUT 1.2 TB GBS ***
 
 Explanation of wgetfile_* .sh. Could run manually or execute files with shell commands listed below. Please see FILES GIVEN: wgetfile_* .sh for more information.
 
@@ -527,19 +545,20 @@ Back to [HOW TO RUN #3](#HTT)
 
 **<span style="text-decoration:underline;"> <a name="Outfile"><h3> Output Files Generated: </h3></a></span>**
 
-When ran successfully these output files should be generated in a unique folder with a naming scheme related to user inputted files and input threshold:
-This folder will be created in the folder genomesdb_input_document. There will be two folders created inside, one with the tag name of '*_Outputfiles_*' that will hold the output files generated. Another folder named with the tag '*_BLAST_Outputfiles_*' will hold a copy of all blast files generated. User may chose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and treshold value used. 
+The folder named Output will contain all output files generated from the pipeline. When ran successfully these output files should be generated with a unique naming scheme related to user inputted files and input threshold.
+
+There will be two folders created inside Output, one with the tag name of 'Outputfiles_ *' that will hold the output files generated. Another folder named with the tag 'BLAST_Outputfiles_ *' will hold a copy of all blast files generated. User may choose to delete this folder if they would like. Each generated folder full name will contain the name of the genomes input document, the tag, users query name, and threshold value used. 
 
 	Example:
-	   path:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/genomes_input_document/
+	   path:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Output/
 
 		Blast folder output:
 
-			VGP_AND_ENSEMBL_TOGETHER.txt__BLAST_Outputfiles_For_MyQUERY.fa_0.001
+			BLAST_Outputfiles_For_MyQUERY.fa_0.001
 
 		Output files folder:
 
-			VGP_AND_ENSEMBL_TOGETHER.txt__Outputfiles_For_MyQUERY.fa_0.001
+			Outputfiles_For_MyQUERY.fa_0.001
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -659,7 +678,7 @@ Filenames will vary:
 		* "*_RAxML_parsimonyTree.RAXML_output.phy"
 		
 				- A file that can be viewed with a parsimony tree viewer. This file contained 
-			   	  grouped taxas together based on their minimal evolutionary change.
+			   	  grouped taxa together based on their minimal evolutionary change.
 			
 		* "*_RAxML_log.RAXML_output.phy"
 		

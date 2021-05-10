@@ -25,6 +25,11 @@ dbsFind = dbp
 #################
 
 end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+<<<<<<< HEAD
+=======
+
+mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+>>>>>>> 9445be6c46b54ad4e77ed0d9f3884c91907c7ff6
 
 mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 

@@ -24,9 +24,9 @@ dbp= dbs
 dbsFind = dbp 
 #################
 
-end =  str(config["Output"]) + '_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
-mid = str(config["Output"]) + '_BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
