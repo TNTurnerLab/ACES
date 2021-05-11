@@ -38,7 +38,7 @@ Download time will vary between users.
 		    This is an empty folder generated for user to store all their input query files 
 		    that will be ran currently or later. This is an optional folder however, if user 
 		    decides to call file outside of this folder, they must include fill path to that 
-		    file in config.json: 'query'. Query file may not be a repeating sequence nor 
+		    file in config.json: 'query'. Query file may not be a repeat sequence nor 
 		    a file larger than 1MB. These files will not generate accurate information.
       
 
