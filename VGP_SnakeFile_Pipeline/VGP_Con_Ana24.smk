@@ -464,7 +464,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
                     x = 1 
 
-		            while x < len(NoHitThresh): 
+		    while x < len(NoHitThresh): 
 
                         if x <= len(HitThresh):
                             ln=''
