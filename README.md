@@ -87,7 +87,7 @@ Or can be pulled on LSF with command:
           * Pathway to this file does not have to change if user puts their input file inside the pre-generated folder,
             USER query Files. When editing this portion of the config, please only input the filename after the last /.
 	        User does not need to edit path unless they did not place their input file in provided folder.
-	  * Input file may not be a repeating sequence nor a file larger than 1MB. These files will not generate
+	  * Input file may not be a repeat sequence nor a file larger than 1MB. These files will not generate
 	    accurate information.
            
    	* dbs: 
@@ -115,7 +115,7 @@ Or can be pulled on LSF with command:
     
     * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
-	* Query file cannot be full genomes nor LINE repeat elements. 
+	* Query file cannot be full genomes nor repeat elements. 
 
 8. Locate [Snakefile.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file VGP_Con_Ana24.smk for running on a LSF server or Desktop_VS_VGP_Con_Ana25.smk for running on a local machine.
 
@@ -301,7 +301,7 @@ Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens
 	2. wgetfile_VGP.sh
 
    USERS_query_Files is a blank folder that is recommended for user to use to store potential input files:
-   *** Files should not contain repeating sequences nor file that is over 1MB large ***
+   *** Files should not contain repeat sequences nor file that is over 1MB large ***
    Open and read PLACE USER QUERY INPUT FILES HERE.txt for more information.
     	
 	1. PLACE USER QUERY INPUT FILES HERE.txt
@@ -417,7 +417,7 @@ This will hold all pathways to files. Snakefile uses these pathways to generate 
         *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt 
             *   Pre-generated files with species names found within the GitHub. Variations of these files may be used, or one of the pre-generated files could be used as well. 
 *   <a name="query"><h5>"query"</h5></a>
-    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file. Users input file may not be a repeating sequence nor a file larger than 1MB.
+    *   A file that includes the directory and file name of your input file, this will be used as the query of the blast. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not to, full file path along with file name needs to be changed in config.json file. Users input file may not be a repeat sequence nor a file larger than 1MB.
         *   Must be a FASTA file
 *   <a name="Output"><h5>"OP"</h5></a>
     *   Blank file that will hold pipeline generated outputs. 
@@ -459,7 +459,7 @@ This file contains the shell file that was used to pull all â€˜*-unmasked.fa.gzâ
 
 
 
-***After execution, there should be 199 species files in the given directory.***
+***After execution, there should be 218 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
