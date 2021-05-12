@@ -459,7 +459,7 @@ This file contains the shell file that was used to pull all â€˜*-unmasked.fa.gzâ
 
 
 
-***After execution, there should be 218 species files in the given directory.***
+***After execution, there should be 217 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -469,7 +469,7 @@ This script is used to pull all '* .dna.toplevel.fa' from Ensembl's pub/release-
 
 
 
-***After execution, there should be 311 species files in the given directory.***
+***After execution, there should be 312 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
