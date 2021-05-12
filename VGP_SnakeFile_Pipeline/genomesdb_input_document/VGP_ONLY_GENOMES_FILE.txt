@@ -1,5 +1,6 @@
 Accipiter_gentilis-GCA_012487025.1-unmasked.fa
 Acipenser_ruthenus-GCA_902713435.1-unmasked.fa
+Acomys_cahirinus-GCA_004027535.1-unmasked.fa
 Actinia_equina-GCA_011057435.1-unmasked.fa
 Ailuropoda_melanoleuca-GCA_002007445.2-unmasked.fa
 Alouatta_palliata-GCA_004027835.1-unmasked.fa
@@ -7,6 +8,7 @@ Amblyraja_radiata-GCA_010909765.1-unmasked.fa
 Ameiurus_melas-GCA_012411365.1-unmasked.fa
 Anabas_testudineus-GCA_900324465.1-unmasked.fa
 Anabas_testudineus-GCA_900324465.2-unmasked.fa
+Anableps_anableps-GCA_014839685.1-unmasked.fa
 Anas_zonorhyncha-GCA_002224875.1-unmasked.fa
 Anguilla_anguilla-GCA_013347855.1-unmasked.fa
 Anolis_carolinensis-GCA_000090745.2-unmasked.fa
@@ -28,6 +30,7 @@ Bos_gaurus-GCA_014182915.1-unmasked.fa
 Bos_mutus-GCA_007646595.3-unmasked.fa
 Bubalus_bubalis-GCA_003121395.1-unmasked.fa
 Bubo_bubo-GCA_010303855.1-unmasked.fa
+Bufo_gargarizans-GCA_014858855.1-unmasked.fa
 Buteo_japonicus-GCA_010312235.1-unmasked.fa
 Cairina_moschata_domestica-GCA_009194515.1-unmasked.fa
 Cajanus_cajan-GCA_000340665.1-unmasked.fa
@@ -37,8 +40,11 @@ Camarhynchus_parvulus-GCA_902806625.1-unmasked.fa
 Camelus_ferus-GCA_009834535.1-unmasked.fa
 Canis_lupus_familiaris-GCA_000002285.4-unmasked.fa
 Canis_lupus_familiaris-GCA_004886185.1-unmasked.fa
+Canis_lupus_familiaris-GCA_004886185.2-unmasked.fa
 Canis_lupus_familiaris-GCA_005444595.1-unmasked.fa
 Canis_lupus_familiaris-GCA_008641055.1-unmasked.fa
+Canis_lupus_familiaris-GCA_008641055.3-unmasked.fa
+Canis_lupus_familiaris-GCA_011100685.1-unmasked.fa
 Canis_lupus_familiaris-GCA_014441545.1-unmasked.fa
 Capra_hircus-GCA_001704415.1-unmasked.fa
 Capra_hircus-GCA_004361675.1-unmasked.fa
@@ -54,6 +60,8 @@ Clytia_hemisphaerica-GCA_902728285.1-unmasked.fa
 Corvus_moneduloides-GCA_009650515.1-unmasked.fa
 Corvus_moneduloides-GCA_009650955.1-unmasked.fa
 Cottoperca_gobio-GCA_900634415.1-unmasked.fa
+Crocuta_crocuta-GCA_008692635.1-unmasked.fa
+Culter_alburnus-GCA_009869775.1-unmasked.fa
 Cyclopterus_lumpus-GCA_009769545.1-unmasked.fa
 Cygnus_atratus-GCA_013377495.1-unmasked.fa
 Daubentonia_madagascariensis-GCA_004027145.1-unmasked.fa
@@ -61,6 +69,7 @@ Delphinapterus_leucas-GCA_009917725.1-unmasked.fa
 Delphinapterus_leucas-GCA_009917745.1-unmasked.fa
 Denticeps_clupeoides-GCA_900700375.1-unmasked.fa
 Denticeps_clupeoides-GCA_900700375.2-unmasked.fa
+Desmodus_rotundus-GCA_002940915.1-unmasked.fa
 Drosophila_melanogaster-GCA_000001215.4-unmasked.fa
 Echeneis_naucrates-GCA_900963305.1-unmasked.fa
 Electrophorus_electricus-GCA_013358815.1-unmasked.fa
@@ -90,8 +99,10 @@ Harpagifer_antarcticus-GCA_902827135.1-unmasked.fa
 Hippopotamus_amphibius-GCA_004027065.2-unmasked.fa
 Hipposideros_armiger-GCA_001890085.1-unmasked.fa
 Hipposideros_galeritus-GCA_004027415.1-unmasked.fa
+Hirundo_rustica-GCA_015227805.1-unmasked.fa
 Hylobates_moloch-GCA_009828535.2-unmasked.fa
 Labeo_catla-GCA_012976165.1-unmasked.fa
+Lacerta_agilis-GCA_009819535.1-unmasked.fa
 Lagenorhynchus_obliquidens-GCA_003676395.1-unmasked.fa
 Lemur_catta-GCA_004024665.1-unmasked.fa
 Leptobrachium_leishanense-GCA_009667805.1-unmasked.fa
@@ -115,6 +126,8 @@ Meriones_unguiculatus-GCA_004026785.1-unmasked.fa
 Mirounga_leonina-GCA_011800145.1-unmasked.fa
 Molothrus_ater-GCA_012460135.1-unmasked.fa
 Monodon_monoceros-GCA_005190385.2-unmasked.fa
+Mus_minutoides-GCA_902729475.1-unmasked.fa
+Mus_minutoides-GCA_902729485.1-unmasked.fa
 Mustela_putorius-GCA_902460205.1-unmasked.fa
 Myodes_glareolus-GCA_004368595.1-unmasked.fa
 Myripristis_murdjan-GCA_902150065.1-unmasked.fa
@@ -149,8 +162,11 @@ Psammomys_obesus-GCA_002215935.2-unmasked.fa
 Pseudochaenichthys_georgianus-GCA_902827115.1-unmasked.fa
 Pseudoliparis-GCA_004335475.1-unmasked.fa
 Pteropus_giganteus-GCA_902729225.1-unmasked.fa
+Pygocentrus_nattereri-GCA_015220715.1-unmasked.fa
+Rattus_norvegicus-GCA_015227675.2-unmasked.fa
 Rhizomys_pruinosus-GCA_009823505.1-unmasked.fa
 Rousettus_aegyptiacus-GCA_001466805.2-unmasked.fa
+Saimiri_boliviensis_boliviensis-GCA_016699345.1-unmasked.fa
 Salarias_fasciatus-GCA_902148845.1-unmasked.fa
 Salmo_trutta-GCA_901001165.1-unmasked.fa
 Sander_lucioperca-GCA_008315115.1-unmasked.fa
@@ -172,10 +188,12 @@ Taeniopygia_guttata-GCA_003957565.2-unmasked.fa
 Taeniopygia_guttata-GCA_008822105.1-unmasked.fa
 Takifugu_rubripes-GCA_901000725.2-unmasked.fa
 Thalassophryne_amazonica-GCA_902500255.1-unmasked.fa
+Thamnaconus_septentrionalis-GCA_009823395.1-unmasked.fa
 Thamnophis_elegans-GCA_009769535.1-unmasked.fa
 Thunnus_orientalis-GCA_009176245.1-unmasked.fa
 Thymallus_thymallus-GCA_004348285.1-unmasked.fa
 Trachinotus_ovatus-GCA_900607315.1-unmasked.fa
+Trachurus_trachurus-GCA_905171665.1-unmasked.fa
 Trachypithecus_francoisi-GCA_009764315.1-unmasked.fa
 Trachypithecus_francoisi-GCA_009764325.1-unmasked.fa
 Tragelaphus_strepsiceros-GCA_006410795.1-unmasked.fa
