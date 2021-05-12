@@ -1,3 +1,8 @@
+ I am not the original creator of the msa_to_gfa program found in this repository. I have a slightly modified version of an existing workflow from the GitHub: https://github.com/fawaz-dabbaghieh/msa_to_gfa.
+ 
+ ------------------------------------------------------------------------------------------------------------
+
+
 # MSA to GFA
 Small python program to turn MSA to GFA v1 with paths of original sequences, it can be then visualized with [gfaviz](https://github.com/ggonnella/gfaviz), 
 or [bandage](https://rrwick.github.io/Bandage/) or any other avialble GFA visualization tools out there.
