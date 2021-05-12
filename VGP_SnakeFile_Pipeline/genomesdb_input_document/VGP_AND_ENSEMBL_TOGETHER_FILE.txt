@@ -2,6 +2,7 @@ Acanthochromis_polyacanthus.ASM210954v1.dna.toplevel.fa
 Accipiter_gentilis-GCA_012487025.1-unmasked.fa
 Accipiter_nisus.Accipiter_nisus_ver1.0.dna.toplevel.fa
 Acipenser_ruthenus-GCA_902713435.1-unmasked.fa
+Acomys_cahirinus-GCA_004027535.1-unmasked.fa
 Actinia_equina-GCA_011057435.1-unmasked.fa
 Ailuropoda_melanoleuca.ASM200744v2.dna.toplevel.fa
 Ailuropoda_melanoleuca-GCA_002007445.2-unmasked.fa
@@ -15,6 +16,7 @@ Amphiprion_percula.Nemo_v1.dna.toplevel.fa
 Anabas_testudineus.fAnaTes1.2.dna.toplevel.fa
 Anabas_testudineus-GCA_900324465.1-unmasked.fa
 Anabas_testudineus-GCA_900324465.2-unmasked.fa
+Anableps_anableps-GCA_014839685.1-unmasked.fa
 Anas_platyrhynchos.ASM874695v1.dna.toplevel.fa
 Anas_platyrhynchos_platyrhynchos.CAU_duck1.0.dna.toplevel.fa
 Anas_zonorhyncha.ASM222487v1.dna.toplevel.fa
@@ -60,6 +62,7 @@ Bos_taurus_hybrid.UOA_Angus_1.dna.toplevel.fa
 Bubalus_bubalis-GCA_003121395.1-unmasked.fa
 Bubo_bubo.BubBub1.0.dna.toplevel.fa
 Bubo_bubo-GCA_010303855.1-unmasked.fa
+Bufo_gargarizans-GCA_014858855.1-unmasked.fa
 Buteo_japonicus.ButJap1.0.dna.toplevel.fa
 Buteo_japonicus-GCA_010312235.1-unmasked.fa
 Caenorhabditis_elegans.WBcel235.dna.toplevel.fa
@@ -81,8 +84,11 @@ Canis_lupus_familiarisbasenji.Basenji_breed-1.1.dna.toplevel.fa
 Canis_lupus_familiaris.CanFam3.1.dna.toplevel.fa
 Canis_lupus_familiaris-GCA_000002285.4-unmasked.fa
 Canis_lupus_familiaris-GCA_004886185.1-unmasked.fa
+Canis_lupus_familiaris-GCA_004886185.2-unmasked.fa
 Canis_lupus_familiaris-GCA_005444595.1-unmasked.fa
 Canis_lupus_familiaris-GCA_008641055.1-unmasked.fa
+Canis_lupus_familiaris-GCA_008641055.3-unmasked.fa
+Canis_lupus_familiaris-GCA_011100685.1-unmasked.fa
 Canis_lupus_familiaris-GCA_014441545.1-unmasked.fa
 Canis_lupus_familiarisgreatdane.UMICH_Zoey_3.1.dna.toplevel.fa
 Capra_hircus.ARS1.dna.toplevel.fa
@@ -129,6 +135,8 @@ Cricetulus_griseus_chok1gshd.CHOK1GS_HDv1.dna.toplevel.fa
 Cricetulus_griseus_crigri.CriGri_1.0.dna.toplevel.fa
 Cricetulus_griseus_picr.CriGri-PICR.dna.toplevel.fa
 Crocodylus_porosus.CroPor_comp1.dna.toplevel.fa
+Crocuta_crocuta-GCA_008692635.1-unmasked.fa
+Culter_alburnus-GCA_009869775.1-unmasked.fa
 Cyanistes_caeruleus.cyaCae2.dna.toplevel.fa
 Cyclopterus_lumpus.fCycLum1.pri.dna.toplevel.fa
 Cyclopterus_lumpus-GCA_009769545.1-unmasked.fa
@@ -150,6 +158,7 @@ Delphinapterus_leucas-GCA_009917745.1-unmasked.fa
 Denticeps_clupeoides.fDenClu1.1.dna.toplevel.fa
 Denticeps_clupeoides-GCA_900700375.1-unmasked.fa
 Denticeps_clupeoides-GCA_900700375.2-unmasked.fa
+Desmodus_rotundus-GCA_002940915.1-unmasked.fa
 Dicentrarchus_labrax.seabass_V1.0.dna.toplevel.fa
 Dipodomys_ordii.Dord_2.0.dna.toplevel.fa
 Dromaius_novaehollandiae.droNov1.dna.toplevel.fa
@@ -211,6 +220,7 @@ Hippocampus_comes.H_comes_QL1_v1.dna.toplevel.fa
 Hippopotamus_amphibius-GCA_004027065.2-unmasked.fa
 Hipposideros_armiger-GCA_001890085.1-unmasked.fa
 Hipposideros_galeritus-GCA_004027415.1-unmasked.fa
+Hirundo_rustica-GCA_015227805.1-unmasked.fa
 Homo_sapiens.GRCh38.dna.toplevel.fa
 Hucho_hucho.ASM331708v1.dna.toplevel.fa
 Hylobates_moloch-GCA_009828535.2-unmasked.fa
@@ -221,6 +231,7 @@ Junco_hyemalis.ASM382977v1.dna.toplevel.fa
 Kryptolebias_marmoratus.ASM164957v1.dna.toplevel.fa
 Labeo_catla-GCA_012976165.1-unmasked.fa
 Labrus_bergylta.BallGen_V1.dna.toplevel.fa
+Lacerta_agilis-GCA_009819535.1-unmasked.fa
 Lagenorhynchus_obliquidens-GCA_003676395.1-unmasked.fa
 Larimichthys_crocea.L_crocea_2.0.dna.toplevel.fa
 Lates_calcarifer.ASB_HGAPassembly_v1.dna.toplevel.fa
@@ -275,6 +286,8 @@ Monodon_monoceros.NGI_Narwhal_1.dna.toplevel.fa
 Monopterus_albus.M_albus_1.0.dna.toplevel.fa
 Moschus_moschiferus.MosMos_v2_BIUU_UCD.dna.toplevel.fa
 Mus_caroli.CAROLI_EIJ_v1.1.dna.toplevel.fa
+Mus_minutoides-GCA_902729475.1-unmasked.fa
+Mus_minutoides-GCA_902729485.1-unmasked.fa
 Mus_musculus_129s1svimj.129S1_SvImJ_v1.dna.toplevel.fa
 Mus_musculus_aj.A_J_v1.dna.toplevel.fa
 Mus_musculus_akrj.AKR_J_v1.dna.toplevel.fa
@@ -394,7 +407,9 @@ Pseudonaja_textilis.EBS10Xv2-PRI.dna.toplevel.fa
 Pteropus_giganteus-GCA_902729225.1-unmasked.fa
 Pteropus_vampyrus.pteVam1.dna.toplevel.fa
 Pundamilia_nyererei.PunNye1.0.dna.toplevel.fa
+Pygocentrus_nattereri-GCA_015220715.1-unmasked.fa
 Pygocentrus_nattereri.Pygocentrus_nattereri-1.0.2.dna.toplevel.fa
+Rattus_norvegicus-GCA_015227675.2-unmasked.fa
 Rattus_norvegicus.Rnor_6.0.dna.toplevel.fa
 Rhinolophus_ferrumequinum.mRhiFer1_v1.p.dna.toplevel.fa
 Rhinopithecus_bieti.ASM169854v1.dna.toplevel.fa
@@ -402,6 +417,7 @@ Rhinopithecus_roxellana.Rrox_v1.dna.toplevel.fa
 Rhizomys_pruinosus-GCA_009823505.1-unmasked.fa
 Rousettus_aegyptiacus-GCA_001466805.2-unmasked.fa
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
+Saimiri_boliviensis_boliviensis-GCA_016699345.1-unmasked.fa
 Saimiri_boliviensis_boliviensis.SaiBol1.0.dna.toplevel.fa
 Salarias_fasciatus.fSalaFa1.1.dna.toplevel.fa
 Salarias_fasciatus-GCA_902148845.1-unmasked.fa
@@ -467,11 +483,13 @@ Takifugu_rubripes-GCA_901000725.2-unmasked.fa
 Terrapene_carolina_triunguis.T_m_triunguis-2.0.dna.toplevel.fa
 Tetraodon_nigroviridis.TETRAODON8.dna.toplevel.fa
 Thalassophryne_amazonica-GCA_902500255.1-unmasked.fa
+Thamnaconus_septentrionalis-GCA_009823395.1-unmasked.fa
 Thamnophis_elegans-GCA_009769535.1-unmasked.fa
 Theropithecus_gelada.Tgel_1.0.dna.toplevel.fa
 Thunnus_orientalis-GCA_009176245.1-unmasked.fa
 Thymallus_thymallus-GCA_004348285.1-unmasked.fa
 Trachinotus_ovatus-GCA_900607315.1-unmasked.fa
+Trachurus_trachurus-GCA_905171665.1-unmasked.fa
 Trachypithecus_francoisi-GCA_009764315.1-unmasked.fa
 Trachypithecus_francoisi-GCA_009764325.1-unmasked.fa
 Tragelaphus_strepsiceros-GCA_006410795.1-unmasked.fa
