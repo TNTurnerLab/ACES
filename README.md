@@ -570,7 +570,7 @@ Filenames will vary:
 
 	These filenames will have the name of the users query file and threshold value in the position where the star is denoted.
 
-1. <h4> '*_Multi_Seq_Align.fa' </h4> 
+1. <h4> '*_Multi_Seq_Align.aln' </h4> 
     
 	* Generated results from [Rule muscle](#RM). 
 		
