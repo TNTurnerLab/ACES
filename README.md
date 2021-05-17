@@ -21,7 +21,7 @@ Approximate Runtime Seen Running All 531 Genome Inputs:
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc. 
 
 --------------------------------------------------------------------------------------------------------------------------------
-Approximate Download and Unzip All 529 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
+Approximate Download and Unzip All 531 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
 
 	Minimum: 15 hours
 
