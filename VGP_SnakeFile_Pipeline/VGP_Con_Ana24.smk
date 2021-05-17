@@ -169,28 +169,28 @@ rule parse: #Parses out wanted information to a temp file for later use
                         elif  Identities in line:
                             rand=str(num)    
 			    			    
-			    if '10' in rand:
-			    	rand = 'a'
-			    if '11' in rand:
-			    	rand = 'b'
-			    if '12' in rand:
-			    	rand = 'c'
-			    if '13' in rand:
-			    	rand = 'd'
-			    if '14' in rand:
-			    	rand = 'e'
-			    if '15' in rand:
-			    	rand = 'f'				
-			    if '16' in rand:
-			    	rand = 'g'
-			    if '17' in rand:
-			    	rand = 'h'
-			    if '18' in rand:
-			    	rand = 'i'
-			    if '19' in rand:
-			    	rand = 'j'
-			    if '20' in rand:
-			    	rand = 'k'		
+                            if '10' in rand:
+                                rand = 'a'
+                            if '11' in rand:
+                                rand = 'b'
+                            if '12' in rand:
+                                rand = 'c'
+                            if '13' in rand:
+                                rand = 'd'
+                            if '14' in rand:
+                                rand = 'e'
+                            if '15' in rand:
+                                rand = 'f'				
+                            if '16' in rand:
+                                rand = 'g'
+                            if '17' in rand:
+                                rand = 'h'
+                            if '18' in rand:
+                                rand = 'i'
+                            if '19' in rand:
+                                rand = 'j'
+                            if '20' in rand:
+                                rand = 'k'		
 			    
                             spNID = ''
                             spID = ''                          
