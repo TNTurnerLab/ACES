@@ -635,8 +635,8 @@ Filenames will vary:
 				3. .1: Version of file number: .1
 				
 				4. .2: Sequence order number: Second sequence in species parsed out file. 
-				       * If there is a letter in place of a value in this prosition, then starting
-				         with sequence 10, 'a' will denote that sequence. 'b' will denote the 
+				       * If there is a letter in place of a value in this position, then starting
+				         with sequence number 10, 'a' will denote that sequence. 'b' will denote the 
 					 11th sequence and so on.
 		2: Ensembl Genomes:
 			
@@ -652,8 +652,8 @@ Filenames will vary:
 					- '_pig'
 				
 				4. .1: Sequence order number: First sequence in species parsed out file. 
-				       * If there is a letter in place of a value in this prosition, then starting
-				         with sequence 10, 'a' will denote that sequence. 'b' will denote the 
+				       * If there is a letter in place of a value in this position, then starting
+				         with sequence number 10, 'a' will denote that sequence. 'b' will denote the 
 					 11th sequence and so on.
 
 6. <h4>'*_Phy_Align.phy' </h4> 
