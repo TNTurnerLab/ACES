@@ -10,7 +10,7 @@ Maintainer: Elvisa Mehinovic
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
 --------------------------------------------------------------------------------------------------------------------------------
-Approximate Runtime Seen Running All 529 Genome Inputs: 
+Approximate Runtime Seen Running All 531 Genome Inputs: 
 
 	Minimum: 4.5 hours
 
@@ -444,11 +444,11 @@ The files named below will be used to download all files needed for this pipelin
 
 						***WARNING:***
 		When conducting the retrieval of files, please ensure that the user has enough storage space. 
-		The total storage needed for downloading all VGP files is estimated to be 334.75 GB
+		The total storage needed for downloading all VGP files is estimated to be 338.58 GB
 		The total storage needed for downloading all Ensembl file is estimated at 669.18 GB
 		Please insure there is enough storage for all files the minimum recommended free storage
 		should be approximately 1.2TB. This insures all downloaded and created files have enough
-		storage space on users device. There are 529 files in total between the two databases.
+		storage space on users device. There are 531 files in total between the two databases.
 		
 		
 --------------------------------------------------------------------------------------------------------------------------------
@@ -459,7 +459,7 @@ This file contains the shell file that was used to pull all â€˜*-unmasked.fa.gzâ
 
 
 
-***After execution, there should be 217 species files in the given directory.***
+***After execution, there should be 219 species files in the given directory.***
 
 --------------------------------------------------------------------------------------------------------------------------------
 
