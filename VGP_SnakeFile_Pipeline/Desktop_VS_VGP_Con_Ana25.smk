@@ -164,7 +164,7 @@ rule parse: #Parses out wanted information to a temp file for later use
                            
                             nameF = name
 
-                            
+                
                         #Parse out ID %
                         elif  Identities in line:
                             rand=str(num)
