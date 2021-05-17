@@ -194,12 +194,14 @@ rule parse: #Parses out wanted information to a temp file for later use
                                 spID = spID 
 
                             elif 'Cyprinus_carpio_hebao_red.Hebao_red_carp_1.0.dna.toplevel.fa' in f.name:
-
+                                species = f.name
+                                spName = species.split('-GCA')[0]
                                 spNID = 'C'
                                 spID = 'H_red'
                             
                             elif 'Cyprinus_carpio_german_mirror.German_Mirror_carp_1.0.dna.toplevel.fa' in f.name:
-
+                                species = f.name
+                                spName = species.split('-GCA')[0]
                                 spNID = 'C'
                                 spID = 'G_Mir'
                                 
