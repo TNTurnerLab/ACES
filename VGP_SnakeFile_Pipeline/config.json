@@ -3,6 +3,6 @@
     "query": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/USERS_query_Files/#USERINPUTQUERYFILE",
     "Output": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Output",
     "dbs": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Genomes",
-    "treshold": "0.0001"
+    "threshold": "0.0001"
     
 }
