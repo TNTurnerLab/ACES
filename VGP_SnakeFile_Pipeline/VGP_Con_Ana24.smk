@@ -40,7 +40,7 @@ genomesdb=GENOMESDB
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 rule all:
-    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end, expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB)  
+    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_RAxML_bestTree.phy" %end, "%s_RAxML_info.phy" %end, "%s_RAxML_parsimonyTree.phy" %end, "%s_RAxML_log.log" %end, "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end ,  "%s_NameKey.txt" %end, expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB)  
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
 
