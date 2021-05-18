@@ -24,9 +24,9 @@ dbp= dbs
 dbsFind = dbp 
 #################
 
-end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['threshold']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
 
-mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['tH'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['tH'])
+mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['threshold'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
@@ -60,7 +60,7 @@ rule findThresh: #Finds files that meets threshold requiement
         def main():
             #Files and Variables
             file = input[0]
-            thresh=config['tH']
+            thresh=config['threshold']
             outputFile = output[0]
             Identities='Identities'
             Evalue = 'Expect'
@@ -271,7 +271,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
         def main():
             #Files and Varibles
             a = 0 
-            thresh = config['tH']
+            thresh = config['threshold']
             reportOut = output[0]
             ThreshHitCount = 0
             threshNOHitCnt = 0
@@ -601,10 +601,11 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     input: "%s_Phy_Align.phy" %end
     output: temp("RAxML_bestTree.RAXML_output.phy"), temp("RAxML_info.RAXML_output.phy"), temp("RAxML_parsimonyTree.RAXML_output.phy"), temp("RAxML_log.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
+    threads: 4
     shell: """ /opt/conda/bin/raxmlHPC -s {input[0]} -p 5 -m PROTGAMMAWAG -n {params.prefix} """
 rule cleanRAxML:
     input:  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
-    output:  "%s_RAxML_bestTree.RAXML_output.phy" %end, "%s_RAxML_info.RAXML_output.phy" %end, "%s_RAxML_parsimonyTree.RAXML_output.phy" %end, "%s_RAxML_log.RAXML_output.phy" %end
+    output:  "%s_RAxML_bestTree.phy" %end, "%s_RAxML_info.phy" %end, "%s_RAxML_parsimonyTree.phy" %end, "%s_RAxML_log.log" %end
     shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} && touch {output[1]} && cat {input[1]} >> {output[1]} && touch {output[2]} && cat {input[2]} >> {output[2]} && touch {output[3]} && cat {input[3]} >> {output[3]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
