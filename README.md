@@ -139,7 +139,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF:</h3></span>_
 	
 		* Execute LSF code:
      
-     		export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP_SnakeFile_Pipeline"
+     		export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/"
      		
 		Example: 
 		
