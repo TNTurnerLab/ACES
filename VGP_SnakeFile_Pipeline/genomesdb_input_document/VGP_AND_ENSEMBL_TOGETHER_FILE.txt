@@ -46,7 +46,6 @@ Astyanax_mexicanus.Astyanax_mexicanus-2.0.dna.toplevel.fa
 Astyanax_mexicanus_pachon.Astyanax_mexicanus-1.0.2.dna.toplevel.fa
 Ateles_geoffroyi-GCA_004024785.1-unmasked.fa
 Athene_cunicularia.athCun1.dna.toplevel.fa
-Balaenoptera_musculus-GCA_009873245.2-unmasked.fa
 Balaenoptera_musculus-GCA_009873245.3-unmasked.fa
 Balaenoptera_musculus.mBalMus1.v2.dna.toplevel.fa
 Betta_splendens.fBetSpl5.2.dna.toplevel.fa
@@ -83,10 +82,8 @@ Canis_lupus_dingo.ASM325472v1.dna.toplevel.fa
 Canis_lupus_familiarisbasenji.Basenji_breed-1.1.dna.toplevel.fa
 Canis_lupus_familiaris.CanFam3.1.dna.toplevel.fa
 Canis_lupus_familiaris-GCA_000002285.4-unmasked.fa
-Canis_lupus_familiaris-GCA_004886185.1-unmasked.fa
 Canis_lupus_familiaris-GCA_004886185.2-unmasked.fa
 Canis_lupus_familiaris-GCA_005444595.1-unmasked.fa
-Canis_lupus_familiaris-GCA_008641055.1-unmasked.fa
 Canis_lupus_familiaris-GCA_008641055.3-unmasked.fa
 Canis_lupus_familiaris-GCA_011100685.1-unmasked.fa
 Canis_lupus_familiaris-GCA_014441545.1-unmasked.fa
@@ -145,9 +142,7 @@ Cygnus_atratus-GCA_013377495.1-unmasked.fa
 Cynoglossus_semilaevis.Cse_v1.0.dna.toplevel.fa
 Cyprinodon_variegatus.C_variegatus-1.0.dna.toplevel.fa
 Cyprinus_carpio.common_carp_genome.dna.toplevel.fa
-Cyprinus_carpio_german_mirror.German_Mirror_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_germanmirror.German_Mirror_carp_1.0.dna.toplevel.fa
-Cyprinus_carpio_hebao_red.Hebao_red_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_hebaored.Hebao_red_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_huanghe.Hunaghe_carp_2.0.dna.toplevel.fa
 Danio_rerio.GRCz11.dna.toplevel.fa
@@ -157,7 +152,6 @@ Delphinapterus_leucas.ASM228892v3.dna.toplevel.fa
 Delphinapterus_leucas-GCA_009917725.1-unmasked.fa
 Delphinapterus_leucas-GCA_009917745.1-unmasked.fa
 Denticeps_clupeoides.fDenClu1.1.dna.toplevel.fa
-Denticeps_clupeoides-GCA_900700375.1-unmasked.fa
 Denticeps_clupeoides-GCA_900700375.2-unmasked.fa
 Desmodus_rotundus-GCA_002940915.1-unmasked.fa
 Dicentrarchus_labrax.seabass_V1.0.dna.toplevel.fa
@@ -264,7 +258,6 @@ Marmota_marmota_marmota.marMar2.1.dna.toplevel.fa
 Marmota_monax-GCA_901343595.1-unmasked.fa
 Martes_zibellina-GCA_012583365.1-unmasked.fa
 Mastacembelus_armatus.fMasArm1.2.dna.toplevel.fa
-Mastacembelus_armatus-GCA_900324485.1-unmasked.fa
 Mastacembelus_armatus-GCA_900324485.2-unmasked.fa
 Maylandia_zebra.M_zebra_UMD2a.dna.toplevel.fa
 Megaderma_lyra-GCA_004026885.1-unmasked.fa
@@ -366,7 +359,6 @@ Pantherophis_guttatus-GCA_001185365.2-unmasked.fa
 Pan_troglodytes.Pan_tro_3.0.dna.toplevel.fa
 Papio_anubis.Panu_3.0.dna.toplevel.fa
 Parambassis_ranga.fParRan2.1.dna.toplevel.fa
-Parambassis_ranga-GCA_900634625.1-unmasked.fa
 Parambassis_ranga-GCA_900634625.2-unmasked.fa
 Paramormyrops_kingsleyae.PKINGS_0.1.dna.toplevel.fa
 Parus_major.Parus_major1.1.dna.toplevel.fa
@@ -385,7 +377,6 @@ Phasianus_colchicus.ASM414374v1.dna.toplevel.fa
 Phoca_vitulina-GCA_004348235.1-unmasked.fa
 Phocoena_sinus-GCA_008692025.1-unmasked.fa
 Phocoena_sinus.mPhoSin1.pri.dna.toplevel.fa
-Phyllostomus_discolor-GCA_004126475.2-unmasked.fa
 Phyllostomus_discolor-GCA_004126475.3-unmasked.fa
 Physeter_catodon.ASM283717v2.dna.toplevel.fa
 Piliocolobus_tephrosceles.ASM277652v2.dna.toplevel.fa
@@ -432,7 +423,6 @@ Sapajus_apella-GCA_009761245.1-unmasked.fa
 Sarcophilus_harrisii-GCA_902635505.1-unmasked.fa
 Sarcophilus_harrisii.mSarHar1.11.dna.toplevel.fa
 Sciurus_carolinensis-GCA_902686445.2-unmasked.fa
-Sciurus_vulgaris-GCA_902686455.1-unmasked.fa
 Sciurus_vulgaris-GCA_902686455.2-unmasked.fa
 Sciurus_vulgaris.mSciVul1.1.dna.toplevel.fa
 Scleropages_formosus.fSclFor1.1.dna.toplevel.fa
@@ -523,7 +513,6 @@ Xenopus_tropicalis-GCA_000004195.4-unmasked.fa
 Xenopus_tropicalis.Xenopus_tropicalis_v9.1.dna.toplevel.fa
 Xiphophorus_couchianus.Xiphophorus_couchianus-4.0.1.dna.toplevel.fa
 Xiphophorus_maculatus.X_maculatus-5.0-male.dna.toplevel.fa
-Zalophus_californianus-GCA_009762305.1-unmasked.fa
 Zalophus_californianus-GCA_009762305.2-unmasked.fa
 Zalophus_californianus.mZalCal1.pri.dna.toplevel.fa
 Zonotrichia_albicollis.Zonotrichia_albicollis-1.0.1.dna.toplevel.fa
