@@ -15,18 +15,25 @@ dbs = config['dbs']
 queryName = config['query']
 queryName = str(queryName)
 queryN = os.path.basename(queryName)
-queryN= str(queryN)
-query1=[]
-query1= [queryN]
+queryN = str(queryN)
+query1 = []
+query1 = [queryN]
 queryNa = os.path.splitext(queryN)[0]
 ######################
 dbp= dbs
 dbsFind = dbp 
 #################
 
-end =  str(config["Output"]) + '/Outputfiles_For_'+ queryNa +'_TH_'+ str(config['threshold']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
+gfile = config['genomesdb']
+genomefile = os.path.basename(gfile)
+genomefile = str(genomefile)
 
-mid = str(config["Output"]) + '/BLAST_Outputfiles_For_'+ queryNa +'_TH_'+ str(config['threshold'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
+rootpath = config['dbs']
+outputpath = os.path.split(rootpath)[0]
+
+end =  outputpath + '/Outputfiles_For_Genomes_' + genomefile +'_and_Query_' + queryNa +'_TH_'+ str(config['threshold']) + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
+
+mid = outputpath + '/BLAST_Outputfiles_ARCHIVE_For_Genomes_' + genomefile +'_and_Query_' + queryNa +'_TH_'+ str(config['threshold'])  + '/' + queryNa + '_'+ 'at_TH_'+ str(config['threshold'])
 
 #Getting each genome file GENOMESDB_FILE = config["genomesdb"]
 GENOMESDB_FILE = config["genomesdb"]
@@ -49,7 +56,7 @@ rule BLAST: #Creates a blastn output
     params: prefix="{genomesdb}"
     output: temp("{genomesdb}_blast_results.txt")
     
-    shell: """ /opt/conda/bin/blastn -query {input[1]} -subject {input[0]} > {output} """
+    shell: """ /opt/conda/bin/blastn -query {input[1]} -subject {input[0]} > {output}  """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
 
@@ -141,6 +148,7 @@ rule parse: #Parses out wanted information to a temp file for later use
             eval = ''
             comF = ''
             num = 1
+            seqOrder =['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
             #Comands to parse out wanted information     
             with open(outputName,'w') as f:
@@ -164,34 +172,13 @@ rule parse: #Parses out wanted information to a temp file for later use
                            
                             nameF = name
 
-                            
+                
                         #Parse out ID %
                         elif  Identities in line:
-                            rand=str(num)    
-			    			    
-                            if '10' in rand:
-                                rand = 'a'
-                            if '11' in rand:
-                                rand = 'b'
-                            if '12' in rand:
-                                rand = 'c'
-                            if '13' in rand:
-                                rand = 'd'
-                            if '14' in rand:
-                                rand = 'e'
-                            if '15' in rand:
-                                rand = 'f'				
-                            if '16' in rand:
-                                rand = 'g'
-                            if '17' in rand:
-                                rand = 'h'
-                            if '18' in rand:
-                                rand = 'i'
-                            if '19' in rand:
-                                rand = 'j'
-                            if '20' in rand:
-                                rand = 'k'		
-			    
+                            x=num
+                            rand = str(seqOrder[x])
+				
+				
                             spNID = ''
                             spID = ''                          
 
@@ -341,16 +328,16 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                                         evalue= float(evalue)
                                         var= float(var)
-                                        
+
                                         #If the file does not meet threshold requirmen, strip name and add name to NO HITS list, + add 1 to counters
                                         if evalue > var:
-					    
+
                                             fname = ''
                                             #If files are from VGP print file:
                                             if '-unmasked' in fp.name:
                         
                                                 fname = (str(fp.name).rsplit('-unmasked')[0])
-                                            
+
                                             #If files are from ensemble print files with #:  
                                             else:
 
@@ -358,14 +345,13 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                                 fname = '#' + fnam
 
                                             #Increases count and stores filenames
-                                            
-                                            NoHitThresh.append( fname )
+                                            NoHitThresh.append(fname)
                                             threshNOHitCnt +=1
                                             totalFileCount +=1
-    
+
                                         #If the file meets threshold requirment, strip name and add name to HITS list, + add 1 to counters                                                                                                   
                                         else:
-                                            
+
                                             fname = ''
 
                                             #If files are from VGP print file:
@@ -378,9 +364,9 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                                                 fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname='#'+fnam
-                               
+                                            
                                             #Increases count and stores filenames
-                                            HitThresh.append( fname )
+                                            HitThresh.append(fname)
                                             ThreshHitCount +=1
                                             totalFileCount  +=1
 
@@ -418,16 +404,16 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 Hit = Hit[:50]
                 
                 ln =  space + '\t' + space + ' ' +  tnhc + ' / ' + thc+ '  |  ' + str(Threshkey) + '  |  ' + tc +'\n'
-
+                                
                 rp.write(ln)
 
                 printthis = Nohit + '\t' + Hit + '\n'
                 rp.write(printthis)
 
                 #New line For Hit Thresh    
-                if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 0 :
+                if len(HitThresh) > len(NoHitThresh) and len(HitThresh) > 1 :
                     x = 1
-                    
+
                     while x < len(HitThresh):
                         
                         #Formatting lines 
@@ -454,10 +440,10 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                         #Illeterates and writes lines
                         x += 1 
-                        rp.write(ln)
-                            
+                        rp.write(ln)      
+                
                 #New line For No Hit Thresh                
-                if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 0 :
+                if len(NoHitThresh) > len(HitThresh) and len(NoHitThresh) > 1 :
                     x = 1
 
                     while x < len(NoHitThresh):
@@ -485,8 +471,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                         #Illeterates and writes lines
                         x += 1 
-                        rp.write(ln) 
-
+                        rp.write(ln)   
+                
                 if len(NoHitThresh) == len(HitThresh) and len(HitThresh) > 0 and len(NoHitThresh) > 0:
                     x = 1 
 
@@ -506,7 +492,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                         #Illeterates and writes lines
                         x += 1 
                         rp.write(ln) 
-			  
+
                 #Close the files
                 fp.close()
                         
@@ -577,12 +563,9 @@ rule ParsedOut: # Moves all files generated by rule 'parse' to user generated fi
 
 rule muscle: # Runs a simple multi-sequence alignment on all parsed out files
     input:  "%s_Parsed_Final.fa" %end , expand(["{genomesdb}_parsed_Final.fa"], genomesdb=GENOMESDB)
-    output: temp("Multi_Seq_Align.aln")
-    shell: """ /opt/conda/bin/muscle -in {input[0]} -fastaout {output[0]}  """
-rule cleanmuscle: # Runs a simple multi-sequence alignment on all parsed out files
-    input: "Multi_Seq_Align.aln"
     output: "%s_Multi_Seq_Align.aln" %end 
-    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]}  """
+    shell: """ /opt/conda/bin/muscle -in {input[0]} -fastaout {output[0]}  """
+
 rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
     input: "%s_Multi_Seq_Align.aln" %end 
     output: "%s_Phy_Align.phy" %end
@@ -593,7 +576,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" python msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log test.log"""
+    shell:""" python /msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -606,7 +589,7 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
 rule cleanRAxML:
     input:  "RAxML_bestTree.RAXML_output.phy", "RAxML_info.RAXML_output.phy", "RAxML_parsimonyTree.RAXML_output.phy", "RAxML_log.RAXML_output.phy"
     output:  "%s_RAxML_bestTree.phy" %end, "%s_RAxML_info.phy" %end, "%s_RAxML_parsimonyTree.phy" %end, "%s_RAxML_log.log" %end
-    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} && touch {output[1]} && cat {input[1]} >> {output[1]} && touch {output[2]} && cat {input[2]} >> {output[2]} && touch {output[3]} && cat {input[3]} >> {output[3]} """
+    shell: """ cat {input[0]} >> {output[0]} && cat {input[1]} >> {output[1]}  && cat {input[2]} >> {output[2]} && cat {input[3]} >> {output[3]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
 #-------------------------------------------------------------------#
@@ -615,7 +598,7 @@ rule cleanRAxML:
 rule Move:
     input: "{genomesdb}_blast_results.txt"
     output: "%s_{genomesdb}_blast_results.txt" %mid
-    shell: """ touch {output[0]} && cat {input[0]} >> {output[0]} """
+    shell: """ cat {input[0]} >> {output[0]} """
 
 #####################################################################
 rule Delete:
