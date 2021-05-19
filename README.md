@@ -16,7 +16,7 @@ Approximate Runtime Seen Running All 531 Genome Inputs:
 
 	Maximum: 12+ hours
 
-	Average: 6 Hours
+	Average: 9 Hours
 
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc. 
 
