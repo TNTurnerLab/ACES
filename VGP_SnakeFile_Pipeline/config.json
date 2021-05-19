@@ -1,7 +1,6 @@
 {
     "genomesdb": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
     "query": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/USERS_query_Files/#USERINPUTQUERYFILE",
-    "Output": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Output",
     "dbs": "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Genomes",
     "threshold": "0.0001"
     
