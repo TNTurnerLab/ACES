@@ -116,6 +116,7 @@ Chelydra_serpentina.Chelydra_serpentina-1.0.dna.toplevel.fa
 Chinchilla_lanigera.ChiLan1.0.dna.toplevel.fa
 Chiroxiphia_lanceolata-GCA_009829145.1-unmasked.fa
 Chlorocebus_sabaeus.ChlSab1.1.dna.toplevel.fa
+Choloepus_didactylus-GCA_015220235.1-unmasked.fa
 Choloepus_hoffmanni.choHof1.dna.toplevel.fa
 Chrysemys_picta_bellii.Chrysemys_picta_bellii-3.0.3.dna.toplevel.fa
 Chrysemys_picta-GCA_011386835.1-unmasked.fa
@@ -514,6 +515,7 @@ Verasper_variegatus-GCA_013332515.1-unmasked.fa
 Vicugna_pacos_huacaya-GCA_000767525.1-unmasked.fa
 Vicugna_pacos.vicPac1.dna.toplevel.fa
 Vicugna_vicugna_mensalis-GCA_013265495.1-unmasked.fa
+Vigna_unguiculata-GCA_004118075.1-unmasked.fa
 Vombatus_ursinus.bare-nosed_wombat_genome_assembly.dna.toplevel.fa
 Vulpes_lagopus-GCA_004023825.1-unmasked.fa
 Vulpes_vulpes.VulVul2.2.dna.toplevel.fa
