@@ -55,6 +55,7 @@ Cavia_tschudii-GCA_004027695.1-unmasked.fa
 Cervus_hanglu_yarkandensis-GCA_010411085.1-unmasked.fa
 Cheirogaleus_medius-GCA_004024725.1-unmasked.fa
 Chiroxiphia_lanceolata-GCA_009829145.1-unmasked.fa
+Choloepus_didactylus-GCA_015220235.1-unmasked.fa
 Chrysemys_picta-GCA_011386835.1-unmasked.fa
 Clytia_hemisphaerica-GCA_902728285.1-unmasked.fa
 Corvus_moneduloides-GCA_009650515.1-unmasked.fa
@@ -210,6 +211,7 @@ Verasper_variegatus-GCA_012393435.1-unmasked.fa
 Verasper_variegatus-GCA_013332515.1-unmasked.fa
 Vicugna_pacos_huacaya-GCA_000767525.1-unmasked.fa
 Vicugna_vicugna_mensalis-GCA_013265495.1-unmasked.fa
+Vigna_unguiculata-GCA_004118075.1-unmasked.fa
 Vulpes_lagopus-GCA_004023825.1-unmasked.fa
 Xenopus_tropicalis-GCA_000004195.4-unmasked.fa
 Zalophus_californianus-GCA_009762305.1-unmasked.fa
