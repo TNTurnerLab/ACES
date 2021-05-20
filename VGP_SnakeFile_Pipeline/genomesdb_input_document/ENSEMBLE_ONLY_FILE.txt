@@ -78,9 +78,7 @@ Cyclopterus_lumpus.fCycLum1.pri.dna.toplevel.fa
 Cynoglossus_semilaevis.Cse_v1.0.dna.toplevel.fa
 Cyprinodon_variegatus.C_variegatus-1.0.dna.toplevel.fa
 Cyprinus_carpio.common_carp_genome.dna.toplevel.fa
-Cyprinus_carpio_german_mirror.German_Mirror_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_germanmirror.German_Mirror_carp_1.0.dna.toplevel.fa
-Cyprinus_carpio_hebao_red.Hebao_red_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_hebaored.Hebao_red_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_huanghe.Hunaghe_carp_2.0.dna.toplevel.fa
 Danio_rerio.GRCz11.dna.toplevel.fa
