@@ -14,7 +14,6 @@ Amphilophus_citrinellus.Midas_v5.dna.toplevel.fa
 Amphiprion_ocellaris.AmpOce1.0.dna.toplevel.fa
 Amphiprion_percula.Nemo_v1.dna.toplevel.fa
 Anabas_testudineus.fAnaTes1.2.dna.toplevel.fa
-Anabas_testudineus-GCA_900324465.1-unmasked.fa
 Anabas_testudineus-GCA_900324465.2-unmasked.fa
 Anableps_anableps-GCA_014839685.1-unmasked.fa
 Anas_platyrhynchos.ASM874695v1.dna.toplevel.fa
@@ -142,8 +141,8 @@ Cygnus_atratus-GCA_013377495.1-unmasked.fa
 Cynoglossus_semilaevis.Cse_v1.0.dna.toplevel.fa
 Cyprinodon_variegatus.C_variegatus-1.0.dna.toplevel.fa
 Cyprinus_carpio.common_carp_genome.dna.toplevel.fa
-Cyprinus_carpio_germanmirror.German_Mirror_carp_1.0.dna.toplevel.fa
-Cyprinus_carpio_hebaored.Hebao_red_carp_1.0.dna.toplevel.fa
+Cyprinus_carpio_german_mirror.German_Mirror_carp_1.0.dna.toplevel.fa
+Cyprinus_carpio_hebao_red.Hebao_red_carp_1.0.dna.toplevel.fa
 Cyprinus_carpio_huanghe.Hunaghe_carp_2.0.dna.toplevel.fa
 Danio_rerio.GRCz11.dna.toplevel.fa
 Dasypus_novemcinctus.Dasnov3.0.dna.toplevel.fa
@@ -258,6 +257,7 @@ Marmota_marmota_marmota.marMar2.1.dna.toplevel.fa
 Marmota_monax-GCA_901343595.1-unmasked.fa
 Martes_zibellina-GCA_012583365.1-unmasked.fa
 Mastacembelus_armatus.fMasArm1.2.dna.toplevel.fa
+Mastacembelus_armatus-GCA_900324485.1-unmasked.fa
 Mastacembelus_armatus-GCA_900324485.2-unmasked.fa
 Maylandia_zebra.M_zebra_UMD2a.dna.toplevel.fa
 Megaderma_lyra-GCA_004026885.1-unmasked.fa
@@ -377,6 +377,7 @@ Phasianus_colchicus.ASM414374v1.dna.toplevel.fa
 Phoca_vitulina-GCA_004348235.1-unmasked.fa
 Phocoena_sinus-GCA_008692025.1-unmasked.fa
 Phocoena_sinus.mPhoSin1.pri.dna.toplevel.fa
+Phyllostomus_discolor-GCA_004126475.2-unmasked.fa
 Phyllostomus_discolor-GCA_004126475.3-unmasked.fa
 Physeter_catodon.ASM283717v2.dna.toplevel.fa
 Piliocolobus_tephrosceles.ASM277652v2.dna.toplevel.fa
@@ -513,6 +514,7 @@ Xenopus_tropicalis-GCA_000004195.4-unmasked.fa
 Xenopus_tropicalis.Xenopus_tropicalis_v9.1.dna.toplevel.fa
 Xiphophorus_couchianus.Xiphophorus_couchianus-4.0.1.dna.toplevel.fa
 Xiphophorus_maculatus.X_maculatus-5.0-male.dna.toplevel.fa
+Zalophus_californianus-GCA_009762305.1-unmasked.fa
 Zalophus_californianus-GCA_009762305.2-unmasked.fa
 Zalophus_californianus.mZalCal1.pri.dna.toplevel.fa
 Zonotrichia_albicollis.Zonotrichia_albicollis-1.0.1.dna.toplevel.fa
