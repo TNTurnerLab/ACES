@@ -17,9 +17,7 @@ PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline 
 Approximate Runtime Seen Running All 522 Genome Inputs At Default values:
 
 	Minimum: 3.5 hours
-
 	Maximum: 10+ hours
-
 	Average: 6 Hours
 
 Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc.
@@ -28,9 +26,7 @@ Runtime depends on many factors such as size of users query file, RAxML file inp
 Approximate Download and Unzip All 522 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
 
 	Minimum: 15 hours
-
 	Maximum: 24+ hours
-
 	Average: 24 Hours
 
 Download time will vary between users.
