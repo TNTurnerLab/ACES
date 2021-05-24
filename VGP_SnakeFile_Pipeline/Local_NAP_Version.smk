@@ -6,7 +6,7 @@ import math
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-    configfile: "/VGP_SnakeFile_Pipeline/config.json"
+    configfile: "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/config.json"
 
 #Varibles in config file
 query = config['query']
@@ -597,7 +597,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files i
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" python /VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
+    shell:""" python /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
