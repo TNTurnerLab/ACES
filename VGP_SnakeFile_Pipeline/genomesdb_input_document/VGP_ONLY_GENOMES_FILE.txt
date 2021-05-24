@@ -6,7 +6,6 @@ Ailuropoda_melanoleuca-GCA_002007445.2-unmasked.fa
 Alouatta_palliata-GCA_004027835.1-unmasked.fa
 Amblyraja_radiata-GCA_010909765.1-unmasked.fa
 Ameiurus_melas-GCA_012411365.1-unmasked.fa
-Anabas_testudineus-GCA_900324465.1-unmasked.fa
 Anabas_testudineus-GCA_900324465.2-unmasked.fa
 Anableps_anableps-GCA_014839685.1-unmasked.fa
 Anas_zonorhyncha-GCA_002224875.1-unmasked.fa
