@@ -273,7 +273,7 @@ All required script files will be available on GitHub to be pulled on a desktop 
 
 	wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
-Or can be pulled on LSF with command:
+Or can be pulled using `git clone` as follows:
 
 	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
