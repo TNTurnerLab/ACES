@@ -495,7 +495,9 @@ Back to [HOW TO RUN #4](#HTF)
 The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory.
 
 						***WARNING:***
+```
 		When conducting the retrieval of files, please ensure that the user has enough storage space. The minimum storage needed for downloading all current VGP files is estimated to be 338.58 GB. The total storage needed for downloading all current Ensembl file is estimated at 669.18 GB. Please insure there is enough storage for all files the minimum recommended free storage should be approximately 1.2TB. This insures all downloaded and created files have enough storage space on users device. There are 522 files in total between the two databases at the time of upload. This is subjected to change. Please ensure that genomes input files reflect on current, new versions of each genome file. Older versions of files may skew data or cause inconsistencies.
+```
 
 --------------------------------------------------------------------------------------------------------------------------------
 
