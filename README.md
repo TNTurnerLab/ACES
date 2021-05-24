@@ -186,28 +186,6 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 	* [SUB-FILES GIVEN](#Given)
 	* [USER MUST RETRIEVE or PROVIDE](#USER)
 
-* [FILES GUIDE](#FILES_GUIDE)
-	* [Dockerfile](#Dock)
-   	* [Local_NAP_Version.smk and LSF_NAP_Version.smk](#SNAKE)
-
-		*  [Rule Blast](#RB)
-		*  [Rule findThresh](#RFT)
-		*  [Rule Parse](#RP)
-		*  [Rule generateReport](#RGR)
-		*  [Rule KeyDoc](#RKD)
-		*  [Rule muscle](#RM)
-		*  [Rule muscle2](#RM2)
-		*  [Rule MSA2GFA](#RMG)
-		*  [Rule RAXML](#RR)
-		*  [Rule clean](#RC)
-
-	*  [config.json](#config_file)
-		*  [genomesdb](#genomesdb)
-		*  [query](#query)
-		*  [dbs](#dbs)
-		*  [threshold](#tH)
-		*	 ["queryLengthPer"](#ql)
-
 
 * [RETRIEVING VGP AND ENSEMBL FILES](#RETRIEVING-VGP-AND-ENSEMBL-FILES)
 
@@ -312,60 +290,7 @@ Back to [HOW TO RUN](#HOWRUN)
 
 The user has two options for which snake they can run, Local_NAP_Version.smk is for running on a local device while LSF_NAP_Version.smk is used for running on a LSF server. The files execute the same and can be found in the VGP SnakeFiles folder.
 
---------------------------------------------------------------------------------------------------------------------------------
-The snakefile consists of a few rules:
 
-*   <a name= "RB"><h5>Rule BLAST:</h5></a>
-    *   Takes a text input from the folder genomes input document as the subject and the given FASTA file as query and BLASTn the files to create a BLAST output file
-*   <a name= "RP"><h5>Rule parse:</h5></a>
-    *   Each BLASTn output file will undergo a tagging system which will help identify weather the sequence has met the e-value threshold requirement and query length minimum or not. This starts by sorting through each sequence and finding its sequence length. Then from the query sequence percent set by the user, the program with either tag the sequence 'Y' for yes, or 'N' for no. Those tagged 'N' will automatically be excluded from the final file containing every accepted sequence. At this point, the sequences will also be tagged with their respective e-values. Once completed, the file will be created and moved to final stage of filtering in the rule findThresh.
-*   <a name= "RFT"><h5>Rule findThresh:</h5></a>
-    *   Using the users applied threshold for the maximum e-value allowed, each sequence will be filtered according to their 'Y'/'N' tag and e-value. The rule looks for sequences tagged 'Y' and checks their e-value score against the users threshold value. If both requirements are met, the sequence is written to the ' *_ Parsed_Final.fa' file. Those sequences with a 'N' tag are automatically excluded out of the final parsed file.   
-*   <a name= "RGR"><h5>Rule generateReport:</h5></a>
-    *   The rule generates a report for the user to allow a visual of what sequences and files have met the e-value threshold and query length sequence minimum requirement. The file will list all 'Rejected' and 'Accepted' sequences ID's and files, along with a summary of results including Threshold Value Used, Total # of Files, Total # Of Sequences Found, Total # Of Rejected Sequences Found, and Total # Of Accepted Sequences Found. Rejected files will be tagged with any of the three keys: N/L, N/H, N/A. These keys correspond to Sequence Length Did Not Meet % Of Query Length Requirement, E-Value Did Not Meet Threshold Requirements, and No Hits Were Found In This Genome respectively. All genomes from the Ensembl database will also be tagged with the key '@-'.
-*   <a name= "RKD"><h5>Rule KeyDoc:</h5></a>  
-    *   KeyDoc will generate a file that holds the unique filenames used throughout the pipeline. The RAXML function requires a unique naming schema with no more than ten characters being used. The logic of the naming patterns follows one of two naming techniques. Those files produced by the VGP will have the first letter of the species, followed by the last five values of their id number, file number, and sequence place within the file. File who has been pulled from the Ensembl database will appear to have a '@-' inside the produced document. These files have a naming pattern like those of the VGP files. The first letter indicates the letter the species name starts with. After the first letter, the last 7 unique consecutive characters of the species name, followed by the sequence place within the file. If files have more than 9 sequences as hits, then end value will be noted by a letter of the alphabet starting with 'a' = 10. The file generated is "* NameKey.txt".		 
-*   <a name= "RM"><h5> Rule muscle:</h5></a>
-    *   MUSCLE is a multiple sequence alignment tool that takes in the user generated parsed file and runs this command.
-*  <a name= "RM2"><h5> Rule muscle2:</h5></a>
-    * MUSCLE will take the multi sequence alignment file generated from rule muscle and convert the file into a PHYLIP file format. PHYLIP files are plain text files consisting of 10-character header of the sequence name and the sequence alignment.
-*   <a name= "RR"><h5> Rule RAXML:</h5></a>
-	  * Randomized Accelerated Maximum Likelihood, or RAXML, is a program for creating a phylogenetic analysis of large datasets restricted by maximum likelihood. This specific program will generate tress of best fit which may be used in an external phylogenic tree viewer. The pipeline should export the file '*_RAxML_Output_Phylogenetic_Tree.phy'. RAXML requires many sequences in order to run. If rule does not execute, it may be caused by a small number of sequences in its input file. Try rerunning at lower threshold value or use an external phylogenic tree builder.
-*   <a name= "RMG"><h5> Rule MSA2GFA:</h5></a>
-    * This rule contains code that is not original to the current maintainer but has been slightly modified for use in the pipeline. Please see Citation for credit, and link to creators GitHub repository. This rule will take the generated multi sequence alignment file and convert it to a Graphical Fragment Assembly file. To view the file, the user must use an external GFA viewer for further analysis.
-
--------------------------------------------------------------------------------------------------------------------------------
-Cleaning Working Directory Rules:
-
-*   <a name= "RC"><h5> Rule Move:</h5></a>
-    * Moves BLASTn outputs to generated file in BLAST_Outputfiles_ARCHIVE_For_Genomes_* and will tag BLASTn files with users query file name, threshold value used, and query length value inputted.
-*   <a name= "RC"><h5> Rule cleanRAxML:</h5></a>
-    * Tags and moves RAxML output to output folder
-*   <a name= "RC"><h5> Rule Delete:</h5></a>
-    * Removes unnecessary files generated by snakemake.
-*   <a name= "RC"><h5> Rule Move:</h5></a>
-    * Tags and moves all BLASTn outputs into ' * BLAST_Outputfiles_ARCHIVE_For_Genomes_*' folder so that user may view files or delete
-
-
---------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------
-
-**<span style="text-decoration:underline;"><a name="config_file"><h3>config.json </h3></a></span>**
-
-
-*   <a name="genomesdb"><h5>"genomesdb"</h5></a>
-    *   This will be the pathway to the one txt document that holds the names all genomes that the user will use in the pipeline.
-        *   EX: ENSEMBL_AND_VGP_TOGETHER_FILE.txt
-            *   Pre-generated file with species names found within the GitHub. Variations of these files may be used, or one of the pre-generated files could be used as well.
-*   <a name="query"><h5>"query"</h5></a>
-    *   A file that includes the directory and file name of your input file, this will be used as the query of the BLASTn. It is recommended that user puts file inside pre generated file named USERS query Files. If user chooses not use folder, user must provide full file path along with file name needs to be changed in config.json file. Users input file may not be a repeat sequence nor a file larger than 1MB.
-        *   Must be a FASTA file
-*   <a name="dbs"><h5>"dbs"</h5></a>
-    *   The file path in which all '*-unmasked.fa' and '*.dna.toplevel.fa' files are located. File path should NOT end with '/'.
-*   <a name="tH"><h5>"threshold"</h5></a>
-    *   Default value 0.0001. User can input a value to create a maximum threshold for e-value. Recommended to be in decimal format.
-*   <a name="ql"><h5>"queryLengthPer"</h5></a>
-    *   Default value at 0.5 or 50%. Value must be in decimal format or value 1. User can input a query length minimum requirement to help eliminate small misalliance sequences produced by BLASTn that have met the required threshold. The pipeline will find both the query input sequence length and the subject sequence length. It will then apply a length minimum requirement, and strands that are smaller than the percent inputted of the query length will not be included in results. This can also be set to 1 to allow for all sequences found by BLASTn and meeting the e-value threshold requirement to be used.
 
 Back to [HOW TO RUN #4](#HTF)
 
@@ -675,31 +600,5 @@ View [FILES GUIDE](#FILES_GUIDE): for more information.
 
 
 
-**<span style="text-decoration:underline;"> <a name="more"><h4>More Information</h4></a> </span>**
-
-https://cme.h-its.org/exelixis/resource/download/NewManual.pdf
-
-[https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
-
-https://github.com/fawaz-dabbaghieh/msa_to_gfa.
-
-https://www.ncbi.nlm.nih.gov/books/NBK279690/
-
-http://www.drive5.com/muscle/muscle.html
-
-http://pathblast.org/docs/e_value.html
 
 
-
---------------------------------------------------------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-**<span style="text-decoration:underline;"> <a name="cite"><h4> Citations </h4></a></span>**
- A. Stamatakis: "RAxML Version 8: A tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies". In Bioinformatics, 2014, open access.
-
-
-** DISCLAIMER: I am not the original creator of the msa_to_gfa program found in this repository. I have a slightly modified version of an existing workflow from the GitHub: https://github.com/fawaz-dabbaghieh/msa_to_gfa.
