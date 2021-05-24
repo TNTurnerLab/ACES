@@ -7,7 +7,9 @@ Washington University in St. Louis
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
 
-	30GB RAM, 1TB FREE storage space minimum, recommended a dual or quad core, 64-bit, x86 CPU, equivalent or better
+* 30GB RAM
+* 1TB FREE storage space minimum
+* recommended dual or quad core, 64-bit, x86 CPU, equivalent or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
