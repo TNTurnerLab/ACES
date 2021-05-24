@@ -2,7 +2,7 @@
 
 Maintainer: Elvisa Mehinoviic\
 Laboratory of Dr. Tychele N. Turner, Ph.D.\
-Washington University in St. Louis\
+Washington University in St. Louis
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
