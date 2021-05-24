@@ -5,35 +5,10 @@ Laboratory of Dr. Tychele N. Turner, Ph.D.\
 Washington University in St. Louis
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
-<h3>Minimum Compute Requirements: </h3>
-
-* 30GB RAM
-* 1TB FREE storage space minimum
-* recommended dual or quad core, 64-bit, x86 CPU, equivalent or better
 
 PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
 
---------------------------------------------------------------------------------------------------------------------------------
-Approximate Runtime Seen Running All 522 Genome Inputs At Default values:
-
-	Minimum: 3.5 hours
-	Maximum: 10+ hours
-	Average: 6 Hours
-
-Runtime depends on many factors such as size of users query file, RAxML file input size, users ram amount, number of genomes being ran against, etc.
-
---------------------------------------------------------------------------------------------------------------------------------
-Approximate Download and Unzip All 522 VGP and Ensembl Genomes if Ran Simultaneously: (Average based on 40Mbps Download speed)
-
-	Minimum: 15 hours
-	Maximum: 24+ hours
-	Average: 24 Hours
-
-Download time will vary between users.
-
---------------------------------------------------------------------------------------------------------------------------------
-
-<h4>USERS query Files:</h4>
+<h4>Note on USER query Files:</h4>
 
 This is an empty folder generated for user to store all their input query files that will be run through the workflow. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json: 'query'. Query file may not be a repeat sequence nor a file larger than 1 MB. These files will not generate accurate information.
 
@@ -43,7 +18,7 @@ This is an empty folder generated for user to store all their input query files 
 
 [Reference Outline](#O) Provided Image to Better Understand Pipeline File Locations.
 
-Start by cloning VGP Conservation Analysis GitHub:
+1. Start by cloning VGP Conservation Analysis GitHub:
 
 All required script files will be available on GitHub to be pulled on a desktop by using:
 
@@ -54,33 +29,30 @@ Or can be pulled using `git clone` as follows:
 	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
 
 
-1. Pull down ready to run docker image with the code provided below:
+2. Pull down ready to run docker image with the code provided below:
 
-   * This docker image is pre-built and needs no modifications to it, if user wishes to build their own image manually,
-      follow steps in [Dockerfile](#Dock) with the provided Dockerfile in this pipeline.
+   * This docker image is pre-built and needs no modifications to it. If the user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided Dockerfile in this pipeline.
 
     	 docker pull tnturnerlab/vgp_ens_pipeline:latest
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-<a name = "HTR"> 2. </a>   Have all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
+<a name = "HTR"> 3. </a>   Put all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
 
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
 
-
-<a name = "HTT"> 3. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
 
    * Files can be modified or changed based on user's requirements
 
 
-
-<a name = "HTF"> 4. </a>   Configure all file pathways in file [config](#config_file).json. This file can be in VGP SnakeFile Pipeline.
+<a name = "HTF"> 5. </a>   Configure all file pathways in file [config](#config_file).json. This file can be in VGP SnakeFile Pipeline.
 
 * Reference FILES GUIDE: [config](#config_file).json
 
 	* genomesdb:
-		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all
+		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will un all
       		  VGP and Ensembl genomes against users query sequence.
 
 	* query:
@@ -100,7 +72,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-5. Open file **_config.json_**, and fill in value for "[threshold](#tH)"
+6. Open file **_config.json_**, and fill in value for "[threshold](#tH)"
 
   * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
@@ -109,7 +81,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-6. Open file **_config.json_**, and fill in value for "[queryLengthPer](#ql)"
+7. Open file **_config.json_**, and fill in value for "[queryLengthPer](#ql)"
 
 	* Fill in decimal value for percent of query length sequences needed in order to be included into the results.
 	* This requirement helps eliminate small sequences that may have been generated as hits by BLASTn.
@@ -118,14 +90,14 @@ Or can be pulled using `git clone` as follows:
 
 
 
-7. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
+8. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
 
   * Default file is set to run all VGP and Ensembl genomes.
 	* Create new file, or modify and close this file when content.
 
 
 
-8. Users must upload or have handy their {query} file for Blast.
+9. Users must upload or have handy their {query} file for Blast.
 
   * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
@@ -133,20 +105,20 @@ Or can be pulled using `git clone` as follows:
 
 
 
-9. Locate [Local_NAP_Version.smk and LSF_NAP_Version.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
+10. Locate [Local_NAP_Version.smk and LSF_NAP_Version.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
 
 
 
 _<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_NAP_Version.smk</h3></span>_
 
 
-10. Run Dockerfile command - CHECK:
+11. Run Dockerfile command - CHECK:
 
 		docker run tnturnerlab/vgp_ens_pipeline:latest (CHECKS IF PULL IS SUCCESSFUL AND FILE IS READY TO RUN)
 
 
 
-11. Run the following script:
+12. Run the following script:
 
 		docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
 
@@ -156,7 +128,7 @@ _<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_N
 _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk </h3></span>_
 
 
-12. Tell Docker where data and code are:
+13. Tell Docker where data and code are:
 
 	* Execute on LSF code:
 
@@ -172,13 +144,13 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
 
 
-13. Create a group job:
+14. Create a group job:
 
     	bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
 
 
 
-14. Run following script:
+15. Run following script:
 
     * MUST MODIFY SCRIPT TO RUN:
 
@@ -190,14 +162,14 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
 
 
-15. Output files will be generated in the Output folder provided in this pipeline.
+16. Output files will be generated in the Output folder provided in this pipeline.
 		
 	* View [Output Files Generated: Output](#Outfile) to see which files are generated and more information on each. Output files will be generated inside the VGP_SnakeFile_Pipeline folder. Two folders will be created within the folder. One folder will hold all BLAST outputs from the pipeline execution, and the other holding output files. The file with the name BLAST_Outputfiles_ARCHIVE_For_Genomes_ *
 can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
 
 
 
-16. Once satisfied, user can move or delete all log files with basic mv or rm commands.
+17. Once satisfied, user can move or delete all log files with basic mv or rm commands.
 
  <a name="o"> Workflow Outline </a>
 
@@ -252,16 +224,6 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
-<a name="PB"><h3>PIPELINE BACKGROUND</h3></a>
-
-This pipeline was developed to query small sequences in a large number of genomes. For example, one could look at conservation of an enhancer sequence in many genomes. In particular, we developed this pipeline to utilize genome data from the newly generated in genomes in the [Vertebrate Genomes Project (VGP)](https://vertebrategenomesproject.org/) as well as from the standard genomes in the [Ensembl database](http://ensembl.org). The input file is a FASTA file and the outputs are: Blast results of the sequence to each reference genome, MUSCLE alignment of all sequences, PHYLIP reformatting, conversion to a GFA file, and finally a RAXML phylogenetic tree output. One particular feature users can modify is the threshold value from BLAST. This allows the user to only MUSCLE align if the files are at, or below the threshold requirement (i.e., high-quality matches). In addition to the threshold requirement, there is also a percent query length requirement. This requirement will take in a decimal value corresponding to a percent of sequenced covered in the alignment and filters out smaller miscellaneous sequences that may have a good e-value score. To assess homology between sequences, it is advised that sequences be over 30% identical across their entire lengths. By setting a minimum length requirement, this will ensure that larger sequences, with corresponding e-values will be the only sequences processed in the pipeline. This gives a cleaner and more concise result.
-
-The pipeline is defaulted to run 522 genomic files (all available genome data as of today) together at a threshold value of 0.0001, and percent query length at 0.5 (50%). Users can edit those files found in the sub-file folder. The query file cannot be larger than 1 Megabase pair (Mbp) in size and cannot be a repeat element as the pipeline is not optimized to work on those sequences.
-
-When executing the pipeline, there are a total of 7 files will be generated if ran successfully. These files include a `_Parsed_Final.fa` file which will include all sequences that have met the user’s threshold requirement.`_Files_Generated_Report.fa` will generate a report on how many files contained hits, no hits, or had not met the threshold requirement. This file will also tell the user exactly how many hits, no hits, and total number of sequences read. After receiving the `_Parsed_Final.fa`, the file will be converted into a `_Multi_Seq_Align.aln`. This file takes all the parsed hit sequences and aligns them for computational use. The `_MSA2GFA.fa` file will be a file that converts the `_Multi_Seq_Align.aln` into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis. `_Phy_Align.phy` is like the `_MSA2GFA.fa`, except it is a multiple sequence file in PHYLIP format. This file format is required for running the RAXML analysis. When viewing the PHYLIP file or any RAXML file, please refer to the `_NameKey.txt`. This document will hold unique names to identify files and sequences in the named files. Changing this file will not change the names of files or identity names within files. RAXML will also generate a single file consisting of the optimum tree created based on 100 bootstraps. This file will be called `_RAxML_Output_Phylogenetic_Tree.phy`. RAXML will be running PROTGAMMAWAG model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipeline under the user’s discretion. For more information regarding RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogenetic viewer.
-
-The purpose of this pipeline is to provide a reproducible, and faster way to obtain an in depth analysis of particular sequences of interest in genomes from the Vertebrate Genome Project and Ensembl by using a user inputted query sequence to run a BLASTn on both databases. Outputted sequences that have met a user set threshold value will be combined to create multiple files. These files include those that can be inputted in an external Graphical Fragment Assembly viewer and Phylogenetic tree viewer for further visual analysis of the data.
-
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
@@ -339,42 +301,6 @@ Back to [HOW TO RUN](#HOWRUN)
 Short guide that explains files in the repository. Users can find examples, commands, and explanations on each file. This also includes a mini summary of internal components of files.
 
 --------------------------------------------------------------------------------------------------------------------------------
-**<span style="text-decoration:underline;"><a name="Dock"><h4>Dockerfile</h4></a></span>**
-
-** Disclaimer Make sure to build the Dockerfile locally on machine before attempting to on LSF server **
-
-For those not familiar with docker reference this link: [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
-
---------------------------------------------------------------------------------------------------------------------------------
-<h5> There is a Dockerfile provided for user to modify or view, however by executing the command in [HOW TO RUN](#HOWRUN),
-	docker image is pre-built and ready to run. Only follow these steps if user wishes to manually build the docker image.</h5>
-
-
-1. Find folder VGP-Conservation-Analysis. This is the folder user will use to build docker image.
-
-2.   Docker files must be built locally before use; therefore, you must build a Docker image by the command :
-
-		   docker build  ###PATH TO DIRECTORY/VGP-Conservation-Analysis
-	
-3. Once the Docker has built an image for the Dockerfile, it is beneficial to tag the image for later use:
- 
-    * To view IMAGE ID for tagging run command :
-	
-			docker images
-	
-    *   To tag Dockerfile run command:
-    
-    		docker tag ###IMAGE ID NUMBER##  ##(your_docker_username##/##the_name_of_useres_repository>:&lt;what_you_would_like_to_call_the_image)##
-     	
-   	  	Ex: docker tag myuser01/home:##myimagename##
- 
- 4. Push docker image to your docker hub:
-
- 		docker push ##(docker_username>/repo_name:image_name)##
-   
-   *   ***If executed on a LSF server one must execute export LSF. ***
-  
-   			export LSF_DOCKER_VOLUMES="/path/to/data:/path/name /home/directory:/home"
 
 
 Back to [HOW TO RUN](#HOWRUN)
