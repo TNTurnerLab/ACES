@@ -39,7 +39,7 @@ This is an empty folder generated for user to store all their input query files 
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-BEFORE EXECUTION:
+**BEFORE EXECUTION:**
 
 [Reference Outline](#O) Provided Image to Better Understand Pipeline File Locations.
 
@@ -199,7 +199,7 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 
 16. Once satisfied, user can move or delete all log files with basic mv or rm commands.
 
- <a name="o"> Reference Outline </a>
+ <a name="o"> Workflow Outline </a>
 
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720)
 
@@ -254,50 +254,13 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 --------------------------------------------------------------------------------------------------------------------------------
 <a name="PB"><h3>PIPELINE BACKGROUND</h3></a>
 
-		The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP) 
-		or Ensembl's database, and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment,
-		PHYLIP reformatting, conversion to a GFA file, and finally a RAXML phylogenetic tree output. There
-		is an added feature that allows the user to input any value to a threshold delimiter that will parse
-		out files if it meets the threshold requirement. This allows the user to only MUSCLE align if the 
-		files are at, or below threshold requirement. In addition to the threshold requirement, there is 
-		also a percent query length requirement. This requirement will take in a decimal value corresponding 
-		to a percent and filter out smaller miscellaneous sequences that may have a good e-value score. To 
-		show homology between sequences, it is advised that sequences be over 30% identical across their
-		entire lengths. By setting a minimum length requirement, this will ensure that larger sequences, 
-		with corresponding e-values will be the only sequences processed in the pipeline. Thus, giving a 
-		cleaner, concise result.
+The pipeline created takes unmasked genomes, presented by the Vertebrate Genomes Project (VGP) or Ensembl's database, and an input FASTA  file to create outputs: Blast, Parse, MUSCLE alignment, PHYLIP reformatting, conversion to a GFA file, and finally a RAXML phylogenetic tree output. There is an added feature that allows the user to input any value to a threshold delimiter that will parse out files if it meets the threshold requirement. This allows the user to only MUSCLE align if the files are at, or below threshold requirement. In addition to the threshold requirement, there is also a percent query length requirement. This requirement will take in a decimal value corresponding to a percent and filter out smaller miscellaneous sequences that may have a good e-value score. To show homology between sequences, it is advised that sequences be over 30% identical across their entire lengths. By setting a minimum length requirement, this will ensure that larger sequences, with corresponding e-values will be the only sequences processed in the pipeline. Thus, giving a cleaner, concise result.
 
-		The pipeline is defaulted to run 522 genomic files together at a threshold value of 0.0001, and 
-		percent query length at 0.5 (50%). User can edit those files found in the sub-file folder. When 
-		choosing a query file to BLASTn against, files larger than 1MB (or 1,000,000 kb), nor repeats 
-		are not able to be run on this pipeline. These types of files will generate inaccurate results.
+The pipeline is defaulted to run 522 genomic files together at a threshold value of 0.0001, and percent query length at 0.5 (50%). User can edit those files found in the sub-file folder. When choosing a query file to BLASTn against, files larger than 1MB (or 1,000,000 kb), nor repeats are not able to be run on this pipeline. These types of files will generate inaccurate results.
 
-  		When executing the pipeline, there is a total of 7 files will be generated if ran successfully.
-		These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the
-		user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many
-		files contained hits, no hits, or had not met the threshold requirement. This file will also tell
-		the user exactly how many hits, no hits, and total number of sequences read. After receiving the
-		‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes
-		all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will
-		be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a
-		Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is like the ‘*_MSA2GFA.fa’, 
-		except it is a multiple sequence file in PHYLIP format. This file format is required for running 
-		the RAXML analysis. When viewing the PHYLIP file or any RAXML file, please refer to the 
-		‘*_NameKey.txt’. This document will hold unique names to identify files and sequences in the named 
-		files. Changing this file will not change the names of files or identity names within files. RAXML 
-		will also generate a single file consisting of the optimum tree created based on 100 bootstraps. 
-		This file will be called '*_RAxML_Output_Phylogenetic_Tree.phy'. RAXML will be running PROTGAMMAWAG 
-		model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG 
-		substitution model. This can be changed with in the pipeline under the user’s discretion. For more 
-		information regarding RAXML please refer to the manual linked in the "More Information" section. To 
-		view a phylogenic tree created from RAXML, the user will need to use an external phylogenetic viewer.
+When executing the pipeline, there is a total of 7 files will be generated if ran successfully.	These files include a ‘*_Parsed_Final.fa’ file which will include all sequences that have met the user’s threshold requirement.‘*_Files_Generated_Report.fa’ will generate a report on how many	files contained hits, no hits, or had not met the threshold requirement. This file will also tell the user exactly how many hits, no hits, and total number of sequences read. After receiving the ‘*_Parsed_Final.fa’, the file will be converted into a ‘*_Multi_Seq_Align.aln’. This file takes all the parsed hit sequences and aligns them for computational use. The ‘*_MSA2GFA.fa’ file will be a file that converts the ‘*_Multi_Seq_Align.aln’ into a GFA file that can be put into a Graphical Fragment Assembly viewer for analysis.‘*_Phy_Align.phy’ is like the ‘*_MSA2GFA.fa’, except it is a multiple sequence file in PHYLIP format. This file format is required for running the RAXML analysis. When viewing the PHYLIP file or any RAXML file, please refer to the ‘*_NameKey.txt’. This document will hold unique names to identify files and sequences in the named files. Changing this file will not change the names of files or identity names within files. RAXML will also generate a single file consisting of the optimum tree created based on 100 bootstraps. This file will be called '*_RAxML_Output_Phylogenetic_Tree.phy'. RAXML will be running PROTGAMMAWAG model of heterogeneity on a protein dataset while using the empirical base frequencies and the LG substitution model. This can be changed with in the pipeline under the user’s discretion. For more information regarding RAXML please refer to the manual linked in the "More Information" section. To view a phylogenic tree created from RAXML, the user will need to use an external phylogenetic viewer.
 
-	   	The purpose of this pipeline is to provide a reproducible, and faster way to obtain an in depth
-		analysis of genomes found in the Vertebrate Genome Project and Ensembl by using a user inputted
-		query sequence to run a BLASTn on both databases. Outputted sequences that have met a user set
-		threshold value will be combined to create multiple files. These files include those that can be
-		inputted in an external Graphical Fragment Assembly viewer and  Phylogenetic tree viewer for 
-		further visual analysis of the data.
+The purpose of this pipeline is to provide a reproducible, and faster way to obtain an in depth	analysis of genomes found in the Vertebrate Genome Project and Ensembl by using a user inputted	query sequence to run a BLASTn on both databases. Outputted sequences that have met a user set	threshold value will be combined to create multiple files. These files include those that can be inputted in an external Graphical Fragment Assembly viewer and  Phylogenetic tree viewer for further visual analysis of the data.
 
 
 --------------------------------------------------------------------------------------------------------------------------------
