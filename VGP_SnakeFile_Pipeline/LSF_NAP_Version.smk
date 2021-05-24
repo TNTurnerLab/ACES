@@ -298,13 +298,13 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                 #Create varibles and print headder for file
                 ln = ''
-                NNL = 'N/L : Sequence Length Did Not Meet % Of Query Length Requirment'
+                NNL = 'N/L : Sequence Length Did Not Meet % Of Query Length Requirement'
                 NNH = 'N/H : E-Value Did Not Meet Threshold Requirments'
                 NNA = 'N/A : No Hits Were Found In This Genome'
                 ENS = '@- : Sequence Is From Ensembl Database'
                 sep = '--------------------------------------------------------------------------------------------------------------'
 
-                header = ('Summary Of Sequences Agaisnt Applied Requirments:' + '\n' + sep) 
+                header = ('Summary Of Sequences Against Applied Requirements:' + '\n' + sep) 
                 rp.write(header)
 
                 keycodes = ('\n' + 'Key:' + '\n' + '\t' + NNL + '\n' + '\t' + NNH + '\n' + '\t' + NNA + '\n' + ENS + '\n' + sep +'\n')
@@ -606,11 +606,11 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     output:temp("RAxML_bootstrap.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
     threads: 2
-    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m PROTGAMMAWAG -b 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 2  """
+    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m PROTGAMMAWAG -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 2  """
 rule cleanRAxML: #Renames RAXML output and moves it to output folder
     input:  "RAxML_bootstrap.RAXML_output.phy" 
     output:   "%s_RAxML_Output_Phylogenetic_Tree.phy" %end 
-    shell: """ cat {input[0]} >> {output[0]} """# && cat {input[1]} >> {output[1]}  && cat {input[2]} >> {output[2]} && cat {input[3]} >> {output[3]} """
+    shell: """ cat {input[0]} >> {output[0]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
 #-------------------------------------------------------------------#
