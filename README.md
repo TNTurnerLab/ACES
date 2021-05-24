@@ -1,8 +1,8 @@
 **<span style="text-decoration:underline;"><h1>VGP Conservation Analysis Pipeline:</h1></span>**
 
-Maintainer: Elvisa Mehinovic
-Laboratory of Dr. Tychele N. Turner, Ph.D.
-Washington University in St. Louis
+Maintainer: Elvisa Mehinoviic\
+Laboratory of Dr. Tychele N. Turner, Ph.D.\
+Washington University in St. Louis\
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 <h3>Minimum Compute Requirements: </h3>
