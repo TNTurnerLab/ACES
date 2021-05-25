@@ -99,7 +99,7 @@ Or can be pulled using `git clone` as follows:
 
 9. Users must upload or have handy their {query} file for Blast.
 
-  * Open  **_config.json _** to set which file is the users query file: "[query](#query)"
+  * Open  **_config.json _** to set which file is the users query file: "[query](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file cannot be full genomes nor repeat elements.
 
