@@ -164,7 +164,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
 16. Output files will be generated in the Output folder provided in this pipeline.
 		
-	* View [Output Files Generated: Output](#Outfile) to see which files are generated and more information on each. Output files will be generated inside the VGP_SnakeFile_Pipeline folder. Two folders will be created within the folder. One folder will hold all BLAST outputs from the pipeline execution, and the other holding output files. The file with the name BLAST_Outputfiles_ARCHIVE_For_Genomes_ *
+	* View [Output Files Generated: Output](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Output-Files-Description) to see which files are generated and more information on each. Output files will be generated inside the VGP_SnakeFile_Pipeline folder. Two folders will be created within the folder. One folder will hold all BLAST outputs from the pipeline execution, and the other holding output files. The file with the name BLAST_Outputfiles_ARCHIVE_For_Genomes_ *
 can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
 
 
