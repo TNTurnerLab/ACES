@@ -31,7 +31,7 @@ Or can be pulled using `git clone` as follows:
 
 2. Pull down ready to run docker image with the code provided below:
 
-   * This docker image is pre-built and needs no modifications to it. If the user wishes to build their own image manually, follow steps in [Dockerfile](#Dock) with the provided Dockerfile in this pipeline.
+   * This docker image is pre-built and needs no modifications to it. If the user wishes to build their own image manually, follow steps in [Dockerfile](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Building-the-Dockerfile) with the provided Dockerfile in this pipeline.
 
     	 docker pull tnturnerlab/vgp_ens_pipeline:latest
 
