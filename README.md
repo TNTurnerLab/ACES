@@ -90,7 +90,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-8. Open file corresponding to that of "[genomesdb](#genomesdb)" in **_config.json_**, This file is in the file genomes input document.
+8. Open file corresponding to that of "[genomesdb](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details)" in **_config.json_**, This file is in the file genomes input document.
 
   * Default file is set to run all VGP and Ensembl genomes.
 	* Create new file, or modify and close this file when content.
