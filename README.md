@@ -219,7 +219,7 @@ _<span style="text-decoration:underline;"> <a name="Script_req"><h4>SCRIPT FILES
 These files are given inside of the pipeline in the folder VGP SnakeFile Pipeline:
 
 1. [Local_NAP_Version.smk and LSF_NAP_Version.smk](#SNAKE)
-2. [config.json](#config_file)
+2. [config.json](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details)
 
 The provided Dockerfile is given for users to have, but is not required for pipeline execution.
 Pipeline will run through an already existing Docker image: (tnturnerlab/vgp_ens_pipeline:latest)
