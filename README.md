@@ -42,7 +42,7 @@ Or can be pulled using `git clone` as follows:
    * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
 
 
-<a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](#SUB_FILES_GUIDE) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Sub-Files-Guide) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
 
    * Files can be modified or changed based on user's requirements
 
@@ -199,9 +199,6 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 * [More Information](#more)
 * [Citations](#cite)
 
---------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
@@ -263,15 +260,9 @@ Files listed are maintainer generated files, user can input any customization of
 
 Back to [HOW TO RUN](#HOWRUN)
 
-
-
 --------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
 
 
 **<span style="text-decoration:underline;"><a name="FILES_GUIDE"><h3>FILES GUIDE:</h3></a></span>**
