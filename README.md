@@ -47,9 +47,9 @@ Or can be pulled using `git clone` as follows:
    * Files can be modified or changed based on user's requirements
 
 
-<a name = "HTF"> 5. </a>   Configure all file pathways in file [config](#config_file).json. This file can be in VGP SnakeFile Pipeline.
+<a name = "HTF"> 5. </a>   Configure all file pathways in file [config](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details).json. This file can be in VGP SnakeFile Pipeline.
 
-* Reference FILES GUIDE: [config](#config_file).json
+* Reference FILES GUIDE: [config](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details).json
 
 	* genomesdb:
 		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will un all
