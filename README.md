@@ -6,15 +6,13 @@ Washington University in St. Louis
 
 **<span style="text-decoration:underline;"><a name="HOWRUN"><h1>HOW TO RUN</h1></a></span>**
 
-PLEASE MAKE SURE YOU HAVE READ SECTION [User Required Script Files for Pipeline Execution](#USER_REQUIRED) :
-
 <h4>Note on USER query Files:</h4>
 
 This is an empty folder generated for user to store all their input query files that will be run through the workflow. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json: 'query'. Query file may not be a repeat sequence nor a file larger than 1 MB. These files will not generate accurate information.
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-**BEFORE EXECUTION:**
+**Steps:**
 
 [Reference Outline](#O) Provided Image to Better Understand Pipeline File Locations.
 
