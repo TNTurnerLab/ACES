@@ -10,6 +10,7 @@ Washington University in St. Louis
 
 This is an empty folder generated for user to store all their input query files that will be run through the workflow. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json: 'query'. Query file may not be a repeat sequence nor a file larger than 1 MB. These files will not generate accurate information.
 
+<h4>Prior to running the pipeline ensure that you have the reference genome data as described [here](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data)</h4>
 
 --------------------------------------------------------------------------------------------------------------------------------
 **Steps:**
@@ -175,65 +176,3 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 
 
 --------------------------------------------------------------------------------------------------------------------------------
-
-**<span style="text-decoration:underline;"><a name="RETRIEVING-VGP-AND-ENSEMBL-FILES"><h3>RETRIEVING VGP AND ENSEMBL FILES</h3></a></span>**
-The files named below will be used to download all files needed for this pipeline. Both files must be put in the same directory.
-
-![Warning](images/1200px-Warning.svg.png)
-						
-***WARNING:***
-
-When conducting the retrieval of files, please ensure that the user has enough storage space. The minimum storage needed for downloading all current VGP files is estimated to be 338.58 GB. The total storage needed for downloading all current Ensembl file is estimated at 669.18 GB. Please insure there is enough storage for all files the minimum recommended free storage should be approximately 1.2TB. This insures all downloaded and created files have enough storage space on users device. There are 522 files in total between the two databases at the time of upload. This is subjected to change. Please ensure that genomes input files reflect on current, new versions of each genome file. Older versions of files may skew data or cause inconsistencies.
-
---------------------------------------------------------------------------------------------------------------------------------
-
-**<span style="text-decoration:underline;"><a name="VGP"><h3>wgetfile_VGP.sh</h3></a></span>**
-
-This file contains the shell file that was used to pull all * -unmasked.fa.gz files from the VGP rapid release archive. This shell file also contains the command used to extract the * -unmasked.fa.gz files and move them into a working directory. Lastly, allowing for the files to then be unzipped through the gunzip * -unmasked.fa.gz. Modification to these commands is a must and should occur before running. The command used could be written into a snake, written directly onto the command line , or by executing the script files found in the /Genomes folder.
-
-
-***After execution, there should be 213 species files in the given directory.***
-
---------------------------------------------------------------------------------------------------------------------------------
-
-**<span style="text-decoration:underline;"><a name="ENS"><h3>wgetfile_ensembl.sh</h3></a></span>**
-
-This script is used to pull all '* .dna.toplevel.fa' from Ensembl's pub/release-103 archive. The file will contain the command to extract all '* .dna.toplevel.fa' for every species. Shell command is found in the Genomes folder.
-
-
-***After execution, there should be 310 species files in the given directory.***
-
---------------------------------------------------------------------------------------------------------------------------------
-
-**<span style="text-decoration:underline;"><a name="DOWNF"><h3>DOWNLOADING VGP AND ENSEMBL SPECIES FILES: </h3></a></span>**
-
-					**** FILES UNZIPPED ARE ABOUT 1.2 TB GBS ***
-
-Explanation of wgetfile_ * .sh. Could run manually or execute files with shell commands listed below. 
-Please see FILES GIVEN: wgetfile_ * .sh for more information.
-
-
-
-Open /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Genomes folder and execute the following commands:
-
-
-1. Before running either file please make sure file is executable this can be done with:
-
-		chmod +x *.sh
-
-2. To run locally to get Ensembl files:
-
-		./wgetfile_ensembl.sh
-
-3. Tor run on an LSF example:
-
-		bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_ensembl.sh
-
-4. To run locally to get VGP files:
-
-		./wgetfile_VGP.sh
-
-5. To run on an LSF example:
-
-		bsub -q general  -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(emehinovic72/home:bwp2)' ./wgetfile_VGP.sh
-
