@@ -72,7 +72,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-6. Open file **_config.json_**, and fill in value for "[threshold](#tH)"
+6. Open file **_config.json_**, and fill in value for "threshold"
 
   * Within this file, enter a single value with decimal point; can be in scientific notation but not required  
 	* Value should correspond to a threshold requirement species blast outputs must meet before they can generate a parse file.
@@ -81,7 +81,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-7. Open file **_config.json_**, and fill in value for "[queryLengthPer](#ql)"
+7. Open file **_config.json_**, and fill in value for "queryLengthPer"
 
 	* Fill in decimal value for percent of query length sequences needed in order to be included into the results.
 	* This requirement helps eliminate small sequences that may have been generated as hits by BLASTn.
