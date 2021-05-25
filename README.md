@@ -175,33 +175,7 @@ can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the fol
 
 ![OUTLINE IMAGE|300x300,20%](https://docs.google.com/drawings/d/e/2PACX-1vRHNT2Uedh4fvA8En-y7ZyXsJTx-u0wDm1CawurKoQl1maBhxsBM0ICK6DdHVWXK33mDKLAJGPcc1bj/pub?w=960&h=720)
 
-**<span style="text-decoration:underline;"><h2>TABLE OF CONTENTS:</h2></span>**
-* [HOW TO RUN](#HOWRUN)
 
-* [PIPELINE BACKGROUND](#PB)
-
-* [User Required Script Files for Pipeline Execution](#USER_REQUIRED)
-
-	* [SCRIPT FILES](#Script_req)
-	* [SUB-FILES GIVEN](#Given)
-	* [USER MUST RETRIEVE or PROVIDE](#USER)
-
-
-* [RETRIEVING VGP AND ENSEMBL FILES](#RETRIEVING-VGP-AND-ENSEMBL-FILES)
-
-	* [wgetfile_VGP.sh](#VGP)
-	* [wgetfile_ensembl.sh](#ENS)
-	* [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF)
-
-* [SUB FILES GUIDE: genomes input document](#SUB_FILES_GUIDE)
-
-* [Output Files Generated: Output](#Outfile)
-* [More Information](#more)
-* [Citations](#cite)
-
-
---------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 
 **<span style="text-decoration:underline;"><a name="USER_REQUIRED"><h3>User Required Script Files for Pipeline Execution:</h3></a></span>**
