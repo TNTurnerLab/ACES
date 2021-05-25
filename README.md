@@ -10,7 +10,9 @@ Washington University in St. Louis
 
 This is an empty folder generated for user to store all their input query files that will be run through the workflow. This is an optional folder however, if user decides to call file outside of this folder, they must include fill path to that file in config.json: 'query'. Query file may not be a repeat sequence nor a file larger than 1 MB. These files will not generate accurate information.
 
-<h4>Prior to running the pipeline ensure that you have the reference genome data as described [here](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data)</h4>
+<h4>Prior to running the pipeline ensure that you have the reference genome data as described on our wiki</h4>
+
+[wiki link](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data)
 
 --------------------------------------------------------------------------------------------------------------------------------
 **Steps:**
