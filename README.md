@@ -52,7 +52,7 @@ Or can be pulled using `git clone` as follows:
 * Reference FILES GUIDE: [config](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details).json
 
 	* genomesdb:
-		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will un all
+		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all
       		  VGP and Ensembl genomes against users query sequence.
 
 	* query:
