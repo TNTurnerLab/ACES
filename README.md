@@ -40,7 +40,7 @@ Or can be pulled using `git clone` as follows:
 
 <a name = "HTR"> 3. </a>   Put all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
 
-   * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](#DOWNF) for command line codes that will help achieve this.
+   * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data) for command line codes that will help achieve this.
 
 
 <a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Sub-Files-Guide) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
