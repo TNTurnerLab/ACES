@@ -106,7 +106,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-10. Locate [Local_NAP_Version.smk and LSF_NAP_Version.smk](#SNAKE) in VGP SnakeFile Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
+10. Locate `Local_NAP_Version.smk` and `LSF_NAP_Version.smk` in VGP SnakeFile Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
 
 
 
