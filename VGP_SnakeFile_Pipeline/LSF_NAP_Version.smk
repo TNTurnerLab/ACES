@@ -8,7 +8,7 @@ import math
 if config == {}:
     configfile: "config.json"
 
-#Varibles in config file
+#Variables in config file
 query = config['query']
 dbs = config['dbs']
  
