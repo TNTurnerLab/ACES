@@ -606,7 +606,7 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     output:temp("RAxML_bootstrap.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
     threads: 2
-    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m PROTGAMMAWAG -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 2  """
+    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m GTRGAMMA -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 2  """
 rule cleanRAxML: #Renames RAXML output and moves it to output folder
     input:  "RAxML_bootstrap.RAXML_output.phy" 
     output:   "%s_RAxML_Output_Phylogenetic_Tree.phy" %end 
