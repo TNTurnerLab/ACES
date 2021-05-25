@@ -48,7 +48,7 @@ genomesdb=GENOMESDB
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RULE ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 rule all:
-    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end , "%s_NameKey.txt" %end, expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB), "%s_RAxML_bootstrap.phy" %end , "%S_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end
+    input: expand("{param}/{genomesdb}", genomesdb=GENOMESDB, param= dbs),"%s" % query, "%s_Parsed_Final.fa" %end , "%s_Multi_Seq_Align.aln" %end , "%s_MSA2GFA.gfa" %end ,"%s_Phy_Align.phy" %end, "%s_Files_Generated_Report.txt" %end , "%s_NameKey.txt" %end, expand("%s_{genomesdb}_blast_results.txt" %mid, genomesdb=GENOMESDB), "%s_RAxML_bootstrap.phy" %end , "%s_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE BLAST FILE~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -605,11 +605,11 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     input: "%s_Phy_Align.phy" %end
     output:temp("RAxML_bootstrap.RAXML_output.phy"), temp("RAxML_bestTree.RAXML_output.phy"), temp("RAxML_bipartitionsBranchLabels.RAXML_output.phy"),temp("RAxML_bipartitions.RAXML_output.phy"), temp("RAxML_info.RAXML_output.phy")
     params: prefix= "RAXML_output.phy"
-    threads: 2
-    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m GTRGAMMA -f a -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 2  """
+    threads: 4
+    shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m GTRGAMMA -f a -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 4  """
 rule cleanRAxML: #Renames RAXML output and moves it to output folder
     input:  "RAxML_bootstrap.RAXML_output.phy" , "RAxML_bestTree.RAXML_output.phy", "RAxML_bipartitionsBranchLabels.RAXML_output.phy", "RAxML_bipartitions.RAXML_output.phy", "RAxML_info.RAXML_output.phy"
-    output:   "%s_RAxML_bootstrap.phy" %end , "%S_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end 
+    output:   "%s_RAxML_bootstrap.phy" %end , "%s_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end 
     shell: """ cat {input[0]} >> {output[0]} && cat {input[1]} >> {output[1]} && cat {input[2]} >> {output[2]} && cat {input[3]} >> {output[3]} && cat {input[4]} >> {output[4]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
