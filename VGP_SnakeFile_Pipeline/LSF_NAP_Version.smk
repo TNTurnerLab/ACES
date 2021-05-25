@@ -60,7 +60,7 @@ rule BLAST: #Creates a blastn output
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
 
-rule findThresh: #Finds files that meets threshold requiement 
+rule findThresh: #Finds files that meets threshold requirement 
     input: expand(["{genomesdb}_parsed.fa"], genomesdb=GENOMESDB)
     output: "%s_Parsed_Final.fa" %end 
     run:
