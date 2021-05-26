@@ -359,7 +359,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                                 fname = '@-' + fnam
 
                                             #Increases count and stores filenames
-                                            NoHitThresh.append('N/H | ' + seqname + ': ' + fname)
+                                            NoHitThresh.append('N/H | ' + seqname + str(qLength) + ': ' + fname)
                                             threshNOHitCnt +=1
                                             totalFileCount +=1
 
@@ -378,7 +378,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                                 fname='@-'+fnam
                                             
                                             #Increases count and stores filenames
-                                            HitThresh.append(seqname + ': ' + str(qLength) + fname )
+                                            HitThresh.append(seqname + str(qLength) +': ' + fname )
                                             ThreshHitCount +=1
                                             totalFileCount  +=1
 
@@ -397,7 +397,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                     fname = '@-' + fnam
 
                                 #Increases count and stores filenames
-                                NoHitThresh.append('N/L | ' + seqname + ': '+ str(qLength) + fname)
+                                NoHitThresh.append('N/L | ' + seqname + str(qLength) + ': ' + fname)
                                 threshNOHitCnt +=1
                                 totalFileCount +=1
                             
