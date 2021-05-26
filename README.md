@@ -69,7 +69,7 @@ Or can be pulled using `git clone` as follows:
 		 * E-value threshold requirement. Default is set to 0.0001. User may change if desired. It is recommended value is in decimal format.
 
 	* queryLengthPer
-		* Minimum % of query length requirement. Default is set to 0.5, or 50%. User may keep default or replace with decimal value
+		* Minimum % of query length requirement. Default is set to 0.3, or 30%. User may keep default or replace with decimal value
 
 
 
