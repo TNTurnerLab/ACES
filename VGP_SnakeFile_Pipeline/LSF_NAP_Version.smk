@@ -56,7 +56,7 @@ rule BLAST: #Creates a blastn output
     input: "%s/{genomesdb}" %dbsFind, {query} 
     params: prefix="{genomesdb}"
     output: temp("{genomesdb}_blast_results.txt")
-    shell: """ /opt/conda/bin/blastn -query {input[1]} -subject {input[0]}  > {output}  """
+    shell: """ /opt/conda/bin/blastn -task dc-megablast -query {input[1]} -subject {input[0]}  > {output}  """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
 
@@ -215,13 +215,13 @@ rule parse: #Parses out wanted information and tags each sequence with expect # 
                                     match ='N'
                             
                             #If file is from VGP naming
-                            if '-GCA' in f.name:
+                            if 'GCA' in f.name:
                                 species = f.name
-                                spName = species.split('-GCA')[0]
+                                spName = species.split('GCA')[0]
                                 spNID = spName [:1]
                                 sp = species.split('_',1)[1]
                                 sp = sp[:1]
-                                spID = species.split('-GCA')[1]
+                                spID = species.split('GCA')[1]
                                 spID = spID.split('-')[0]
                                 spID = spID[5:]
                                 spID = spID 
@@ -299,7 +299,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 #Create varibles and print headder for file
                 ln = ''
                 NNL = 'N/L : Sequence Length Did Not Meet % Of Query Length Requirement'
-                NNH = 'N/H : E-Value Did Not Meet Threshold Requirments'
+                NNH = 'N/H : E-Value Did Not Meet Threshold Requirements'
                 NNA = 'N/A : No Hits Were Found In This Genome'
                 ENS = '@- : Sequence Is From Ensembl Database'
                 sep = '--------------------------------------------------------------------------------------------------------------'
