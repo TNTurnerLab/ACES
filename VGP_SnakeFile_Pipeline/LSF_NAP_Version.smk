@@ -332,6 +332,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 evalue = ('%e' % valOne)
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
+				fnam = str(fp.name)
                             
                                 #Converting line to float value for comparison check 
                                 if valueOnly in line:           
@@ -387,6 +388,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 expect1 = line.split('N')[1]
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
+				fnam = str(fp.name)
 
                                 if '-unmasked' in fp.name:
                                     fname = (str(fp.name).rsplit('-unmasked')[0])
@@ -410,7 +412,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                     
                                 #If files are from ensemble print files with #:     
                                 else:
-                                    fnam = (str(fp.name).rsplit('.dna.')[0])
+				    fnam= str(fp.name)
+				    fnam = (str(fp.name).rsplit('.dna.')[0])
                                     fname ='@-' + fnam
 
                                 #Adds ** to no hit files and increases count and stores filenames
