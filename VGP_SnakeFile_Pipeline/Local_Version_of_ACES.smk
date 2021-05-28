@@ -355,7 +355,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                                             #If files are from ensemble print files with #:  
                                             else:
-                                                fnam = (str(fp.name).rsplit('.dna.')[0])
+						fnam = str(fp.name)
+						fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname = '@-' + fnam
 
                                             #Increases count and stores filenames
