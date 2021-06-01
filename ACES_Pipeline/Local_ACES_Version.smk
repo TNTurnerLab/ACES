@@ -6,7 +6,7 @@ import math
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-    configfile: "config.json"
+    configfile: "/ACES/ACES_Pipeline/config.json"
 
 #Variables in config file
 query = config['query']
@@ -284,7 +284,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             Threshkey = {}
             NoHitThresh = ['|Key|------------------ Rejected ----------------------||------------------------ Accepted ----------------------']
             HitThresh = ['|']
-            
+            fnam=''
             #Opens Tresh.txt file to view user input        
             ln = thresh
             ln = float(ln)
@@ -320,7 +320,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                     with open(file, 'r') as fp:
                         qLength = 0
                         for line in fp:
-                            
+                            fnam=str(fp.name)
+
                             #Converting evalues of file to check if its a hit file or not                             
                             if 'YExpect' in line and '>' in line:
                                 qLength+=1
@@ -332,7 +333,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 evalue = ('%e' % valOne)
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
-				fnam = str(fp.name)
+
                             
                                 #Converting line to float value for comparison check 
                                 if valueOnly in line:           
@@ -388,7 +389,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 expect1 = line.split('N')[1]
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
-				fnam = str(fp.name)
 
                                 if '-unmasked' in fp.name:
                                     fname = (str(fp.name).rsplit('-unmasked')[0])
@@ -412,8 +412,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                     
                                 #If files are from ensemble print files with #:     
                                 else:
-				    fnam= str(fp.name)
-				    fnam = (str(fp.name).rsplit('.dna.')[0])
+                                    fnam= str(fp.name)
+                                    fnam = (str(fp.name).rsplit('.dna.')[0])
                                     fname ='@-' + fnam
 
                                 #Adds ** to no hit files and increases count and stores filenames
@@ -600,7 +600,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files i
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" python msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
+    shell:""" python /ACES/ACES_Pipeline/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

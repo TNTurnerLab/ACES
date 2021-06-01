@@ -6,9 +6,9 @@ import math
 #~~~~~~~~~~~~~~~~~~~~~~~~~~VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #Configfile named
 if config == {}:
-    configfile: "/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/config.json"
+    configfile: "config.json"
 
-#Varibles in config file
+#Variables in config file
 query = config['query']
 dbs = config['dbs']
  
@@ -60,7 +60,7 @@ rule BLAST: #Creates a blastn output
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
 
-rule findThresh: #Finds files that meets threshold requiement 
+rule findThresh: #Finds files that meets threshold requirement 
     input: expand(["{genomesdb}_parsed.fa"], genomesdb=GENOMESDB)
     output: "%s_Parsed_Final.fa" %end 
     run:
@@ -284,7 +284,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
             Threshkey = {}
             NoHitThresh = ['|Key|------------------ Rejected ----------------------||------------------------ Accepted ----------------------']
             HitThresh = ['|']
-            
+            fnam=''
             #Opens Tresh.txt file to view user input        
             ln = thresh
             ln = float(ln)
@@ -320,7 +320,8 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                     with open(file, 'r') as fp:
                         qLength = 0
                         for line in fp:
-                            
+                            fnam=str(fp.name)
+
                             #Converting evalues of file to check if its a hit file or not                             
                             if 'YExpect' in line and '>' in line:
                                 qLength+=1
@@ -332,7 +333,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 evalue = ('%e' % valOne)
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
-				fnam = str(fp.name)
+
                             
                                 #Converting line to float value for comparison check 
                                 if valueOnly in line:           
@@ -356,7 +357,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
 
                                             #If files are from ensemble print files with #:  
                                             else:
-						fnam = (str(fp.name).rsplit('.dna.')[0])
+                                                fnam = (str(fp.name).rsplit('.dna.')[0])
                                                 fname = '@-' + fnam
 
                                             #Increases count and stores filenames
@@ -379,7 +380,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                                 fname='@-'+fnam
                                             
                                             #Increases count and stores filenames
-                                            HitThresh.append(seqname + str(qLength) +': ' + fname )
+                                            HitThresh.append(seqname +  str(qLength) + ': '  + fname )
                                             ThreshHitCount +=1
                                             totalFileCount  +=1
 
@@ -388,7 +389,6 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                 expect1 = line.split('N')[1]
                                 seqname=expect1.split('>')[1]
                                 seqname = seqname[:9]
-				fnam = str(fp.name)
 
                                 if '-unmasked' in fp.name:
                                     fname = (str(fp.name).rsplit('-unmasked')[0])
@@ -399,22 +399,21 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                                     fname = '@-' + fnam
 
                                 #Increases count and stores filenames
-                                NoHitThresh.append('N/L | ' + seqname + str(qLength) + ': ' + fname)
+                                NoHitThresh.append('N/L | ' + seqname + str(qLength) + ': '+  fname)
                                 threshNOHitCnt +=1
                                 totalFileCount +=1
                             
                             #If files have 0 possible hits, or 'No Hits', strip name, add '**' in front of filename, and add name to NO HITS list, + add 1 to counters 
                             elif 'No hits' in line:
-			    
                                    
                                 #If files are from VGP print file:
                                 if '-unmasked' in fp.name:
                                     fname = (str(fp.name).rsplit('-unmasked')[0])
                                     
                                 #If files are from ensemble print files with #:     
-                                else:                        
-				    fnam = str(fp.name)
-				    fnam = (str(fp.name).rsplit('.dna.')[0])
+                                else:
+                                    fnam= str(fp.name)
+                                    fnam = (str(fp.name).rsplit('.dna.')[0])
                                     fname ='@-' + fnam
 
                                 #Adds ** to no hit files and increases count and stores filenames
@@ -601,7 +600,7 @@ rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files i
 rule MSA2GFA: # Converts the multi-sequence alignment into a FGA format
     input: "%s_Multi_Seq_Align.aln" %end 
     output:  "%s_MSA2GFA.gfa" %end 
-    shell:""" python /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
+    shell:""" python msa_to_gfa/msa_to_gfa/main.py -f {input[0]} -o {output[0]} --log MSA2GFA.log"""
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~RAXML~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -613,7 +612,7 @@ rule raxml: #Converts the Phylips file alignment to generate a RAXML phylogenic 
     shell: """ /opt/conda/bin/raxmlHPC-PTHREADS-SSE3 -m GTRGAMMA -f a -x 100 -p 100 -s {input[0]} -# 100 -n {params.prefix} -T 4  """
 rule cleanRAxML: #Renames RAXML output and moves it to output folder
     input:  "RAxML_bootstrap.RAXML_output.phy" , "RAxML_bestTree.RAXML_output.phy", "RAxML_bipartitionsBranchLabels.RAXML_output.phy", "RAxML_bipartitions.RAXML_output.phy", "RAxML_info.RAXML_output.phy"
-    output:   "%s_RAxML_bootstrap.phy" %end , "%s_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end 
+    output:   "%s_RAxML_bootstrap.phy" %end , "%s_RAxML_bestTree.phy" %end, "%s_RAxML_bipartitionsBranchLabels.phy" %end, "%s_RAxML_bipartition.phy" %end, "%s_RAxML_info.log" %end
     shell: """ cat {input[0]} >> {output[0]} && cat {input[1]} >> {output[1]} && cat {input[2]} >> {output[2]} && cat {input[3]} >> {output[3]} && cat {input[4]} >> {output[4]} """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~END SCRIPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 

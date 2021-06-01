@@ -1,0 +1,8 @@
+{
+    "genomesdb": "/ACES/ACES_Pipeline/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
+    "query": "/ACES/ACES_Pipeline/USERS_query_Files/#USERINPUTQUERYFILE",
+    "dbs": "/ACES/ACES_Pipeline/Genomes",
+    "threshold": "0.00001",
+    "queryLengthPer": "0.3"
+    
+}
