@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;"><h1>VGP Conservation Analysis Pipeline:</h1></span>**
+**<span style="text-decoration:underline;"><h1>Analysis of Conservation with Expansive Species:</h1></span>**
 
 **Maintainer:** Elvisa Mehinovic\
 Laboratory of Dr. Tychele N. Turner, Ph.D.\
@@ -12,27 +12,27 @@ This is an empty folder generated for user to store all their input query files 
 
 <h4>Prior to running the pipeline ensure that you have the reference genome data as described on our wiki</h4>
 
-[wiki link](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data)
+[wiki link](https://github.com/TNTurnerLab/ACES/wiki/Retrieving-Reference-Genome-Data)
 
 --------------------------------------------------------------------------------------------------------------------------------
 **Steps:**
 
 [Reference Outline](#O) Provided Image to Better Understand Pipeline File Locations.
 
-1. Start by cloning VGP Conservation Analysis GitHub:
+1. Start by cloning ACES GitHub:
 
 All required script files will be available on GitHub to be pulled on a desktop by using:
 
-	wget https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+	wget https://github.com/TNTurnerLab/ACES.git
 
 Or can be pulled using `git clone` as follows:
 
-	git clone https://github.com/TNTurnerLab/VGP-Conservation-Analysis.git
+	git clone https://github.com/TNTurnerLab/ACES.git
 
 
 2. Pull down ready to run docker image with the code provided below:
 
-   * This docker image is pre-built and needs no modifications to it. If the user wishes to build their own image manually, follow steps in [Dockerfile](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Building-the-Dockerfile) with the provided Dockerfile in this pipeline.
+   * This docker image is pre-built and needs no modifications to it. If the user wishes to build their own image manually, follow steps in [Dockerfile](https://github.com/TNTurnerLab/ACES/wiki/Building-the-Dockerfile) with the provided Dockerfile in this pipeline.
 
     	 docker pull tnturnerlab/vgp_ens_pipeline:latest
 
@@ -40,17 +40,17 @@ Or can be pulled using `git clone` as follows:
 
 <a name = "HTR"> 3. </a>   Put all VGP species ‘* -unmasked.fa’ files, and '* .dna.toplevel.fa' species files from Ensembl pub/release-103 in the provided Genomes directory and unzip them.
 
-   * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Retrieving-Reference-Genome-Data) for command line codes that will help achieve this.
+   * See file [DOWNLOADING VGP AND ENSEMBL SPECIES FILES](https://github.com/TNTurnerLab/ACES/wiki/Retrieving-Reference-Genome-Data) for command line codes that will help achieve this.
 
 
-<a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Sub-Files-Guide) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
+<a name = "HTT"> 4. </a>   Use or generate empty files corresponding to files named in [SUB-FILES GUIDE](https://github.com/TNTurnerLab/ACES/wiki/Sub-Files-Guide) and put your query input files inside the pre-generated folder USER query Files. This folder is found in the folder VGP SnakeFile Pipeline.
 
    * Files can be modified or changed based on user's requirements
 
 
-<a name = "HTF"> 5. </a>   Configure all file pathways in file [config](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details).json. This file can be in VGP SnakeFile Pipeline.
+<a name = "HTF"> 5. </a>   Configure all file pathways in file [config](https://github.com/TNTurnerLab/ACES/wiki/Config-File-Details).json. This file can be in VGP SnakeFile Pipeline.
 
-* Reference FILES GUIDE: [config](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details).json
+* Reference FILES GUIDE: [config](https://github.com/TNTurnerLab/ACES/wiki/Config-File-Details).json
 
 	* genomesdb:
 		* currently defaulted to VGP_AND_ENSEMBL_TOGETHER.txt, unless user wants to change it, this file will run all
@@ -91,7 +91,7 @@ Or can be pulled using `git clone` as follows:
 
 
 
-8. Open file corresponding to that of "[genomesdb](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details)" in **_config.json_**, This file is in the file genomes input document.
+8. Open file corresponding to that of "[genomesdb](https://github.com/TNTurnerLab/ACES/wiki/Config-File-Details)" in **_config.json_**, This file is in the file genomes input document.
 
   * Default file is set to run all VGP and Ensembl genomes.
 	* Create new file, or modify and close this file when content.
@@ -100,13 +100,13 @@ Or can be pulled using `git clone` as follows:
 
 9. Users must upload or have handy their {query} file for Blast.
 
-  * Open  **_config.json _** to set which file is the users query file: "[query](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Config-File-Details)"
+  * Open  **_config.json _** to set which file is the users query file: "[query](https://github.com/TNTurnerLab/ACES/wiki/Config-File-Details)"
 	* Your query file should be put in file USERS_query_Files, if not please modify complete pathway to input file in config.json file.
 	* Query file cannot be full genomes nor repeat elements.
 
 
 
-10. Locate `Local_NAP_Version.smk` and `LSF_NAP_Version.smk` in VGP SnakeFile Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
+10. Locate `Local_NAP_Version.smk` and `LSF_NAP_Version.smk` in ACES Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
 
 
 
@@ -121,7 +121,7 @@ _<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_N
 
 12. Run the following script:
 
-		docker run -v "/##FULLPATH TO GITHUB CLONE##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
+		docker run -v "/##FULLPATH TO GITHUB CLONE##/ACES/ACES_Pipeline:/ACES/ACES_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /ACES/ACES_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
 
 
 
@@ -133,7 +133,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
 	* Execute on LSF code:
 
-     		export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/:/VGP-Conservation-Analysis/VGP_SnakeFile_Pipeline/"
+     		export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/ACES/ACES_Pipeline/:/ACES/ACES_Pipeline/"
 
 	Example:
 
@@ -165,7 +165,7 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
 16. Output files will be generated in the Output folder provided in this pipeline.
 		
-	* View [Output Files Generated: Output](https://github.com/TNTurnerLab/VGP-Conservation-Analysis/wiki/Output-Files-Description) to see which files are generated and more information on each. Output files will be generated inside the VGP_SnakeFile_Pipeline folder. Two folders will be created within the folder. One folder will hold all BLAST outputs from the pipeline execution, and the other holding output files. The file with the name BLAST_Outputfiles_ARCHIVE_For_Genomes_ *
+	* View [Output Files Generated: Output](https://github.com/TNTurnerLab/ACES/wiki/Output-Files-Description) to see which files are generated and more information on each. Output files will be generated inside the ACES_Pipeline folder. Two folders will be created within the folder. One folder will hold all BLAST outputs from the pipeline execution, and the other holding output files. The file with the name BLAST_Outputfiles_ARCHIVE_For_Genomes_ *
 can be deleted or kept. Outputfiles_For_Genomes_ * will hold the name of the folder holding all outputs. The names for these folders will vary based on name of genomes input document used, user query file name, and threshold value used.
 
 
