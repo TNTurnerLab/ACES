@@ -1,0 +1,31 @@
+Summary Of Sequences Against Applied Requirements:
+--------------------------------------------------------------------------------------------------------------
+Key:
+	N/L : Sequence Length Did Not Meet % Of Query Length Requirement
+	N/H : E-Value Did Not Meet Threshold Requirements
+	N/A : No Hits Were Found In This Genome
+@- : Sequence Is From Ensembl Database
+--------------------------------------------------------------------------------------------------------------
+	[' 1.000000e-05']: Threshold Value Used
+	18: Total # of Files
+	22: Total # Of Sequences Found
+	5: Total # Of Rejected Sequences Found
+	17: Total # Of Accepted Sequences Found
+|Key|------------------ Rejected ----------------------||------------------------ Accepted ----------------------                                                  |                                                  
+N/L | O16915.1.1: OphHan1.0.dna.-GCA_000516915.1      |	C65045.fn1: @-Callorhinchus_milii-6.1.3                
+N/L | O16915.1.2: OphHan1.0.dna.-GCA_000516915.1      |	C37285.1.1: @-CrotMitch1.0                             
+N/A | @-PanGut1.0-GCA_001185365.1                     |	L25785.1.1: @-LatCha1_genomic                          
+N/L | V00605.1.2: @-Vber.be_1.0                       |	P86305.2.1: @-Python_molurus_bivittatus-5.0.2          
+N/L | p11.2:sca2: @-pteVam1.1                         |	V00605.1.1: @-Vber.be_1.0                              
+                                                  	a11.1:chr1: @-anoCar2.1                                
+                                                  	b11.1:sca1: @-boa_con.1                                
+                                                  	b11.1:chr1: @-bosTau7.1                                
+                                                  	c11.1:sca1: @-choHof1.1                                
+                                                  	e11.1:chr1: @-equCab2.1                                
+                                                  	g11.1:chr1: @-galGal4.1                                
+                                                  	h11.1:chr1: @-hg19.1                                   
+                                                  	m11.1:chr1: @-mm9.1                                    
+                                                  	o11.1:Ult1: @-ornAna1.1                                
+                                                  	p11.1:sca1: @-pteVam1.1                                
+                                                  	t11.1:JH41: @-turTru2.1                                
+                                                  	t11.2:JH42: @-turTru2.1                                
