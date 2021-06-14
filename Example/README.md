@@ -1,9 +1,9 @@
 Example using genomes from Kvon et al. 2016
 
-Step 1 Clone repo
+**Step 1:** Clone repo
 `git clone https://github.com/TNTurnerLab/ACES.git`
 
-Step 2 Put all genomes in the `Github/ACES/ACES_Pipeline/Genome/` directory
+**Step 2:** Put all genomes in the `Github/ACES/ACES_Pipeline/Genome/` directory
 
 We have aggregated the Kvon et al. 2016 genomes at our public Globus endpoint. It is searchable in Globus as:
 "Turner Lab at WashU - assessment of small sequences in many genomes paper" 
@@ -14,9 +14,9 @@ https://app.globus.org/file-manager?origin_id=97668938-bcc8-11eb-9d92-5f1f6f0787
 
 For guidance on how to transfer files with Globus, please see this website https://docs.globus.org/how-to/get-started/
 
-Step 3 Copy `ZRS_from_Kvon_et_al_2016.fa` from the `Github/ACES/Example` directory to the `Github/ACES/ACES_Pipeline/USERS_query_Files` directory
+**Step 3:** Copy `ZRS_from_Kvon_et_al_2016.fa` from the `Github/ACES/Example` directory to the `Github/ACES/ACES_Pipeline/USERS_query_Files` directory
 
-Step 4 Set up config.json as follows
+**Step 4:** Set up config.json as follows
 ```
 {
     "genomesdb": "/ACES/ACES_Pipeline/genomesdb_input_document/Kvon_et_al_2016_species.txt",
@@ -27,14 +27,15 @@ Step 4 Set up config.json as follows
 }
 ```
 
-Two choices for Step 5
-Step 5a Run the analysis (example here is for a local machine). Note you must have docker working on your local machine. This website is helpful if you’ve never used Docker: https://docs.docker.com/get-started/.
+**Two choices for Step 5**
+
+**Step 5a:** Run the analysis (example here is for a local machine). Note you must have docker working on your local machine. This website is helpful if you’ve never used Docker: https://docs.docker.com/get-started/.
 
 ```
 docker run -v "/##FULLPATH TO GITHUB CLONE##/ACES/ACES_Pipeline:/ACES/ACES_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /ACES/ACES_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
 ```
 
-Step 5b Run the analysis on an LSF server
+**Step 5b:** Run the analysis on an LSF server
 ```
 export LSF_DOCKER_VOLUMES="/##PATH_TO##/##_DIRECTORY_##/ACES/ACES_Pipeline/:/ACES/ACES_Pipeline/"
 bgadd -L 2000  /username/###ANY NAME YOU WOULD LIKE TO CALL JOB###
