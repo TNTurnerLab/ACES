@@ -29,7 +29,7 @@ For guidance on how to transfer files with Globus, please see this website https
 
 **Two choices for Step 5**
 
-**Step 5a:** Run the analysis (example here is for a local machine). Note you must have docker working on your local machine. This website is helpful if you’ve never used Docker: https://docs.docker.com/get-started/.
+**Step 5a:** Run the analysis (example here is for a local machine). Note you must have docker working on your local machine and it must have at least 30 GB memory. This website is helpful if you’ve never used Docker: https://docs.docker.com/get-started/.
 
 ```
 docker run -v "/##FULLPATH TO GITHUB CLONE##/ACES/ACES_Pipeline:/ACES/ACES_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /ACES/ACES_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
