@@ -46,3 +46,9 @@ bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=3
 
 The output file will be here `Outputfiles_For_Genomes_Kvon_et_al_2016_species.txt_and_Query_ZRS_from_Kvon_et_al_2016_TH_0.00001/`
 
+
+**Another example output**
+
+We also include the output from running the analysis on full VGP+Ensembl genome set for users to compare outputs with and that is located here `Outputfiles_For_Genomes_VGP_AND_ENSEMBL_TOGETHER_FILE.txt_and_Query_ZRS_from_Kvon_et_al_2016_TH_0.00001`
+
+
