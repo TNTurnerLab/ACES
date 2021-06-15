@@ -106,11 +106,11 @@ Or can be pulled using `git clone` as follows:
 
 
 
-10. Locate `Local_NAP_Version.smk` and `LSF_NAP_Version.smk` in ACES Pipeline folder, decide whether user will be using file LSF_NAP_Version.smk for running on a LSF server, or Local_NAP_Version.smk for running on a local machine.
+10. Locate `Local_ACES_Version.smk` and `LSF_ACES_Version.smk` in ACES Pipeline folder, decide whether user will be using file LSF_ACES_Version.smk for running on a LSF server, or Local_ACES_Version.smk for running on a local machine.
 
 
 
-_<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_NAP_Version.smk</h3></span>_
+_<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_ACES_Version.smk</h3></span>_
 
 
 11. Run Dockerfile command - CHECK:
@@ -121,12 +121,12 @@ _<span style="text-decoration:underline;"><h3>To Run on a Local Machine: Local_N
 
 12. Run the following script:
 
-		docker run -v "/##FULLPATH TO GITHUB CLONE##/ACES/ACES_Pipeline:/ACES/ACES_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /ACES/ACES_Pipeline/Local_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going
+		docker run -v "/##FULLPATH TO GITHUB CLONE##/ACES/ACES_Pipeline:/ACES/ACES_Pipeline" tnturnerlab/vgp_ens_pipeline:latest /opt/conda/bin/snakemake -s /ACES/ACES_Pipeline/Local_ACES_Version.smk -k -w 120 --rerun-incomplete --keep-going
 
 
 
 
-_<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk </h3></span>_
+_<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_ACES_Version.smk </h3></span>_
 
 
 13. Tell Docker where data and code are:
@@ -155,11 +155,11 @@ _<span style="text-decoration:underline;"><h3>To Run On LSF: LSF_NAP_Version.smk
 
     * MUST MODIFY SCRIPT TO RUN:
 
-        	bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s LSF_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	bsub -q general -g /username/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-NAME -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g  /username/VGP -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s LSF_ACES_Version.smk -k -w 120 --rerun-incomplete --keep-going -F
     
     * Example:
 
-        	bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s LSF_NAP_Version.smk -k -w 120 --rerun-incomplete --keep-going -F
+        	bsub -q general -g /elvisa/VGP -oo Done.log.out -R 'span[hosts=1] rusage[mem=30GB]' -G compute-tychele -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' /opt/conda/bin/snakemake --cluster " bsub -q general -g /elvisa/VGP  -oo %J.log.out -R 'span[hosts=1] rusage[mem=300GB]' -M 300GB -a 'docker(tnturnerlab/vgp_ens_pipeline:latest)' -n 4 " -j 100  -s LSF_ACES_Version.smk -k -w 120 --rerun-incomplete --keep-going -F
 
 
 
