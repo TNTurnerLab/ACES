@@ -3,7 +3,7 @@
     "query": "/storage1/fs1/tychele/Active/projects/VGPGenomes/VGP_SnakeFile/USERS_query_Files/##USERS_QUERY_FILE###",
     "dbs": "/storage1/fs1/tychele/Active/projects/VGPGenomes/VGP_SnakeFile_Pipeline/Genomes",
     "threshold": "0.00001",
-    "queryLengthPer": "0.5",
+    "queryLengthPer": "0.3",
     "max_num_alignments": "20"
 
 }
