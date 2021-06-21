@@ -71,6 +71,9 @@ Or can be pulled using `git clone` as follows:
 	* queryLengthPer
 		* Minimum % of query length requirement. Default is set to 0.3, or 30%. User may keep default or replace with decimal value
 
+	* max_num_alignments
+		* Maximum number of sequences that BLASTn will output. Defualt is set to 20. Modifications of this value should be whole numbers, may not be decimals nor fractions. ex: 10
+
 
 
 6. Open file **_config.json_**, and fill in value for "threshold"
