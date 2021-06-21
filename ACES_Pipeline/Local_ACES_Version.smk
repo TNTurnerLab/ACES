@@ -11,7 +11,7 @@ if config == {}:
 #Variables in config file
 query = config['query']
 dbs = config['dbs']
- 
+Max_Num_Seq = config['max_num_alignments']
 ############################################
 queryName = config['query']
 queryName = str(queryName)
@@ -56,7 +56,7 @@ rule BLAST: #Creates a blastn output
     input: "%s/{genomesdb}" %dbsFind, {query} 
     params: prefix="{genomesdb}"
     output: temp("{genomesdb}_blast_results.txt")
-    shell: """ /opt/conda/bin/blastn -task dc-megablast -query {input[1]} -subject {input[0]}  > {output}  """
+    shell: """ /opt/conda/bin/blastn -task dc-megablast -num_descriptions {Max_Num_Seq} -num_alignments {Max_Num_Seq} -query {input[1]} -subject {input[0]}  > {output}  """
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~THRESHOLD REQUIREMENT~~~~~~~~~~~~~~~~~~~~~  
 
@@ -153,9 +153,9 @@ rule parse: #Parses out wanted information and tags each sequence with expect # 
             eval = ''
             comF = ''
             num = 1
+            snum = 0
 
-            seqOrder =['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
+            seqOrder =['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','Aa','Bb','Cc','Dd','Ee','Ff','Gg','Hh','Ii','Jj','Kk','Ll','Mm','Nn','Oo','Pp','Qq','Rr','Ss','Tt','Uu','Vv','Ww','Xx','Yy','Zz']
             #Comands to parse out wanted information     
             with open(outputName,'w') as f:
             
@@ -193,6 +193,7 @@ rule parse: #Parses out wanted information and tags each sequence with expect # 
                             rand = str(seqOrder[x])
                             spNID = ''
                             spID = ''  
+
 
                             ##########################
                             id = line.split(',')[0]
@@ -248,8 +249,39 @@ rule parse: #Parses out wanted information and tags each sequence with expect # 
 
                             #Prints lines
                             #print (match + eval + '~'  + '>' +spNID + spID +  '.' + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
-                            f.write( match + eval + '~'  + '>' +spNID + spID +  '.' + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                            if x <= 36:
+                                f.write( match + eval + '~'  + '>' +spNID + spID +  '.' + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                            if x >= 37 and x <=62:
+                                f.write( match + eval + '~'  + '>' +spNID + spID + rand + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                            if x >= 63 and x <= 98:
+                                num = 1
+                            if x >= 99 and x <= 135:
+
+                                f.write( match + eval + '~'  + '>' + rand + '.' +spNID + spID + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                            if x >=137 and x <=234:
+                                f.write( match + eval + '~'  + '>' + rand  + spNID + spID + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
                             
+                            if x >= 235:
+                                y = snum
+                                z = 5
+                                if y <=100:
+                                    y = str(snum)
+                                    spNID = rand + y
+                                    spID = spID[:z]
+
+                                if y >=101 and y <=999999:
+                                    z -= 1
+                                    y = str(snum)
+                                    spNID = rand + y
+                                    spID = spID[:z]
+
+                                if y >= 1000000:
+
+                                    raise Warning("ERROR: TOO MANY SEQUENCE INPUTS")
+
+                                f.write( match + eval + '~'  + '>'  +  spID + spNID + + ':' + nameF + '_' +'(' + spName + ')' + comF + '\n')
+                                snum += 1
+
                             num += 1
 
                         #Parse out sequence
@@ -301,7 +333,7 @@ rule generateReport: #Generates a Report of all files seen, which files did or d
                 NNL = 'N/L : Sequence Length Did Not Meet % Of Query Length Requirement'
                 NNH = 'N/H : E-Value Did Not Meet Threshold Requirements'
                 NNA = 'N/A : No Hits Were Found In This Genome'
-                ENS = '@- : Sequence Is From Ensembl Database'
+                ENS = '@- : Sequence Is NOT From VGP Database'
                 sep = '--------------------------------------------------------------------------------------------------------------'
 
                 header = ('Summary Of Sequences Against Applied Requirements:' + '\n' + sep) 
@@ -586,9 +618,9 @@ rule KeyDoc: #Opens all files and creates a name key for user
 #~~~~~~~~~~~~~~~~~~~~~~~~~~MULTI SEQ ALIGN~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rule muscle: # Runs a simple multi-sequence alignment on all parsed out files
-    input:  "%s_Parsed_Final.fa" %end 
-    output: "%s_Multi_Seq_Align.aln" %end 
-    shell: """ /opt/conda/bin/muscle -in {input[0]} -fastaout {output[0]}  """
+    input:  "%s_Parsed_Final.fa" %end , {query}
+    output: "%s_Multi_Seq_Align.aln" %end , temp("temp.aln")
+    shell: """ /opt/conda/bin/muscle -in {input[0]} -fastaout {output[1]} && /opt/conda/bin/muscle -profile -in1 {input[1]}  -in2 {output[1]}  -out {output[0]} """
 
 rule muscle2: # Runs a simple multi-sequence alignment on all parsed out files in PHYLIP formatting
     input: "%s_Multi_Seq_Align.aln" %end 

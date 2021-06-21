@@ -1,8 +1,9 @@
 {
-    "genomesdb": "/ACES/ACES_Pipeline/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
-    "query": "/ACES/ACES_Pipeline/USERS_query_Files/#USERINPUTQUERYFILE",
-    "dbs": "/ACES/ACES_Pipeline/Genomes",
+    "genomesdb": "/storage1/fs1/tychele/Active/projects/VGPGenomes/VGP_SnakeFile/genomesdb_input_document/VGP_AND_ENSEMBL_TOGETHER_FILE.txt",
+    "query": "/storage1/fs1/tychele/Active/projects/VGPGenomes/VGP_SnakeFile/USERS_query_Files/##USERS_QUERY_FILE###",
+    "dbs": "/storage1/fs1/tychele/Active/projects/VGPGenomes/VGP_SnakeFile_Pipeline/Genomes",
     "threshold": "0.00001",
-    "queryLengthPer": "0.3"
-    
+    "queryLengthPer": "0.5",
+    "max_num_alignments": "20"
+
 }
