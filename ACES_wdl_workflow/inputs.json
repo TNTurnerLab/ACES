@@ -1,0 +1,10 @@
+{
+  "aces.datadb": "../Example/dbfile_small.txt",
+  "aces.samples_file": "../Example/test_input.txt",
+  "aces.threshold": 0.3,
+  "aces.query": "../Example/testq.fa",
+  "aces.max_num_seq": 1,
+  "aces.pathToInput": "/path/to/database",
+  "aces.eval": 0.00001
+}
+
