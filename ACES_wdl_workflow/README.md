@@ -87,10 +87,10 @@ Here is an example set up of inputs.json, local.conf, and command run:
 ###### inputs.json: 
 ```
 { 
-  "aces.datadb": "../Example/dbfile_small.txt", 
-  "aces.samples_file": "../Example/test_input.txt", 
+  "aces.datadb": "../Example/dbfile_KVON.txt", 
+  "aces.samples_file": "../Example/Kvon_et_al_2016_species.txt", 
   "aces.threshold": 0.3, 
-  "aces.query": "../Example/testq.fa", 
+  "aces.query": "../Example/ZRS_from_Kvon_et_al_2016.fa", 
   "aces.max_num_seq": 1, 
   "aces.pathToInput": "/home/jeff/Desktop/run_aces/db_KV", 
   "aces.eval": 0.00001 
