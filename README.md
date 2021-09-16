@@ -66,7 +66,7 @@ inputs.json:
 * "aces.datadb": "/path/to/database_file"   
 * "aces.samples_file": "/path/to/list_of_genomes.txt",  
 * "aces.threshold": 0.3, #Query Length Percentage  
-* "aces.query": "/path/to/ZRS_from_Kvon_et_al_2016.fa",  
+* "aces.query": "/path/to/query.fasta",  
 * "aces.max_num_seq": 1, #max number of entries to look for when running BLAST  
 * "aces.pathToInput": "/path/to/database",  
 * "aces.eval": 0.00001 #BLAST evalue threshold  
