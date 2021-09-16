@@ -46,6 +46,8 @@ workflow aces {
     Int? min_raw_gapped_score
     String? ungapped 
     Int? window_size
+    String? raxmlHPC_model_type
+    Int? num_bootstraps
     }
     Array[String] samples = read_lines(samples_file)
     #Runs the BLASTn in parallel
@@ -134,7 +136,9 @@ workflow aces {
             thresh_out=findThresh.out_small,
             thresh_query=findThresh.small_query,
             msa_ram=msa_ram,
-            msa_threads=msa_threads
+            msa_threads=msa_threads,
+	    num_bootstraps=num_bootstraps,
+            raxmlHPC_model_type=raxmlHPC_model_type
 
            
     }
@@ -207,7 +211,7 @@ task BLAST {
 
          
     }
-	Int disk_size = ceil(size(databaseFiles,"GB")+5)
+    Int disk_size = ceil(size(databaseFiles,"GB")+5)
     String pathway=sub(pathToInput,'gs://','')+'/'+sample
     Int bout=select_first([max_num_seq, 1])
     Int num_t=select_first([blast_cpu, 1])
