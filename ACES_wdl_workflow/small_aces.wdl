@@ -26,7 +26,6 @@ workflow aces {
     Int? mt_mode
     String? show_gis
     Int? max_hsps
-    Int? blast_cpu
     Int? blast_ram
     Int? word_size
     Int? gapopen
@@ -86,7 +85,6 @@ workflow aces {
             num_threads_blast = num_threads_blast,
             mt_mode = mt_mode,
             max_hsps=max_hsps,
-            blast_cpu=blast_cpu,
             blast_ram=blast_ram,
             word_size= word_size,
             gapopen= gapopen,
@@ -137,7 +135,7 @@ workflow aces {
             thresh_query=findThresh.small_query,
             msa_ram=msa_ram,
             msa_threads=msa_threads,
-	    num_bootstraps=num_bootstraps,
+            num_bootstraps=num_bootstraps,
             raxmlHPC_model_type=raxmlHPC_model_type
 
            
@@ -186,7 +184,6 @@ task BLAST {
         Int? mt_mode
         String? show_gis
         Int? max_hsps
-        Int? blast_cpu
         Int? blast_ram 
         Int? word_size
         Int? gapopen
@@ -211,10 +208,10 @@ task BLAST {
 
          
     }
-    Int disk_size = ceil(size(databaseFiles,"GB")+5)
+	Int disk_size = ceil(size(databaseFiles,"GB")+5)
     String pathway=sub(pathToInput,'gs://','')+'/'+sample
     Int bout=select_first([max_num_seq, 1])
-    Int num_t=select_first([blast_cpu, 1])
+    Int num_t=select_first([num_threads_blast, 1])
     Int num_m=select_first([blast_ram,16])
     command <<<
     echo ~{pathway}
