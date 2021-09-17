@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;"><h1>ACES: Analysis of Conservation with Extensive Species</h1></span>** 
+**<span style="text-decoration:underline;"><h1>ACES: Analysis of Conservation with an Extensive list of Species</h1></span>** 
   
 
 **Maintainer:** Elvisa Mehinovic and Jeffrey Ng 
