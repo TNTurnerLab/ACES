@@ -6,7 +6,7 @@ If you would like to run ACES on the 393 genomes please use these files for the 
 
 ```
 {
-  "aces.datadb": "genomes_db_filelist.txt",
-  "aces.samples_file": "genomes_db_fa.txt"
+  "aces.datadb": "dbfile_fullGenomes.txt",
+  "aces.samples_file": "genomes_db_species.txt"
 }
 ```
