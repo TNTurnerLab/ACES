@@ -8,10 +8,6 @@ Laboratory of Dr. Tychele N. Turner, Ph.D.
 Washington University in St. Louis 
 
 
-   
-Prior to running the pipeline ensure that you have the reference genome data from either our Google bucket or Globus endpoint as described on our [wiki](https://github.com/TNTurnerLab/ACES/wiki/Retrieving-Reference-Genome-Data)
-
- 
 
 ## To run ACES in the cloud using Terra
 
@@ -53,7 +49,17 @@ To run the job locally, you’ll need to have Java, Docker, and a Cromwell jar i
 To download the Cromwell .jar file, please go [site](https://github.com/broadinstitute/cromwell/releases) and download the latest stable build of the Cromwell jar.  In the example below, we will be using Cromwell version 65.  
    
 
-When setting up your working directory, it is recommended that ACES directory and the database directory are in the same root directory. 
+When setting up your working directory, it is recommended that ACES directory and the database directory are in the same root directory. To download the the ACES workflow, please clone this repo:
+
+```
+git clone https://github.com/TNTurnerLab/ACES.git
+```
+
+   
+You can obtain the reference genome data from either our Google bucket or Globus endpoint as described on our [wiki](https://github.com/TNTurnerLab/ACES/wiki/Retrieving-Reference-Genome-Data)
+
+ 
+
 
 ### Modify the config files 
 
