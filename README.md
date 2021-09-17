@@ -20,9 +20,9 @@ Next you'll need to upload your query, database, and sample files into your Work
 
 ![](https://github.com/TNTurnerLab/ACES/blob/master/images/terra_data_setup.png)
 
-Now go to the "WORKFLOWS" tab and select those files for their corresponding variable tag.  Then fill in the rest of the options as necessary.  Here is a setup that runs with our example
+Now go to the "WORKFLOWS" tab and select those files for their corresponding variable tag.  An easy way to do this is to click on the folder icon and then click on the corresponding file.  Then fill in the rest of the options as necessary.  Here is a setup that runs with our example
 
-![](https://github.com/TNTurnerLab/ACES/blob/master/images/terra_default_settings.png)
+![](https://github.com/TNTurnerLab/ACES/blob/master/images/terra_setup_actual.png)
 
 After doing so, just fill in the necessary config values, a full list of which [can be found here.](https://github.com/TNTurnerLab/ACES/wiki/Config-File-Details) 
 
@@ -127,11 +127,7 @@ The MSA muscle alignment, and RAxML phylogenetic tree can be found in call-MSA
 
 ##### Example Setup and run 
 
-  
-
 Here is an example set up of inputs.json, local.conf, and command run:  
-
-  
 
 ###### inputs.json:  
 
@@ -146,9 +142,6 @@ Here is an example set up of inputs.json, local.conf, and command run:
   "aces.eval": 0.00001  
 } 
 ``` 
-
-  
-
 ###### local.conf submit-docker change:    
 
 ``` 
@@ -162,10 +155,6 @@ ${docker} ${docker_script}
 """  
 ``` 
 
-  
-
-  
-
 ###### Working directory setup:  
 
 ``` 
@@ -175,18 +164,12 @@ ACES  cromwell-65.jar  Kvon_et_al_Genomes_db
 
 ###### Running the code: 
 
-  
-
 ```
 cd ACES/ACES_wdl_workflow  
 java -Dconfig.file=local.conf -jar ../../cromwell-65.jar run small_aces.wdl --inputs inputs.json  
 ``` 
 
-  
-
 ###### Checking the results: 
-
-  
 
 ``` 
 (base) jeff@jeff-OptiPlex-7060:~/Desktop/run_aces/ACES/ACES_wdl_workflow$ cd cromwell-executions/b1a94f47-37ac-490a-bfc0-fa52ba49c22c/ 
