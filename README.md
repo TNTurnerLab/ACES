@@ -1,7 +1,7 @@
 **<span style="text-decoration:underline;"><h1>ACES: Analysis of Conservation with an Extensive list of Species</h1></span>** 
   
 
-**Maintainer:** Elvisa Mehinovic and Jeffrey Ng 
+**Maintainer:** Jeffrey Ng 
 
 Laboratory of Dr. Tychele N. Turner, Ph.D.
 
