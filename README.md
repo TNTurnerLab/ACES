@@ -7,6 +7,8 @@ Laboratory of Dr. Tychele N. Turner, Ph.D.
 
 Washington University in St. Louis 
 
+## Publication
+Please check out our publication describing ACES in Bioinformatics. See [link](https://pubmed.ncbi.nlm.nih.gov/34601580/).
 
 
 ## To run ACES in the cloud using Terra
